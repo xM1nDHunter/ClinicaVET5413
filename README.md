@@ -1,1 +1,8 @@
-ClinicaVET5413
+ClinicaVET5413 v.5
+
+Projeto realizado no Curso de Programação no centro de formação Cinel, o formandor foi Rafael Santos.
+
+Neste projeto a aplicação tem um CRUD que gere uma Clinica Veterinaria.
+
+
+©Todos os direitos reservados a Bruno Cabrita©
