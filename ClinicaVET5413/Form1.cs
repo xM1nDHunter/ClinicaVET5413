@@ -10,17 +10,18 @@ using System.Windows.Forms;
 
 namespace ClinicaVET5413
 {
-    public partial class Form1 : Form
+    public partial class PainelAnimal : Form
     {
         //Cria uma ligação a db de form a obter os dados que existem
         DataClassesDataContext dc = new DataClassesDataContext();
-        public Form1()
+        public PainelAnimal()
         {
             InitializeComponent();
         }
+        
         /// <summary>
         /// Ao carregar o form são carregadas as colunas e inserido os dados da DB para a GridView 
-        /// </summary>
+        /// </summary>        
         private void Form1_Load(object sender, EventArgs e)
         {
             //Adicionar as colunas na GridView
@@ -37,6 +38,7 @@ namespace ClinicaVET5413
             //Inserir os dados da DB dentro de uma lista 
             CarregarGridView();
         }
+        
         /// <summary>
         /// Carrega as ComboBoxes independentes de inputs do user 
         /// </summary>
@@ -54,8 +56,9 @@ namespace ClinicaVET5413
             cbGeneroAdd.Items.Add("Fêmea");
 
         }
+
         /// <summary>
-        /// Ao selecionar a Especie do animal está carrega os dados para a ComboBox Raça 
+        /// Ao selecionar a Especie do animal está carrega os dados para a ComboBox Raça e altera a foto da respetiva especie
         /// </summary>
         private void cbEspecieAdd_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -65,7 +68,7 @@ namespace ClinicaVET5413
                 cbRacaAdd.Items.Add("Pelo Curto");
                 cbRacaAdd.Items.Add("Persa");
                 cbRacaAdd.Items.Add("Siamês");
-                //pbAdicionar
+                pictureBox3.Image = Properties.Resources.cat;
             }
             if (cbEspecieAdd.Text == "Ave")
             {
@@ -73,7 +76,7 @@ namespace ClinicaVET5413
                 cbRacaAdd.Items.Add("Galinha");
                 cbRacaAdd.Items.Add("Papagaio");
                 cbRacaAdd.Items.Add("Piriquito");
-                //pbAdicionar.Image = 
+                pictureBox3.Image = Properties.Resources.bird;
             }
             if (cbEspecieAdd.Text == "Reptil")
             {
@@ -81,7 +84,7 @@ namespace ClinicaVET5413
                 cbRacaAdd.Items.Add("Gecko");
                 cbRacaAdd.Items.Add("Dragão Barbudo");
                 cbRacaAdd.Items.Add("Iguana");
-                //pbAdicionar.Image = 
+                pictureBox3.Image = Properties.Resources.reptile;
             }
             if (cbEspecieAdd.Text == "Canídeos")
             {
@@ -89,7 +92,7 @@ namespace ClinicaVET5413
                 cbRacaAdd.Items.Add("Pastor Alemão");
                 cbRacaAdd.Items.Add("Labrador");
                 cbRacaAdd.Items.Add("Pinscher");
-                //pbAdicionar.Image = 
+                pictureBox3.Image = Properties.Resources.dog;
             }
                 
         }
@@ -124,7 +127,7 @@ namespace ClinicaVET5413
             dataGridAnimal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;            
         }
 
-        //Configuração dos Butões do form
+        #region Configurações dos butões 
         private void bt_adicionar_Click(object sender, EventArgs e)
         {
             tabControl1.SelectTab(AdicionarAnimal);            
@@ -164,12 +167,16 @@ namespace ClinicaVET5413
         {
 
         }
+        #endregion
 
+        /// <summary>
+        /// MessageBox é apresentada quando se insere um novo animal na GridView e limpa as respetivas TextBoxes e ComboBoxes
+        /// </summary>
         private void DialogAddAnimal()
         {
             DialogResult resposta;
 
-            resposta = MessageBox.Show("Vai adicionar um novo animal deseja continuar?","Teste", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
+            resposta = MessageBox.Show("Vai adicionar um novo animal deseja continuar?","Adicionar Animal", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
             if (resposta == DialogResult.Yes || resposta== DialogResult.No)
             {
                 txtIdAdd.Clear();
@@ -182,6 +189,9 @@ namespace ClinicaVET5413
             }
         }
 
+        /// <summary>
+        /// Valida todos os campos na Tabs de edição e adição de animais
+        /// </summary>
         private bool Validacoes()
         {
             bool output = true;
@@ -189,46 +199,46 @@ namespace ClinicaVET5413
 
             if (string.IsNullOrEmpty(txtNomeAdd.Text) || txtNomeAdd.Text.All(char.IsDigit))
             {
-                MessageBox.Show("Insira o nome do Animal!", "Erro",
+                MessageBox.Show("Deve insirir o nome do Animal!", "Erro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 output = false;
             }
-            //if (string.IsNullOrEmpty(tbEspecie.Text) || tbEspecie.Text.All(char.IsDigit))
-            //{
-            //    MessageBox.Show("Insira a Espécie!", "Erro",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (string.IsNullOrEmpty(cbEspecieAdd.Text) || cbEspecieAdd.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Deve insirir a Espécie!", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //    output = false;
-            //}
-            //if (string.IsNullOrEmpty(tbRace.Text) || tbRace.Text.All(char.IsDigit))
-            //{
-            //    MessageBox.Show("Insira a raça", "Erro",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                output = false;
+            }
+            if (string.IsNullOrEmpty(cbRacaAdd.Text) || cbRacaAdd.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Deve insirir a raça", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //    output = false;
-            //}
-            //if (string.IsNullOrEmpty(cbGenero.Text))
-            //{
-            //    MessageBox.Show("Insira o género", "Erro",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                output = false;
+            }
+            if (string.IsNullOrEmpty(cbGeneroAdd.Text))
+            {
+                MessageBox.Show("Deve insirir o género", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //    output = false;
-            //}
-            //if (string.IsNullOrEmpty(tbPeso.Text) || !double.TryParse(tbPeso.Text, out peso))
-            //{
-            //    MessageBox.Show("Insira o peso", "Erro",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                output = false;
+            }
+            if (string.IsNullOrEmpty(txt_pesoAdd.Text) || !double.TryParse(txt_pesoAdd.Text, out peso))
+            {
+                MessageBox.Show("Deve insirir o peso", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //    output = false;
-            //}
-            //if (string.IsNullOrEmpty(cbCastracao.Text))
-            //{
-            //    MessageBox.Show("Indique se é, ou não, esterilizado/a", "Erro",
-            //        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                output = false;
+            }
+            if (string.IsNullOrEmpty(cb_esterilAdd.Text))
+            {
+                MessageBox.Show("Indique se é, ou não, esterilizado/a", "Erro",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            //    output = false;
-            //}
+                output = false;
+            }
             return output;
         }
 
