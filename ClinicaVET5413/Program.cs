@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClinicaVET5413.Forms;
 
 namespace ClinicaVET5413
 {
@@ -16,7 +17,7 @@ namespace ClinicaVET5413
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PainelAnimal());
+            Application.Run(new LoginPage());
         }
     }
 }

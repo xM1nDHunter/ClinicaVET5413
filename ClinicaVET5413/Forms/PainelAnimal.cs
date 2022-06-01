@@ -140,7 +140,30 @@ namespace ClinicaVET5413
 
         private void bt_pesquisar_Click(object sender, EventArgs e)
         {
-            
+            dataGridAnimal.Rows.Clear();
+            var listaPesquisa = from Animais in dc.Animals select Animais;
+
+            int linha = 0;
+
+            foreach (var animal in listaPesquisa)
+            {
+                if (animal.Nome == txtPesquisa.Text)
+                {
+                    DataGridViewRow row = new DataGridViewRow();
+                    dataGridAnimal.Rows.Add(row);
+
+                    dataGridAnimal.Rows[linha].Cells[0].Value = animal.ID;
+                    dataGridAnimal.Rows[linha].Cells[1].Value = animal.Nome;
+                    dataGridAnimal.Rows[linha].Cells[2].Value = animal.Especie;
+                    dataGridAnimal.Rows[linha].Cells[3].Value = animal.Raca;
+                    dataGridAnimal.Rows[linha].Cells[4].Value = animal.Genero;
+                    dataGridAnimal.Rows[linha].Cells[5].Value = animal.Peso;
+                    dataGridAnimal.Rows[linha].Cells[6].Value = animal.Esterilizacao;
+                    dataGridAnimal.Rows[linha].Cells[7].Value = animal.DataNascimento;
+                    linha++;
+                }
+            }
+            dataGridAnimal.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         private void bt_guardarAdd_Click(object sender, EventArgs e)
         {
