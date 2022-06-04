@@ -15,6 +15,7 @@ namespace ClinicaVET5413.Forms
         public MainPanel()
         {
             InitializeComponent();
+            lbl_dia.Text = DateTime.Now.ToString("D");
         }
         /// <summary>
         /// Metodo que recebe um form , o ajusta e coloca no painelForms
@@ -32,6 +33,18 @@ namespace ClinicaVET5413.Forms
             f.Show();
 
         }
+        /// <summary>
+        /// Timer para que o relógio da app esteja sempre atualizado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            DateTime time = new DateTime();
+            time = DateTime.Now;
+            lbl_horas.Text = time.ToString("hh:mm:ss");
+        }
+        #region Botões Load Forms
         private void bt_Animal_Click(object sender, EventArgs e)
         {
             LoadForms(new PainelAnimal());
@@ -41,5 +54,20 @@ namespace ClinicaVET5413.Forms
         {
             LoadForms(new PainelMedico());
         }
+        private void bt_cliente_Click(object sender, EventArgs e)
+        {
+            LoadForms(new PainelCliente());
+        }
+
+        private void bt_GestaoClinica_Click(object sender, EventArgs e)
+        {
+            LoadForms(new PainelConsulta());
+        }
+
+        private void bt_infos_Click(object sender, EventArgs e)
+        {
+            LoadForms(new PainelInformacoes());
+        }
+        #endregion
     }
 }

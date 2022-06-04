@@ -601,7 +601,7 @@ namespace ClinicaVET5413
 		
 		private EntityRef<Cliente> _Cliente1;
 		
-		private EntityRef<Medico> _Medico1;
+		private EntityRef<Medico> _Medico11;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -629,7 +629,7 @@ namespace ClinicaVET5413
 		{
 			this._Animal1 = default(EntityRef<Animal>);
 			this._Cliente1 = default(EntityRef<Cliente>);
-			this._Medico1 = default(EntityRef<Medico>);
+			this._Medico11 = default(EntityRef<Medico>);
 			OnCreated();
 		}
 		
@@ -664,7 +664,7 @@ namespace ClinicaVET5413
 			{
 				if ((this._Medico != value))
 				{
-					if (this._Medico1.HasLoadedOrAssignedValue)
+					if (this._Medico11.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -873,26 +873,26 @@ namespace ClinicaVET5413
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medico_Consulta", Storage="_Medico1", ThisKey="Medico", OtherKey="ID", IsForeignKey=true)]
-		public Medico Medico1
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medico1_Consulta", Storage="_Medico11", ThisKey="Medico", OtherKey="ID", IsForeignKey=true)]
+		public Medico Medico11
 		{
 			get
 			{
-				return this._Medico1.Entity;
+				return this._Medico11.Entity;
 			}
 			set
 			{
-				Medico previousValue = this._Medico1.Entity;
+				Medico previousValue = this._Medico11.Entity;
 				if (((previousValue != value) 
-							|| (this._Medico1.HasLoadedOrAssignedValue == false)))
+							|| (this._Medico11.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._Medico1.Entity = null;
+						this._Medico11.Entity = null;
 						previousValue.Consultas.Remove(this);
 					}
-					this._Medico1.Entity = value;
+					this._Medico11.Entity = value;
 					if ((value != null))
 					{
 						value.Consultas.Add(this);
@@ -902,7 +902,7 @@ namespace ClinicaVET5413
 					{
 						this._Medico = default(int);
 					}
-					this.SendPropertyChanged("Medico1");
+					this.SendPropertyChanged("Medico11");
 				}
 			}
 		}
@@ -946,6 +946,8 @@ namespace ClinicaVET5413
 		
 		private string _Email;
 		
+		private string _SalaObs;
+		
 		private EntitySet<Consulta> _Consultas;
 		
     #region Extensibility Method Definitions
@@ -964,6 +966,8 @@ namespace ClinicaVET5413
     partial void OnTelemovelChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
+    partial void OnSalaObsChanging(string value);
+    partial void OnSalaObsChanged();
     #endregion
 		
 		public Medico()
@@ -1092,7 +1096,27 @@ namespace ClinicaVET5413
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medico_Consulta", Storage="_Consultas", ThisKey="ID", OtherKey="Medico")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalaObs", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string SalaObs
+		{
+			get
+			{
+				return this._SalaObs;
+			}
+			set
+			{
+				if ((this._SalaObs != value))
+				{
+					this.OnSalaObsChanging(value);
+					this.SendPropertyChanging();
+					this._SalaObs = value;
+					this.SendPropertyChanged("SalaObs");
+					this.OnSalaObsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medico1_Consulta", Storage="_Consultas", ThisKey="ID", OtherKey="Medico")]
 		public EntitySet<Consulta> Consultas
 		{
 			get
@@ -1128,13 +1152,13 @@ namespace ClinicaVET5413
 		private void attach_Consultas(Consulta entity)
 		{
 			this.SendPropertyChanging();
-			entity.Medico1 = this;
+			entity.Medico11 = this;
 		}
 		
 		private void detach_Consultas(Consulta entity)
 		{
 			this.SendPropertyChanging();
-			entity.Medico1 = null;
+			entity.Medico11 = null;
 		}
 	}
 }
