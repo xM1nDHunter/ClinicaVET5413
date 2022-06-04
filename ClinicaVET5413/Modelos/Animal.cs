@@ -17,4 +17,5 @@ namespace ClinicaVET5413.Modelos
         public string Esterilizacao { get; set; }
         public DateTime DataNascimento { get; set; }
     }
+    
 }

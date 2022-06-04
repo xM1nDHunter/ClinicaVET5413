@@ -38,7 +38,6 @@
             this.ListaAnimal = new System.Windows.Forms.TabPage();
             this.bt_apagar = new System.Windows.Forms.Button();
             this.bt_editar = new System.Windows.Forms.Button();
-            this.bt_pesquisar = new System.Windows.Forms.Button();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.bt_adicionar = new System.Windows.Forms.Button();
@@ -58,7 +57,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.bt_AddAnimal = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -158,7 +157,6 @@
             this.ListaAnimal.BackColor = System.Drawing.Color.Silver;
             this.ListaAnimal.Controls.Add(this.bt_apagar);
             this.ListaAnimal.Controls.Add(this.bt_editar);
-            this.ListaAnimal.Controls.Add(this.bt_pesquisar);
             this.ListaAnimal.Controls.Add(this.txtPesquisa);
             this.ListaAnimal.Controls.Add(this.label7);
             this.ListaAnimal.Controls.Add(this.bt_adicionar);
@@ -179,6 +177,7 @@
             this.bt_apagar.Text = "Apagar Animal";
             this.bt_apagar.UseVisualStyleBackColor = true;
             this.bt_apagar.Click += new System.EventHandler(this.bt_apagar_Click);
+            this.bt_apagar.MouseHover += new System.EventHandler(this.bt_apagar_MouseHover);
             // 
             // bt_editar
             // 
@@ -190,21 +189,13 @@
             this.bt_editar.UseVisualStyleBackColor = true;
             this.bt_editar.Click += new System.EventHandler(this.bt_editar_Click);
             // 
-            // bt_pesquisar
-            // 
-            this.bt_pesquisar.Location = new System.Drawing.Point(485, 39);
-            this.bt_pesquisar.Name = "bt_pesquisar";
-            this.bt_pesquisar.Size = new System.Drawing.Size(99, 26);
-            this.bt_pesquisar.TabIndex = 9;
-            this.bt_pesquisar.Text = "Pesquisar";
-            this.bt_pesquisar.UseVisualStyleBackColor = true;
-            // 
             // txtPesquisa
             // 
             this.txtPesquisa.Location = new System.Drawing.Point(22, 43);
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(457, 20);
             this.txtPesquisa.TabIndex = 8;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // label7
             // 
@@ -253,7 +244,7 @@
             this.AdicionarAnimal.Controls.Add(this.label4);
             this.AdicionarAnimal.Controls.Add(this.label5);
             this.AdicionarAnimal.Controls.Add(this.label6);
-            this.AdicionarAnimal.Controls.Add(this.button1);
+            this.AdicionarAnimal.Controls.Add(this.bt_AddAnimal);
             this.AdicionarAnimal.Controls.Add(this.label13);
             this.AdicionarAnimal.Controls.Add(this.label16);
             this.AdicionarAnimal.Controls.Add(this.label17);
@@ -275,6 +266,7 @@
             // 
             // dtpAdicionar
             // 
+            this.dtpAdicionar.CustomFormat = "";
             this.dtpAdicionar.Location = new System.Drawing.Point(260, 302);
             this.dtpAdicionar.Name = "dtpAdicionar";
             this.dtpAdicionar.Size = new System.Drawing.Size(229, 20);
@@ -385,14 +377,15 @@
             this.label6.TabIndex = 54;
             this.label6.Text = "Genero do animal:";
             // 
-            // button1
+            // bt_AddAnimal
             // 
-            this.button1.Location = new System.Drawing.Point(655, 307);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 29);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Guardar Alterações";
-            this.button1.UseVisualStyleBackColor = true;
+            this.bt_AddAnimal.Location = new System.Drawing.Point(655, 307);
+            this.bt_AddAnimal.Name = "bt_AddAnimal";
+            this.bt_AddAnimal.Size = new System.Drawing.Size(160, 29);
+            this.bt_AddAnimal.TabIndex = 51;
+            this.bt_AddAnimal.Text = "Guardar Alterações";
+            this.bt_AddAnimal.UseVisualStyleBackColor = true;
+            this.bt_AddAnimal.Click += new System.EventHandler(this.bt_AddAnimal_Click);
             // 
             // label13
             // 
@@ -525,15 +518,16 @@
             // cbEspecieEdit
             // 
             this.cbEspecieEdit.FormattingEnabled = true;
-            this.cbEspecieEdit.Location = new System.Drawing.Point(260, 221);
+            this.cbEspecieEdit.Location = new System.Drawing.Point(49, 220);
             this.cbEspecieEdit.Name = "cbEspecieEdit";
             this.cbEspecieEdit.Size = new System.Drawing.Size(160, 21);
             this.cbEspecieEdit.TabIndex = 34;
+            this.cbEspecieEdit.SelectedIndexChanged += new System.EventHandler(this.cbEspecieEdit_SelectedIndexChanged);
             // 
             // cbRacaEdit
             // 
             this.cbRacaEdit.FormattingEnabled = true;
-            this.cbRacaEdit.Location = new System.Drawing.Point(49, 221);
+            this.cbRacaEdit.Location = new System.Drawing.Point(262, 220);
             this.cbRacaEdit.Name = "cbRacaEdit";
             this.cbRacaEdit.Size = new System.Drawing.Size(160, 21);
             this.cbRacaEdit.TabIndex = 33;
@@ -570,12 +564,13 @@
             this.bt_editarAnimal.TabIndex = 29;
             this.bt_editarAnimal.Text = "Guardar Alterações";
             this.bt_editarAnimal.UseVisualStyleBackColor = true;
+            this.bt_editarAnimal.Click += new System.EventHandler(this.bt_editarAnimal_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(46, 188);
+            this.label10.Location = new System.Drawing.Point(259, 187);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(115, 18);
             this.label10.TabIndex = 28;
@@ -585,7 +580,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(257, 188);
+            this.label11.Location = new System.Drawing.Point(46, 187);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(133, 18);
             this.label11.TabIndex = 27;
@@ -669,7 +664,6 @@
         private ClinicaDB5413DataSetTableAdapters.AnimalTableAdapter animalTableAdapter;
         private System.Windows.Forms.Button bt_apagar;
         private System.Windows.Forms.Button bt_editar;
-        private System.Windows.Forms.Button bt_pesquisar;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button bt_adicionar;
@@ -699,7 +693,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button bt_AddAnimal;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
