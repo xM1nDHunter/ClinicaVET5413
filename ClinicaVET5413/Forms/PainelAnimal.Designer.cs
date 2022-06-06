@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PainelAnimal));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ListaAnimal = new System.Windows.Forms.TabPage();
@@ -43,7 +41,6 @@
             this.bt_adicionar = new System.Windows.Forms.Button();
             this.dataGridAnimal = new System.Windows.Forms.DataGridView();
             this.AdicionarAnimal = new System.Windows.Forms.TabPage();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dtpAdicionar = new System.Windows.Forms.DateTimePicker();
             this.cbGeneroAdd = new System.Windows.Forms.ComboBox();
             this.cbEspecieAdd = new System.Windows.Forms.ComboBox();
@@ -79,27 +76,30 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.clinicaDB5413DataSet = new ClinicaVET5413.ClinicaDB5413DataSet();
             this.animalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.animalTableAdapter = new ClinicaVET5413.ClinicaDB5413DataSetTableAdapters.AnimalTableAdapter();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.ListaAnimal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAnimal)).BeginInit();
             this.AdicionarAnimal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.EditarAnimal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicaDB5413DataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.animalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.PaleGreen;
+            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -108,26 +108,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(869, 98);
             this.panel1.TabIndex = 0;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::ClinicaVET5413.Properties.Resources.dog123;
-            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(114, 98);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 27;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::ClinicaVET5413.Properties.Resources.cat123;
-            this.pictureBox1.Location = new System.Drawing.Point(761, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(108, 98);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 26;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -253,16 +233,6 @@
             this.AdicionarAnimal.Size = new System.Drawing.Size(861, 374);
             this.AdicionarAnimal.TabIndex = 3;
             this.AdicionarAnimal.Text = "Adicionar Animal";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::ClinicaVET5413.Properties.Resources._;
-            this.pictureBox3.Location = new System.Drawing.Point(569, 63);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(246, 191);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 83;
-            this.pictureBox3.TabStop = false;
             // 
             // dtpAdicionar
             // 
@@ -598,16 +568,6 @@
             this.label12.TabIndex = 26;
             this.label12.Text = "Nome do animal:";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::ClinicaVET5413.Properties.Resources._;
-            this.pictureBox2.Location = new System.Drawing.Point(546, 43);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(225, 199);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 37;
-            this.pictureBox2.TabStop = false;
-            // 
             // clinicaDB5413DataSet
             // 
             this.clinicaDB5413DataSet.DataSetName = "ClinicaDB5413DataSet";
@@ -621,6 +581,46 @@
             // animalTableAdapter
             // 
             this.animalTableAdapter.ClearBeforeFill = true;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::ClinicaVET5413.Properties.Resources._;
+            this.pictureBox3.Location = new System.Drawing.Point(569, 63);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(246, 191);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 83;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ClinicaVET5413.Properties.Resources._;
+            this.pictureBox2.Location = new System.Drawing.Point(546, 43);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(225, 199);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 37;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::ClinicaVET5413.Properties.Resources.dog123;
+            this.pictureBox4.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(114, 98);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 27;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ClinicaVET5413.Properties.Resources.cat123;
+            this.pictureBox1.Location = new System.Drawing.Point(761, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(108, 98);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 26;
+            this.pictureBox1.TabStop = false;
             // 
             // PainelAnimal
             // 
@@ -636,20 +636,20 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.ListaAnimal.ResumeLayout(false);
             this.ListaAnimal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridAnimal)).EndInit();
             this.AdicionarAnimal.ResumeLayout(false);
             this.AdicionarAnimal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.EditarAnimal.ResumeLayout(false);
             this.EditarAnimal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clinicaDB5413DataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.animalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

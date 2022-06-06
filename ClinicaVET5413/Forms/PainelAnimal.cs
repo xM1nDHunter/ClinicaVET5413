@@ -203,12 +203,14 @@ namespace ClinicaVET5413
                     Esterilizacao = cb_esterilAdd.Text,
                     DataNascimento = dtpAdicionar.Text
                 };
-                dc.Animals.InsertOnSubmit(animal);
-                dc.SubmitChanges();
-                DialogAddAnimal();
-                //Carrega o DataContext de novo para poder apresentar os novos resultados
-                DataClassesDataContext reload = new DataClassesDataContext();
-                dataGridAnimal.DataSource = reload.Animals;
+                if (DialogAddAnimal())
+                {
+                    dc.Animals.InsertOnSubmit(animal);
+                    dc.SubmitChanges();
+                    //Carrega o DataContext de novo para poder apresentar os novos resultados
+                    DataClassesDataContext reload = new DataClassesDataContext();
+                    dataGridAnimal.DataSource = reload.Animals;
+                }
             }
             
         }        
@@ -283,12 +285,12 @@ namespace ClinicaVET5413
         /// <summary>
         /// MessageBox é apresentada quando se insere um novo animal na GridView e limpa as respetivas TextBoxes e ComboBoxes
         /// </summary>
-        private void DialogAddAnimal()
+        private bool DialogAddAnimal()
         {
             DialogResult resposta;
 
             resposta = MessageBox.Show("Vai adicionar um novo animal deseja continuar?","Adicionar Animal", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
-            if (resposta == DialogResult.Yes || resposta== DialogResult.No)
+            if (resposta == DialogResult.Yes )
             {
                 txtIdAdd.Clear();
                 txtNomeAdd.Clear();                
@@ -297,7 +299,10 @@ namespace ClinicaVET5413
                 cbGeneroAdd.SelectedItem = null;
                 cbRacaAdd.SelectedItem = null;
                 cb_esterilAdd.SelectedItem = null;
+                return true;
             }
+            else
+                return false;
         }
 
         /// <summary>

@@ -100,6 +100,7 @@
       <DependentUpon>PainelMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Modelos\Animal.cs" />
+    <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Medico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\LoginPage.resx">
       <DependentUpon>LoginPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PainelCliente.resx">
+      <DependentUpon>PainelCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PainelInformacoes.resx">
       <DependentUpon>PainelInformacoes.cs</DependentUpon>
@@ -210,6 +214,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\miniinfo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clientexx.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

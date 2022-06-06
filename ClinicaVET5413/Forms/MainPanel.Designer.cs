@@ -165,7 +165,7 @@
             // 
             this.lbl_dia.AutoSize = true;
             this.lbl_dia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dia.Location = new System.Drawing.Point(683, 26);
+            this.lbl_dia.Location = new System.Drawing.Point(638, 26);
             this.lbl_dia.Name = "lbl_dia";
             this.lbl_dia.Size = new System.Drawing.Size(30, 18);
             this.lbl_dia.TabIndex = 4;

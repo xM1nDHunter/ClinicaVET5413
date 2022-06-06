@@ -13,17 +13,6 @@
       <Association Name="Animal_Consulta" Member="Consultas" ThisKey="ID" OtherKey="Animal" Type="Consulta" />
     </Type>
   </Table>
-  <Table Name="dbo.Cliente" Member="Clientes">
-    <Type Name="Cliente">
-      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="NIF" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Telemovel" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Animal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Cliente_Consulta" Member="Consultas" ThisKey="ID" OtherKey="Cliente" Type="Consulta" />
-    </Type>
-  </Table>
   <Table Name="dbo.Consulta" Member="Consultas">
     <Type Name="Consulta">
       <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -35,8 +24,8 @@
       <Column Name="HoraConsulta" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Notas" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
       <Association Name="Animal_Consulta" Member="Animal1" ThisKey="Animal" OtherKey="ID" Type="Animal" IsForeignKey="true" />
+      <Association Name="Medico_Consulta" Member="Medico11" ThisKey="Medico" OtherKey="ID" Type="Medico" IsForeignKey="true" />
       <Association Name="Cliente_Consulta" Member="Cliente1" ThisKey="Cliente" OtherKey="ID" Type="Cliente" IsForeignKey="true" />
-      <Association Name="Medico1_Consulta" Member="Medico11" ThisKey="Medico" OtherKey="ID" Type="Medico" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Medico" Member="Medicos">
@@ -48,7 +37,19 @@
       <Column Name="Telemovel" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="SalaObs" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Association Name="Medico1_Consulta" Member="Consultas" ThisKey="ID" OtherKey="Medico" Type="Consulta" />
+      <Association Name="Medico_Consulta" Member="Consultas" ThisKey="ID" OtherKey="Medico" Type="Consulta" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Cliente" Member="Clientes">
+    <Type Name="Cliente">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="NIF" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Telemovel" Type="System.String" DbType="VarChar(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Animal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DataNascimento" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="Cliente_Consulta" Member="Consultas" ThisKey="ID" OtherKey="Cliente" Type="Consulta" />
     </Type>
   </Table>
 </Database>

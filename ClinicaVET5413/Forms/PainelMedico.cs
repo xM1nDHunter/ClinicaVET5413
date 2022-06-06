@@ -25,7 +25,8 @@ namespace ClinicaVET5413.Forms
         private void PainelMedico_Load(object sender, EventArgs e)
         {
             CarregarComboBoxes();
-            CarregarGrid();
+            CarregarGrid();           
+            
         }
         
         
@@ -74,16 +75,14 @@ namespace ClinicaVET5413.Forms
         }
 
         private void bt_Editar_Click(object sender, EventArgs e)
-        {
-            
-            tabControl1.SelectTab(EditMed);            
+        {            
             if (dataGridMedico.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Deve selecionar um medico primeiro!", "Erro",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Deve selecionar um medico primeiro!", "Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                tabControl1.SelectTab(EditMed);            
                 txt_EditID.Text = dataGridMedico.CurrentRow.Cells[0].Value.ToString();
                 txt_EditNome.Text = dataGridMedico.CurrentRow.Cells[1].Value.ToString();
                 cb_EditTipoAnimal.Text = dataGridMedico.CurrentRow.Cells[2].Value.ToString();
@@ -95,11 +94,15 @@ namespace ClinicaVET5413.Forms
         }
 
         private void bt_Apagar_Click(object sender, EventArgs e)
-        {
+        {           
             if (this.dataGridMedico.SelectedRows.Count > 0)
             {
                 dataGridMedico.Rows.RemoveAt(this.dataGridMedico.SelectedRows[0].Index);
                 dc.SubmitChanges();
+            }
+            else 
+            {
+                MessageBox.Show("Deve selecionar um medico primeiro!", "Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -116,11 +119,13 @@ namespace ClinicaVET5413.Forms
                     Email = txt_AddEmail.Text,
                     SalaObs= cb_salaObs.Text                    
                 };
-                dc.Medicos.InsertOnSubmit(medico);
-                dc.SubmitChanges();
-                DialogAddMedico();
-                DataClassesDataContext reload = new DataClassesDataContext();
-                dataGridMedico.DataSource = reload.Medicos;
+                if(DialogAddMedico())
+                {
+                    dc.Medicos.InsertOnSubmit(medico);
+                    dc.SubmitChanges();
+                    DataClassesDataContext reload = new DataClassesDataContext();
+                    dataGridMedico.DataSource = reload.Medicos;
+                }
             }
         }
 
@@ -157,12 +162,12 @@ namespace ClinicaVET5413.Forms
         /// <summary>
         /// MessageBox é apresentada quando se insere um novo medico na GridView e limpa as respetivas TextBoxes e ComboBoxes
         /// </summary>
-        private void DialogAddMedico()
+        private bool DialogAddMedico()
         {
             DialogResult resposta;
 
             resposta = MessageBox.Show("Vai adicionar um novo médico deseja continuar?", "Adicionar Médico", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (resposta == DialogResult.Yes || resposta == DialogResult.No)
+            if (resposta == DialogResult.Yes)
             {
                 txt_AddMedico.Clear();
                 cb_tipoAnimal.SelectedItem = null;
@@ -170,7 +175,10 @@ namespace ClinicaVET5413.Forms
                 txt_AddTele.Clear();
                 txt_AddEmail.Clear();
                 cb_salaObs.SelectedItem = null;
+                return true;
             }
+            else
+                return false;
         }
 
         /// <summary>
