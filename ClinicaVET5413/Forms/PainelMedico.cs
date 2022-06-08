@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -139,8 +140,8 @@ namespace ClinicaVET5413.Forms
             dataGridMedico.Columns.Clear();
             var medicoPesquisa = txt_pesquisa.Text;
             var medico = from Medico in dc.Medicos
-                          where Medico.Nome == medicoPesquisa
-                          select Medico;
+                         where SqlMethods.Like(Medico.Nome, "%" + medicoPesquisa + "%")
+                         select Medico;
             dataGridMedico.DataSource = medico.ToList();
 
 

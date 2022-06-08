@@ -16,6 +16,7 @@ namespace ClinicaVET5413.Modelos
         public string Peso { get; set; }
         public string Esterilizacao { get; set; }
         public DateTime DataNascimento { get; set; }
+        public string Dono { get; set; }
     }
     
 }

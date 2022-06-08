@@ -163,6 +163,16 @@ namespace ClinicaVET5413.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap hospital1 {
+            get {
+                object obj = ResourceManager.GetObject("hospital1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap mincliente {
             get {
                 object obj = ResourceManager.GetObject("mincliente", resourceCulture);
@@ -226,6 +236,16 @@ namespace ClinicaVET5413.Properties {
         internal static System.Drawing.Bitmap teste {
             get {
                 object obj = ResourceManager.GetObject("teste", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap teste1 {
+            get {
+                object obj = ResourceManager.GetObject("teste1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

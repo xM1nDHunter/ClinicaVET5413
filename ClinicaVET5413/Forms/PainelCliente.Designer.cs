@@ -41,37 +41,33 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_pesquisa = new System.Windows.Forms.TextBox();
             this.AddCliente = new System.Windows.Forms.TabPage();
-            this.EditClient = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lbl = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txt_AddID = new System.Windows.Forms.TextBox();
-            this.txt_AddNome = new System.Windows.Forms.TextBox();
-            this.txt_AddNif = new System.Windows.Forms.TextBox();
-            this.txt_AddTele = new System.Windows.Forms.TextBox();
-            this.txt_AddEmail = new System.Windows.Forms.TextBox();
-            this.cb_AddAnimal = new System.Windows.Forms.ComboBox();
+            this.bt_AddCliente = new System.Windows.Forms.Button();
             this.dtp_AddNasci = new System.Windows.Forms.DateTimePicker();
+            this.txt_AddEmail = new System.Windows.Forms.TextBox();
+            this.txt_AddTele = new System.Windows.Forms.TextBox();
+            this.txt_AddNif = new System.Windows.Forms.TextBox();
+            this.txt_AddNome = new System.Windows.Forms.TextBox();
+            this.txt_AddID = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lbl = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.EditClient = new System.Windows.Forms.TabPage();
+            this.bt_EditCliente = new System.Windows.Forms.Button();
             this.dtp_EditNasci = new System.Windows.Forms.DateTimePicker();
-            this.cb_EditAnimal = new System.Windows.Forms.ComboBox();
             this.txt_EditEmail = new System.Windows.Forms.TextBox();
             this.txt_EditTele = new System.Windows.Forms.TextBox();
             this.txt_EditNif = new System.Windows.Forms.TextBox();
             this.txt_EditNome = new System.Windows.Forms.TextBox();
             this.txt_EditID = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.bt_AddCliente = new System.Windows.Forms.Button();
-            this.bt_EditCliente = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -215,14 +211,12 @@
             this.AddCliente.BackColor = System.Drawing.Color.Silver;
             this.AddCliente.Controls.Add(this.bt_AddCliente);
             this.AddCliente.Controls.Add(this.dtp_AddNasci);
-            this.AddCliente.Controls.Add(this.cb_AddAnimal);
             this.AddCliente.Controls.Add(this.txt_AddEmail);
             this.AddCliente.Controls.Add(this.txt_AddTele);
             this.AddCliente.Controls.Add(this.txt_AddNif);
             this.AddCliente.Controls.Add(this.txt_AddNome);
             this.AddCliente.Controls.Add(this.txt_AddID);
             this.AddCliente.Controls.Add(this.label9);
-            this.AddCliente.Controls.Add(this.label8);
             this.AddCliente.Controls.Add(this.label7);
             this.AddCliente.Controls.Add(this.label6);
             this.AddCliente.Controls.Add(this.label5);
@@ -235,69 +229,68 @@
             this.AddCliente.TabIndex = 1;
             this.AddCliente.Text = "Adicionar Clientes";
             // 
-            // EditClient
+            // bt_AddCliente
             // 
-            this.EditClient.BackColor = System.Drawing.Color.Silver;
-            this.EditClient.Controls.Add(this.bt_EditCliente);
-            this.EditClient.Controls.Add(this.dtp_EditNasci);
-            this.EditClient.Controls.Add(this.cb_EditAnimal);
-            this.EditClient.Controls.Add(this.txt_EditEmail);
-            this.EditClient.Controls.Add(this.txt_EditTele);
-            this.EditClient.Controls.Add(this.txt_EditNif);
-            this.EditClient.Controls.Add(this.txt_EditNome);
-            this.EditClient.Controls.Add(this.txt_EditID);
-            this.EditClient.Controls.Add(this.label4);
-            this.EditClient.Controls.Add(this.label10);
-            this.EditClient.Controls.Add(this.label11);
-            this.EditClient.Controls.Add(this.label12);
-            this.EditClient.Controls.Add(this.label13);
-            this.EditClient.Controls.Add(this.label14);
-            this.EditClient.Controls.Add(this.label15);
-            this.EditClient.Location = new System.Drawing.Point(4, 22);
-            this.EditClient.Name = "EditClient";
-            this.EditClient.Size = new System.Drawing.Size(861, 368);
-            this.EditClient.TabIndex = 2;
-            this.EditClient.Text = "Editar Cliente";
+            this.bt_AddCliente.Location = new System.Drawing.Point(686, 322);
+            this.bt_AddCliente.Name = "bt_AddCliente";
+            this.bt_AddCliente.Size = new System.Drawing.Size(147, 23);
+            this.bt_AddCliente.TabIndex = 14;
+            this.bt_AddCliente.Text = "Adicionar Cliente";
+            this.bt_AddCliente.UseVisualStyleBackColor = true;
+            this.bt_AddCliente.Click += new System.EventHandler(this.bt_AddCliente_Click);
             // 
-            // label3
+            // dtp_AddNasci
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(71, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(75, 18);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "ID Cliente:";
+            this.dtp_AddNasci.Location = new System.Drawing.Point(421, 197);
+            this.dtp_AddNasci.Name = "dtp_AddNasci";
+            this.dtp_AddNasci.Size = new System.Drawing.Size(191, 20);
+            this.dtp_AddNasci.TabIndex = 13;
             // 
-            // lbl
+            // txt_AddEmail
             // 
-            this.lbl.AutoSize = true;
-            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl.Location = new System.Drawing.Point(71, 113);
-            this.lbl.Name = "lbl";
-            this.lbl.Size = new System.Drawing.Size(35, 18);
-            this.lbl.TabIndex = 1;
-            this.lbl.Text = "NIF:";
+            this.txt_AddEmail.Location = new System.Drawing.Point(73, 260);
+            this.txt_AddEmail.Name = "txt_AddEmail";
+            this.txt_AddEmail.Size = new System.Drawing.Size(239, 20);
+            this.txt_AddEmail.TabIndex = 11;
             // 
-            // label5
+            // txt_AddTele
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(213, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 18);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Nome:";
+            this.txt_AddTele.Location = new System.Drawing.Point(74, 197);
+            this.txt_AddTele.Name = "txt_AddTele";
+            this.txt_AddTele.Size = new System.Drawing.Size(239, 20);
+            this.txt_AddTele.TabIndex = 10;
             // 
-            // label6
+            // txt_AddNif
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(71, 170);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 18);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Telemovel:";
+            this.txt_AddNif.Location = new System.Drawing.Point(74, 141);
+            this.txt_AddNif.Name = "txt_AddNif";
+            this.txt_AddNif.Size = new System.Drawing.Size(240, 20);
+            this.txt_AddNif.TabIndex = 9;
+            // 
+            // txt_AddNome
+            // 
+            this.txt_AddNome.Location = new System.Drawing.Point(219, 81);
+            this.txt_AddNome.Name = "txt_AddNome";
+            this.txt_AddNome.Size = new System.Drawing.Size(234, 20);
+            this.txt_AddNome.TabIndex = 8;
+            // 
+            // txt_AddID
+            // 
+            this.txt_AddID.Enabled = false;
+            this.txt_AddID.Location = new System.Drawing.Point(74, 80);
+            this.txt_AddID.Name = "txt_AddID";
+            this.txt_AddID.Size = new System.Drawing.Size(75, 20);
+            this.txt_AddID.TabIndex = 7;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(417, 170);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(147, 18);
+            this.label9.TabIndex = 6;
+            this.label9.Text = "Data de Nascimento:";
             // 
             // label7
             // 
@@ -309,91 +302,84 @@
             this.label7.TabIndex = 4;
             this.label7.Text = "Email:";
             // 
-            // label8
+            // label6
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(474, 145);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 18);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Animal:";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(71, 170);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 18);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Telemovel:";
             // 
-            // label9
+            // label5
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(474, 202);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(147, 18);
-            this.label9.TabIndex = 6;
-            this.label9.Text = "Data de Nascimento:";
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(213, 59);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 18);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Nome:";
             // 
-            // txt_AddID
+            // lbl
             // 
-            this.txt_AddID.Enabled = false;
-            this.txt_AddID.Location = new System.Drawing.Point(74, 80);
-            this.txt_AddID.Name = "txt_AddID";
-            this.txt_AddID.Size = new System.Drawing.Size(75, 20);
-            this.txt_AddID.TabIndex = 7;
+            this.lbl.AutoSize = true;
+            this.lbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.Location = new System.Drawing.Point(71, 113);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(35, 18);
+            this.lbl.TabIndex = 1;
+            this.lbl.Text = "NIF:";
             // 
-            // txt_AddNome
+            // label3
             // 
-            this.txt_AddNome.Location = new System.Drawing.Point(219, 81);
-            this.txt_AddNome.Name = "txt_AddNome";
-            this.txt_AddNome.Size = new System.Drawing.Size(234, 20);
-            this.txt_AddNome.TabIndex = 8;
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(71, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(75, 18);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "ID Cliente:";
             // 
-            // txt_AddNif
+            // EditClient
             // 
-            this.txt_AddNif.Location = new System.Drawing.Point(74, 141);
-            this.txt_AddNif.Name = "txt_AddNif";
-            this.txt_AddNif.Size = new System.Drawing.Size(240, 20);
-            this.txt_AddNif.TabIndex = 9;
+            this.EditClient.BackColor = System.Drawing.Color.Silver;
+            this.EditClient.Controls.Add(this.bt_EditCliente);
+            this.EditClient.Controls.Add(this.dtp_EditNasci);
+            this.EditClient.Controls.Add(this.txt_EditEmail);
+            this.EditClient.Controls.Add(this.txt_EditTele);
+            this.EditClient.Controls.Add(this.txt_EditNif);
+            this.EditClient.Controls.Add(this.txt_EditNome);
+            this.EditClient.Controls.Add(this.txt_EditID);
+            this.EditClient.Controls.Add(this.label4);
+            this.EditClient.Controls.Add(this.label11);
+            this.EditClient.Controls.Add(this.label12);
+            this.EditClient.Controls.Add(this.label13);
+            this.EditClient.Controls.Add(this.label14);
+            this.EditClient.Controls.Add(this.label15);
+            this.EditClient.Location = new System.Drawing.Point(4, 22);
+            this.EditClient.Name = "EditClient";
+            this.EditClient.Size = new System.Drawing.Size(861, 368);
+            this.EditClient.TabIndex = 2;
+            this.EditClient.Text = "Editar Cliente";
             // 
-            // txt_AddTele
+            // bt_EditCliente
             // 
-            this.txt_AddTele.Location = new System.Drawing.Point(74, 197);
-            this.txt_AddTele.Name = "txt_AddTele";
-            this.txt_AddTele.Size = new System.Drawing.Size(239, 20);
-            this.txt_AddTele.TabIndex = 10;
-            // 
-            // txt_AddEmail
-            // 
-            this.txt_AddEmail.Location = new System.Drawing.Point(73, 260);
-            this.txt_AddEmail.Name = "txt_AddEmail";
-            this.txt_AddEmail.Size = new System.Drawing.Size(239, 20);
-            this.txt_AddEmail.TabIndex = 11;
-            // 
-            // cb_AddAnimal
-            // 
-            this.cb_AddAnimal.FormattingEnabled = true;
-            this.cb_AddAnimal.Location = new System.Drawing.Point(478, 172);
-            this.cb_AddAnimal.Name = "cb_AddAnimal";
-            this.cb_AddAnimal.Size = new System.Drawing.Size(165, 21);
-            this.cb_AddAnimal.TabIndex = 12;
-            // 
-            // dtp_AddNasci
-            // 
-            this.dtp_AddNasci.Location = new System.Drawing.Point(478, 229);
-            this.dtp_AddNasci.Name = "dtp_AddNasci";
-            this.dtp_AddNasci.Size = new System.Drawing.Size(191, 20);
-            this.dtp_AddNasci.TabIndex = 13;
+            this.bt_EditCliente.Location = new System.Drawing.Point(683, 326);
+            this.bt_EditCliente.Name = "bt_EditCliente";
+            this.bt_EditCliente.Size = new System.Drawing.Size(149, 21);
+            this.bt_EditCliente.TabIndex = 28;
+            this.bt_EditCliente.Text = "Confirmar Alterações";
+            this.bt_EditCliente.UseVisualStyleBackColor = true;
+            this.bt_EditCliente.Click += new System.EventHandler(this.bt_EditCliente_Click);
             // 
             // dtp_EditNasci
             // 
-            this.dtp_EditNasci.Location = new System.Drawing.Point(479, 229);
+            this.dtp_EditNasci.Location = new System.Drawing.Point(421, 197);
             this.dtp_EditNasci.Name = "dtp_EditNasci";
             this.dtp_EditNasci.Size = new System.Drawing.Size(191, 20);
             this.dtp_EditNasci.TabIndex = 27;
-            // 
-            // cb_EditAnimal
-            // 
-            this.cb_EditAnimal.FormattingEnabled = true;
-            this.cb_EditAnimal.Location = new System.Drawing.Point(479, 172);
-            this.cb_EditAnimal.Name = "cb_EditAnimal";
-            this.cb_EditAnimal.Size = new System.Drawing.Size(165, 21);
-            this.cb_EditAnimal.TabIndex = 26;
             // 
             // txt_EditEmail
             // 
@@ -435,21 +421,11 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(475, 202);
+            this.label4.Location = new System.Drawing.Point(417, 170);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(147, 18);
             this.label4.TabIndex = 20;
             this.label4.Text = "Data de Nascimento:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(475, 145);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 18);
-            this.label10.TabIndex = 19;
-            this.label10.Text = "Animal:";
             // 
             // label11
             // 
@@ -501,26 +477,6 @@
             this.label15.TabIndex = 14;
             this.label15.Text = "ID Cliente:";
             // 
-            // bt_AddCliente
-            // 
-            this.bt_AddCliente.Location = new System.Drawing.Point(686, 322);
-            this.bt_AddCliente.Name = "bt_AddCliente";
-            this.bt_AddCliente.Size = new System.Drawing.Size(147, 23);
-            this.bt_AddCliente.TabIndex = 14;
-            this.bt_AddCliente.Text = "Adicionar Cliente";
-            this.bt_AddCliente.UseVisualStyleBackColor = true;
-            this.bt_AddCliente.Click += new System.EventHandler(this.bt_AddCliente_Click);
-            // 
-            // bt_EditCliente
-            // 
-            this.bt_EditCliente.Location = new System.Drawing.Point(683, 326);
-            this.bt_EditCliente.Name = "bt_EditCliente";
-            this.bt_EditCliente.Size = new System.Drawing.Size(149, 21);
-            this.bt_EditCliente.TabIndex = 28;
-            this.bt_EditCliente.Text = "Confirmar Alterações";
-            this.bt_EditCliente.UseVisualStyleBackColor = true;
-            this.bt_EditCliente.Click += new System.EventHandler(this.bt_EditCliente_Click);
-            // 
             // PainelCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -565,14 +521,12 @@
         private System.Windows.Forms.DataGridView dataGridCliente;
         private System.Windows.Forms.TabPage EditClient;
         private System.Windows.Forms.DateTimePicker dtp_AddNasci;
-        private System.Windows.Forms.ComboBox cb_AddAnimal;
         private System.Windows.Forms.TextBox txt_AddEmail;
         private System.Windows.Forms.TextBox txt_AddTele;
         private System.Windows.Forms.TextBox txt_AddNif;
         private System.Windows.Forms.TextBox txt_AddNome;
         private System.Windows.Forms.TextBox txt_AddID;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
@@ -581,14 +535,12 @@
         private System.Windows.Forms.Button bt_AddCliente;
         private System.Windows.Forms.Button bt_EditCliente;
         private System.Windows.Forms.DateTimePicker dtp_EditNasci;
-        private System.Windows.Forms.ComboBox cb_EditAnimal;
         private System.Windows.Forms.TextBox txt_EditEmail;
         private System.Windows.Forms.TextBox txt_EditTele;
         private System.Windows.Forms.TextBox txt_EditNif;
         private System.Windows.Forms.TextBox txt_EditNome;
         private System.Windows.Forms.TextBox txt_EditID;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;

@@ -13,7 +13,6 @@ namespace ClinicaVET5413.Modelos
         public string NIF { get; set; }
         public string Telemovel { get; set; }
         public string Email { get; set; }
-        public DateTime DataNascimento { get; set; }
-        public string Animal { get; set; }
+        public DateTime DataNascimento { get; set; }        
     }
 }

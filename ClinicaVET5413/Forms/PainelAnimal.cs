@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Linq.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,8 @@ namespace ClinicaVET5413
             CarregarComboBoxes();
             //Inserir os dados da DB dentro de uma lista 
             CarregarGridView();
+            dtpEditar.Format = DateTimePickerFormat.Custom;
+            dtpEditar.CustomFormat = "dd/MM/yyyy";
             dtpAdicionar.Format = DateTimePickerFormat.Custom;
             dtpAdicionar.CustomFormat = "dd/MM/yyyy";
             
@@ -60,6 +63,13 @@ namespace ClinicaVET5413
 
             cbGeneroEdit.Items.Add("Macho");
             cbGeneroEdit.Items.Add("Fêmea");
+            
+            var cbCliente = from Cliente in dc.Clientes select Cliente;
+            foreach (Cliente cliente in cbCliente)
+            {
+                cb_AddDono.Items.Add(cliente.Nome);
+                cb_EditDono.Items.Add(cliente.Nome);
+            }
 
         }
 
@@ -178,12 +188,12 @@ namespace ClinicaVET5413
             {
                 txt_IdEdit.Text = dataGridAnimal.CurrentRow.Cells[0].Value.ToString();
                 txt_NomeEdit.Text = dataGridAnimal.CurrentRow.Cells[1].Value.ToString();
-                txt_pesoEdit.Text = dataGridAnimal.CurrentRow.Cells[2].Value.ToString();
-                cb_esterilEdit.Text = dataGridAnimal.CurrentRow.Cells[3].Value.ToString();
-                cbRacaEdit.Text = dataGridAnimal.CurrentRow.Cells[4].Value.ToString();
-                cbEspecieEdit.Text = dataGridAnimal.CurrentRow.Cells[5].Value.ToString();
-                cbGeneroEdit.Text = dataGridAnimal.CurrentRow.Cells[6].Value.ToString();
-                dtpEditar.Text = dataGridAnimal.CurrentRow.Cells[7].Value.ToString();
+                cbEspecieEdit.Text = dataGridAnimal.CurrentRow.Cells[2].Value.ToString();
+                cbRacaEdit.Text = dataGridAnimal.CurrentRow.Cells[3].Value.ToString();
+                cbGeneroEdit.Text = dataGridAnimal.CurrentRow.Cells[4].Value.ToString();
+                txt_pesoEdit.Text = dataGridAnimal.CurrentRow.Cells[5].Value.ToString();
+                cb_esterilEdit.Text = dataGridAnimal.CurrentRow.Cells[6].Value.ToString();
+                dtpEditar.Text = dataGridAnimal.CurrentRow.Cells[7].Value.ToString();                
             }
 
         }
@@ -193,6 +203,17 @@ namespace ClinicaVET5413
         {
             if (Validacoes())
             {
+                int getID = 0;
+                string getNome = "";
+                var listaID = from Cliente in dc.Clientes select Cliente;
+                foreach (var cliente in listaID)
+                {
+                    if (cliente.Nome == cb_AddDono.Text )
+                    {
+                        getID = cliente.ID;
+                        getNome = cliente.Nome;                        
+                    }
+                }
                 Animal animal = new Animal
                 {
                     Nome = txtNomeAdd.Text,
@@ -201,7 +222,8 @@ namespace ClinicaVET5413
                     Genero = cbGeneroAdd.Text,
                     Peso = txt_pesoAdd.Text + "KG",
                     Esterilizacao = cb_esterilAdd.Text,
-                    DataNascimento = dtpAdicionar.Text
+                    DataNascimento = dtpAdicionar.Text,
+                    Dono = $"{getID.ToString()} - {getNome}"
                 };
                 if (DialogAddAnimal())
                 {
@@ -223,25 +245,37 @@ namespace ClinicaVET5413
                 dc.SubmitChanges();
             }
         }
-        //por finalizar
+       
         private void bt_editarAnimal_Click(object sender, EventArgs e)
         {
-            if (Validacoes())
+            if (ValidacoesEdit())
             {
-                Animal animalEdit = new Animal
+                dataGridAnimal.CurrentRow.Cells[1].Value = txt_NomeEdit.Text;
+                dataGridAnimal.CurrentRow.Cells[2].Value = cbEspecieEdit.Text;
+                dataGridAnimal.CurrentRow.Cells[3].Value = cbRacaEdit.Text;
+                dataGridAnimal.CurrentRow.Cells[4].Value = cbGeneroEdit.Text;
+                dataGridAnimal.CurrentRow.Cells[5].Value = txt_pesoEdit.Text +"KG";
+                dataGridAnimal.CurrentRow.Cells[6].Value = cb_esterilEdit.Text;
+                dataGridAnimal.CurrentRow.Cells[7].Value = dtpEditar.Text;
+                int getID = 0;
+                string getNome = "";
+                var listaID = from Cliente in dc.Clientes select Cliente;
+                foreach (var cliente in listaID)
                 {
-                    Nome = txt_NomeEdit.Text,
-                    Especie = cbEspecieEdit.Text,
-                    Raca = cbRacaEdit.Text,
-                    Genero = cbGeneroEdit.Text,
-                    Peso = txt_pesoEdit.Text + "KG",
-                    Esterilizacao = cb_esterilEdit.Text,
-                    DataNascimento = dtpEditar.Text
-                };
-                
-
+                    if (cliente.Nome == cb_EditDono.Text)
+                    {
+                        getID = cliente.ID;
+                        getNome = cliente.Nome;
+                    }
+                }
+                dataGridAnimal.CurrentRow.Cells[8].Value = $"{getID.ToString()} - {getNome}";
+            }
+            if(DialogEditAnimal())
+            {
+                dc.SubmitChanges();
             }
         }
+
         #endregion
 
 
@@ -258,7 +292,7 @@ namespace ClinicaVET5413
             dataGridAnimal.Columns.Clear();
             var animalPesquisa = txtPesquisa.Text;
             var animais = from Animais in dc.Animals
-                          where Animais.Nome == animalPesquisa
+                          where SqlMethods.Like(Animais.Nome,"%" + animalPesquisa + "%")
                           select Animais;
             dataGridAnimal.DataSource = animais.ToList();
 
@@ -299,6 +333,25 @@ namespace ClinicaVET5413
                 cbGeneroAdd.SelectedItem = null;
                 cbRacaAdd.SelectedItem = null;
                 cb_esterilAdd.SelectedItem = null;
+                return true;
+            }
+            else
+                return false;
+        }
+        private bool DialogEditAnimal()
+        {
+            DialogResult resposta;
+
+            resposta = MessageBox.Show("Vai editar as informações do animal, deseja continuar?", "Adicionar Animal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {
+                txt_IdEdit.Clear();
+                txt_NomeEdit.Clear();
+                txt_pesoEdit.Clear();
+                cbEspecieEdit.SelectedItem = null;
+                cbGeneroEdit.SelectedItem = null;
+                cbRacaEdit.SelectedItem = null;
+                cb_esterilEdit.SelectedItem = null;
                 return true;
             }
             else
@@ -347,6 +400,50 @@ namespace ClinicaVET5413
             if (string.IsNullOrEmpty(cb_esterilAdd.Text))
             {
                 MessageBox.Show("Indique se é, ou não, esterilizado/a", "Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }
+            return valida;
+        }
+        private bool ValidacoesEdit()
+        {
+            bool valida = true;
+            double peso;
+
+            if (string.IsNullOrEmpty(txt_NomeEdit.Text) || txt_NomeEdit.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Deve insirir o nome do Animal!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtNomeAdd.Text = string.Empty;
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cbEspecieEdit.Text))
+            {
+                MessageBox.Show("Deve insirir a Espécie!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cbRacaEdit.Text))
+            {
+                MessageBox.Show("Deve insirir a raça", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cbGeneroEdit.Text))
+            {
+                MessageBox.Show("Deve insirir o género", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(txt_pesoEdit.Text) || !double.TryParse(txt_pesoEdit.Text, out peso))
+            {
+                MessageBox.Show("Deve insirir o peso", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_pesoAdd.Text = string.Empty;
+
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cb_esterilEdit.Text))
+            {
+                MessageBox.Show("Indique se é, ou não, esterilizado/a", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 valida = false;
             }

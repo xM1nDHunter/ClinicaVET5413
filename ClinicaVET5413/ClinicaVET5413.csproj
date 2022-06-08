@@ -101,6 +101,7 @@
     </Compile>
     <Compile Include="Modelos\Animal.cs" />
     <Compile Include="Modelos\Cliente.cs" />
+    <Compile Include="Modelos\Consulta.cs" />
     <Compile Include="Modelos\Medico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PainelCliente.resx">
       <DependentUpon>PainelCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PainelConsulta.resx">
+      <DependentUpon>PainelConsulta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PainelInformacoes.resx">
       <DependentUpon>PainelInformacoes.cs</DependentUpon>
@@ -220,6 +224,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clientexx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\teste1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hospital1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

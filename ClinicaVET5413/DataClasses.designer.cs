@@ -30,15 +30,15 @@ namespace ClinicaVET5413
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertAnimal(Animal instance);
-    partial void UpdateAnimal(Animal instance);
-    partial void DeleteAnimal(Animal instance);
     partial void InsertConsulta(Consulta instance);
     partial void UpdateConsulta(Consulta instance);
     partial void DeleteConsulta(Consulta instance);
     partial void InsertMedico(Medico instance);
     partial void UpdateMedico(Medico instance);
     partial void DeleteMedico(Medico instance);
+    partial void InsertAnimal(Animal instance);
+    partial void UpdateAnimal(Animal instance);
+    partial void DeleteAnimal(Animal instance);
     partial void InsertCliente(Cliente instance);
     partial void UpdateCliente(Cliente instance);
     partial void DeleteCliente(Cliente instance);
@@ -74,14 +74,6 @@ namespace ClinicaVET5413
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Animal> Animals
-		{
-			get
-			{
-				return this.GetTable<Animal>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Consulta> Consultas
 		{
 			get
@@ -98,270 +90,20 @@ namespace ClinicaVET5413
 			}
 		}
 		
+		public System.Data.Linq.Table<Animal> Animals
+		{
+			get
+			{
+				return this.GetTable<Animal>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Cliente> Clientes
 		{
 			get
 			{
 				return this.GetTable<Cliente>();
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Animal")]
-	public partial class Animal : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID;
-		
-		private string _Nome;
-		
-		private string _Especie;
-		
-		private string _Raca;
-		
-		private string _Genero;
-		
-		private string _Peso;
-		
-		private string _Esterilizacao;
-		
-		private string _DataNascimento;
-		
-		private EntitySet<Consulta> _Consultas;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDChanging(int value);
-    partial void OnIDChanged();
-    partial void OnNomeChanging(string value);
-    partial void OnNomeChanged();
-    partial void OnEspecieChanging(string value);
-    partial void OnEspecieChanged();
-    partial void OnRacaChanging(string value);
-    partial void OnRacaChanged();
-    partial void OnGeneroChanging(string value);
-    partial void OnGeneroChanged();
-    partial void OnPesoChanging(string value);
-    partial void OnPesoChanged();
-    partial void OnEsterilizacaoChanging(string value);
-    partial void OnEsterilizacaoChanged();
-    partial void OnDataNascimentoChanging(string value);
-    partial void OnDataNascimentoChanged();
-    #endregion
-		
-		public Animal()
-		{
-			this._Consultas = new EntitySet<Consulta>(new Action<Consulta>(this.attach_Consultas), new Action<Consulta>(this.detach_Consultas));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID
-		{
-			get
-			{
-				return this._ID;
-			}
-			set
-			{
-				if ((this._ID != value))
-				{
-					this.OnIDChanging(value);
-					this.SendPropertyChanging();
-					this._ID = value;
-					this.SendPropertyChanged("ID");
-					this.OnIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Nome
-		{
-			get
-			{
-				return this._Nome;
-			}
-			set
-			{
-				if ((this._Nome != value))
-				{
-					this.OnNomeChanging(value);
-					this.SendPropertyChanging();
-					this._Nome = value;
-					this.SendPropertyChanged("Nome");
-					this.OnNomeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Especie", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Especie
-		{
-			get
-			{
-				return this._Especie;
-			}
-			set
-			{
-				if ((this._Especie != value))
-				{
-					this.OnEspecieChanging(value);
-					this.SendPropertyChanging();
-					this._Especie = value;
-					this.SendPropertyChanged("Especie");
-					this.OnEspecieChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Raca", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Raca
-		{
-			get
-			{
-				return this._Raca;
-			}
-			set
-			{
-				if ((this._Raca != value))
-				{
-					this.OnRacaChanging(value);
-					this.SendPropertyChanging();
-					this._Raca = value;
-					this.SendPropertyChanged("Raca");
-					this.OnRacaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Genero
-		{
-			get
-			{
-				return this._Genero;
-			}
-			set
-			{
-				if ((this._Genero != value))
-				{
-					this.OnGeneroChanging(value);
-					this.SendPropertyChanging();
-					this._Genero = value;
-					this.SendPropertyChanged("Genero");
-					this.OnGeneroChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Peso", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Peso
-		{
-			get
-			{
-				return this._Peso;
-			}
-			set
-			{
-				if ((this._Peso != value))
-				{
-					this.OnPesoChanging(value);
-					this.SendPropertyChanging();
-					this._Peso = value;
-					this.SendPropertyChanged("Peso");
-					this.OnPesoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Esterilizacao", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Esterilizacao
-		{
-			get
-			{
-				return this._Esterilizacao;
-			}
-			set
-			{
-				if ((this._Esterilizacao != value))
-				{
-					this.OnEsterilizacaoChanging(value);
-					this.SendPropertyChanging();
-					this._Esterilizacao = value;
-					this.SendPropertyChanged("Esterilizacao");
-					this.OnEsterilizacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataNascimento", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string DataNascimento
-		{
-			get
-			{
-				return this._DataNascimento;
-			}
-			set
-			{
-				if ((this._DataNascimento != value))
-				{
-					this.OnDataNascimentoChanging(value);
-					this.SendPropertyChanging();
-					this._DataNascimento = value;
-					this.SendPropertyChanged("DataNascimento");
-					this.OnDataNascimentoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Animal_Consulta", Storage="_Consultas", ThisKey="ID", OtherKey="Animal")]
-		public EntitySet<Consulta> Consultas
-		{
-			get
-			{
-				return this._Consultas;
-			}
-			set
-			{
-				this._Consultas.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Consultas(Consulta entity)
-		{
-			this.SendPropertyChanging();
-			entity.Animal1 = this;
-		}
-		
-		private void detach_Consultas(Consulta entity)
-		{
-			this.SendPropertyChanging();
-			entity.Animal1 = null;
 		}
 	}
 	
@@ -387,9 +129,9 @@ namespace ClinicaVET5413
 		
 		private string _Notas;
 		
-		private EntityRef<Animal> _Animal1;
-		
 		private EntityRef<Medico> _Medico11;
+		
+		private EntityRef<Animal> _Animal1;
 		
 		private EntityRef<Cliente> _Cliente1;
 		
@@ -417,8 +159,8 @@ namespace ClinicaVET5413
 		
 		public Consulta()
 		{
-			this._Animal1 = default(EntityRef<Animal>);
 			this._Medico11 = default(EntityRef<Medico>);
+			this._Animal1 = default(EntityRef<Animal>);
 			this._Cliente1 = default(EntityRef<Cliente>);
 			OnCreated();
 		}
@@ -595,40 +337,6 @@ namespace ClinicaVET5413
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Animal_Consulta", Storage="_Animal1", ThisKey="Animal", OtherKey="ID", IsForeignKey=true)]
-		public Animal Animal1
-		{
-			get
-			{
-				return this._Animal1.Entity;
-			}
-			set
-			{
-				Animal previousValue = this._Animal1.Entity;
-				if (((previousValue != value) 
-							|| (this._Animal1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Animal1.Entity = null;
-						previousValue.Consultas.Remove(this);
-					}
-					this._Animal1.Entity = value;
-					if ((value != null))
-					{
-						value.Consultas.Add(this);
-						this._Animal = value.ID;
-					}
-					else
-					{
-						this._Animal = default(int);
-					}
-					this.SendPropertyChanged("Animal1");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Medico_Consulta", Storage="_Medico11", ThisKey="Medico", OtherKey="ID", IsForeignKey=true)]
 		public Medico Medico11
 		{
@@ -659,6 +367,40 @@ namespace ClinicaVET5413
 						this._Medico = default(int);
 					}
 					this.SendPropertyChanged("Medico11");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Animal_Consulta", Storage="_Animal1", ThisKey="Animal", OtherKey="ID", IsForeignKey=true)]
+		public Animal Animal1
+		{
+			get
+			{
+				return this._Animal1.Entity;
+			}
+			set
+			{
+				Animal previousValue = this._Animal1.Entity;
+				if (((previousValue != value) 
+							|| (this._Animal1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Animal1.Entity = null;
+						previousValue.Consultas.Remove(this);
+					}
+					this._Animal1.Entity = value;
+					if ((value != null))
+					{
+						value.Consultas.Add(this);
+						this._Animal = value.ID;
+					}
+					else
+					{
+						this._Animal = default(int);
+					}
+					this.SendPropertyChanged("Animal1");
 				}
 			}
 		}
@@ -952,6 +694,288 @@ namespace ClinicaVET5413
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Animal")]
+	public partial class Animal : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
+		
+		private string _Nome;
+		
+		private string _Especie;
+		
+		private string _Raca;
+		
+		private string _Genero;
+		
+		private string _Peso;
+		
+		private string _Esterilizacao;
+		
+		private string _DataNascimento;
+		
+		private string _Dono;
+		
+		private EntitySet<Consulta> _Consultas;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDChanging(int value);
+    partial void OnIDChanged();
+    partial void OnNomeChanging(string value);
+    partial void OnNomeChanged();
+    partial void OnEspecieChanging(string value);
+    partial void OnEspecieChanged();
+    partial void OnRacaChanging(string value);
+    partial void OnRacaChanged();
+    partial void OnGeneroChanging(string value);
+    partial void OnGeneroChanged();
+    partial void OnPesoChanging(string value);
+    partial void OnPesoChanged();
+    partial void OnEsterilizacaoChanging(string value);
+    partial void OnEsterilizacaoChanged();
+    partial void OnDataNascimentoChanging(string value);
+    partial void OnDataNascimentoChanged();
+    partial void OnDonoChanging(string value);
+    partial void OnDonoChanged();
+    #endregion
+		
+		public Animal()
+		{
+			this._Consultas = new EntitySet<Consulta>(new Action<Consulta>(this.attach_Consultas), new Action<Consulta>(this.detach_Consultas));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("ID");
+					this.OnIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nome", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this.OnNomeChanging(value);
+					this.SendPropertyChanging();
+					this._Nome = value;
+					this.SendPropertyChanged("Nome");
+					this.OnNomeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Especie", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Especie
+		{
+			get
+			{
+				return this._Especie;
+			}
+			set
+			{
+				if ((this._Especie != value))
+				{
+					this.OnEspecieChanging(value);
+					this.SendPropertyChanging();
+					this._Especie = value;
+					this.SendPropertyChanged("Especie");
+					this.OnEspecieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Raca", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Raca
+		{
+			get
+			{
+				return this._Raca;
+			}
+			set
+			{
+				if ((this._Raca != value))
+				{
+					this.OnRacaChanging(value);
+					this.SendPropertyChanging();
+					this._Raca = value;
+					this.SendPropertyChanged("Raca");
+					this.OnRacaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Genero", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Genero
+		{
+			get
+			{
+				return this._Genero;
+			}
+			set
+			{
+				if ((this._Genero != value))
+				{
+					this.OnGeneroChanging(value);
+					this.SendPropertyChanging();
+					this._Genero = value;
+					this.SendPropertyChanged("Genero");
+					this.OnGeneroChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Peso", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Peso
+		{
+			get
+			{
+				return this._Peso;
+			}
+			set
+			{
+				if ((this._Peso != value))
+				{
+					this.OnPesoChanging(value);
+					this.SendPropertyChanging();
+					this._Peso = value;
+					this.SendPropertyChanged("Peso");
+					this.OnPesoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Esterilizacao", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Esterilizacao
+		{
+			get
+			{
+				return this._Esterilizacao;
+			}
+			set
+			{
+				if ((this._Esterilizacao != value))
+				{
+					this.OnEsterilizacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Esterilizacao = value;
+					this.SendPropertyChanged("Esterilizacao");
+					this.OnEsterilizacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataNascimento", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string DataNascimento
+		{
+			get
+			{
+				return this._DataNascimento;
+			}
+			set
+			{
+				if ((this._DataNascimento != value))
+				{
+					this.OnDataNascimentoChanging(value);
+					this.SendPropertyChanging();
+					this._DataNascimento = value;
+					this.SendPropertyChanged("DataNascimento");
+					this.OnDataNascimentoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Dono", DbType="VarChar(50)")]
+		public string Dono
+		{
+			get
+			{
+				return this._Dono;
+			}
+			set
+			{
+				if ((this._Dono != value))
+				{
+					this.OnDonoChanging(value);
+					this.SendPropertyChanging();
+					this._Dono = value;
+					this.SendPropertyChanged("Dono");
+					this.OnDonoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Animal_Consulta", Storage="_Consultas", ThisKey="ID", OtherKey="Animal")]
+		public EntitySet<Consulta> Consultas
+		{
+			get
+			{
+				return this._Consultas;
+			}
+			set
+			{
+				this._Consultas.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Consultas(Consulta entity)
+		{
+			this.SendPropertyChanging();
+			entity.Animal1 = this;
+		}
+		
+		private void detach_Consultas(Consulta entity)
+		{
+			this.SendPropertyChanging();
+			entity.Animal1 = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Cliente")]
 	public partial class Cliente : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -967,8 +991,6 @@ namespace ClinicaVET5413
 		private string _Telemovel;
 		
 		private string _Email;
-		
-		private string _Animal;
 		
 		private string _DataNascimento;
 		
@@ -988,8 +1010,6 @@ namespace ClinicaVET5413
     partial void OnTelemovelChanged();
     partial void OnEmailChanging(string value);
     partial void OnEmailChanged();
-    partial void OnAnimalChanging(string value);
-    partial void OnAnimalChanged();
     partial void OnDataNascimentoChanging(string value);
     partial void OnDataNascimentoChanged();
     #endregion
@@ -1096,26 +1116,6 @@ namespace ClinicaVET5413
 					this._Email = value;
 					this.SendPropertyChanged("Email");
 					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Animal", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string Animal
-		{
-			get
-			{
-				return this._Animal;
-			}
-			set
-			{
-				if ((this._Animal != value))
-				{
-					this.OnAnimalChanging(value);
-					this.SendPropertyChanging();
-					this._Animal = value;
-					this.SendPropertyChanged("Animal");
-					this.OnAnimalChanged();
 				}
 			}
 		}
