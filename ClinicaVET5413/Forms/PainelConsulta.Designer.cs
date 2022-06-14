@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -63,15 +64,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.EditConsulta = new System.Windows.Forms.TabPage();
             this.bt_EditConsulta = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_EditNotas = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox6 = new System.Windows.Forms.ComboBox();
+            this.cb_EditHora = new System.Windows.Forms.ComboBox();
             this.dtp_EditDia = new System.Windows.Forms.DateTimePicker();
-            this.comboBox7 = new System.Windows.Forms.ComboBox();
-            this.comboBox8 = new System.Windows.Forms.ComboBox();
-            this.comboBox9 = new System.Windows.Forms.ComboBox();
-            this.comboBox10 = new System.Windows.Forms.ComboBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.cb_EditTratamento = new System.Windows.Forms.ComboBox();
+            this.cb_EditAnimal = new System.Windows.Forms.ComboBox();
+            this.cb_EditCliente = new System.Windows.Forms.ComboBox();
+            this.cb_EditMedico = new System.Windows.Forms.ComboBox();
+            this.txt_EditID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -80,19 +81,37 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.Email = new System.Windows.Forms.TabPage();
-            this.Faturas = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.bt_EmailTodos = new System.Windows.Forms.Button();
-            this.bt_EmailIndividual = new System.Windows.Forms.Button();
-            this.cb_MotivoTodos = new System.Windows.Forms.ComboBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cb_EmailCliente = new System.Windows.Forms.ComboBox();
-            this.cb_MotivoCliente = new System.Windows.Forms.ComboBox();
-            this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.cb_MotivoCliente = new System.Windows.Forms.ComboBox();
+            this.cb_EmailCliente = new System.Windows.Forms.ComboBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cb_MotivoTodos = new System.Windows.Forms.ComboBox();
+            this.bt_EmailIndividual = new System.Windows.Forms.Button();
+            this.bt_EmailTodos = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.Faturas = new System.Windows.Forms.TabPage();
+            this.cb_faturaAnimal = new System.Windows.Forms.ComboBox();
+            this.cb_faturaCliente = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txt_faturaDinheiroEntregue = new System.Windows.Forms.TextBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.bt_removeFatura = new System.Windows.Forms.Button();
+            this.bt_faturaPrint = new System.Windows.Forms.Button();
+            this.bt_addFatura = new System.Windows.Forms.Button();
+            this.cb_faturaServiço = new System.Windows.Forms.ComboBox();
+            this.txt_faturaTotal = new System.Windows.Forms.TextBox();
+            this.txt_faturaQuantidade = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.dataGridFaturas = new System.Windows.Forms.DataGridView();
+            this.faturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bt_PesquisarConsulta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -102,8 +121,11 @@
             this.AddConsulta.SuspendLayout();
             this.EditConsulta.SuspendLayout();
             this.Email.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.Faturas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFaturas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.faturaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -165,6 +187,7 @@
             // ListConsultas
             // 
             this.ListConsultas.BackColor = System.Drawing.Color.Silver;
+            this.ListConsultas.Controls.Add(this.bt_PesquisarConsulta);
             this.ListConsultas.Controls.Add(this.bt_ApagarConsulta);
             this.ListConsultas.Controls.Add(this.bt_EditarConsulta);
             this.ListConsultas.Controls.Add(this.bt_AdicionarConsulta);
@@ -269,7 +292,6 @@
             this.txt_pesquisa.Name = "txt_pesquisa";
             this.txt_pesquisa.Size = new System.Drawing.Size(392, 20);
             this.txt_pesquisa.TabIndex = 0;
-            this.txt_pesquisa.TextChanged += new System.EventHandler(this.txt_pesquisa_TextChanged);
             // 
             // AddConsulta
             // 
@@ -457,15 +479,15 @@
             // 
             this.EditConsulta.BackColor = System.Drawing.Color.Silver;
             this.EditConsulta.Controls.Add(this.bt_EditConsulta);
-            this.EditConsulta.Controls.Add(this.textBox3);
+            this.EditConsulta.Controls.Add(this.txt_EditNotas);
             this.EditConsulta.Controls.Add(this.label11);
-            this.EditConsulta.Controls.Add(this.comboBox6);
+            this.EditConsulta.Controls.Add(this.cb_EditHora);
             this.EditConsulta.Controls.Add(this.dtp_EditDia);
-            this.EditConsulta.Controls.Add(this.comboBox7);
-            this.EditConsulta.Controls.Add(this.comboBox8);
-            this.EditConsulta.Controls.Add(this.comboBox9);
-            this.EditConsulta.Controls.Add(this.comboBox10);
-            this.EditConsulta.Controls.Add(this.textBox4);
+            this.EditConsulta.Controls.Add(this.cb_EditTratamento);
+            this.EditConsulta.Controls.Add(this.cb_EditAnimal);
+            this.EditConsulta.Controls.Add(this.cb_EditCliente);
+            this.EditConsulta.Controls.Add(this.cb_EditMedico);
+            this.EditConsulta.Controls.Add(this.txt_EditID);
             this.EditConsulta.Controls.Add(this.label12);
             this.EditConsulta.Controls.Add(this.label13);
             this.EditConsulta.Controls.Add(this.label14);
@@ -487,14 +509,15 @@
             this.bt_EditConsulta.TabIndex = 32;
             this.bt_EditConsulta.Text = "Confirmar Alterações";
             this.bt_EditConsulta.UseVisualStyleBackColor = true;
+            this.bt_EditConsulta.Click += new System.EventHandler(this.bt_EditConsulta_Click);
             // 
-            // textBox3
+            // txt_EditNotas
             // 
-            this.textBox3.Location = new System.Drawing.Point(306, 269);
-            this.textBox3.Multiline = true;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(363, 82);
-            this.textBox3.TabIndex = 31;
+            this.txt_EditNotas.Location = new System.Drawing.Point(306, 269);
+            this.txt_EditNotas.Multiline = true;
+            this.txt_EditNotas.Name = "txt_EditNotas";
+            this.txt_EditNotas.Size = new System.Drawing.Size(363, 82);
+            this.txt_EditNotas.TabIndex = 31;
             // 
             // label11
             // 
@@ -506,13 +529,13 @@
             this.label11.TabIndex = 30;
             this.label11.Text = "Notas:";
             // 
-            // comboBox6
+            // cb_EditHora
             // 
-            this.comboBox6.FormattingEnabled = true;
-            this.comboBox6.Location = new System.Drawing.Point(306, 204);
-            this.comboBox6.Name = "comboBox6";
-            this.comboBox6.Size = new System.Drawing.Size(121, 21);
-            this.comboBox6.TabIndex = 29;
+            this.cb_EditHora.FormattingEnabled = true;
+            this.cb_EditHora.Location = new System.Drawing.Point(306, 204);
+            this.cb_EditHora.Name = "cb_EditHora";
+            this.cb_EditHora.Size = new System.Drawing.Size(121, 21);
+            this.cb_EditHora.TabIndex = 29;
             // 
             // dtp_EditDia
             // 
@@ -521,45 +544,46 @@
             this.dtp_EditDia.Size = new System.Drawing.Size(200, 20);
             this.dtp_EditDia.TabIndex = 28;
             // 
-            // comboBox7
+            // cb_EditTratamento
             // 
-            this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(306, 65);
-            this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(121, 21);
-            this.comboBox7.TabIndex = 27;
+            this.cb_EditTratamento.FormattingEnabled = true;
+            this.cb_EditTratamento.Location = new System.Drawing.Point(306, 65);
+            this.cb_EditTratamento.Name = "cb_EditTratamento";
+            this.cb_EditTratamento.Size = new System.Drawing.Size(121, 21);
+            this.cb_EditTratamento.TabIndex = 27;
             // 
-            // comboBox8
+            // cb_EditAnimal
             // 
-            this.comboBox8.FormattingEnabled = true;
-            this.comboBox8.Location = new System.Drawing.Point(80, 278);
-            this.comboBox8.Name = "comboBox8";
-            this.comboBox8.Size = new System.Drawing.Size(123, 21);
-            this.comboBox8.TabIndex = 26;
+            this.cb_EditAnimal.FormattingEnabled = true;
+            this.cb_EditAnimal.Location = new System.Drawing.Point(80, 278);
+            this.cb_EditAnimal.Name = "cb_EditAnimal";
+            this.cb_EditAnimal.Size = new System.Drawing.Size(123, 21);
+            this.cb_EditAnimal.TabIndex = 26;
             // 
-            // comboBox9
+            // cb_EditCliente
             // 
-            this.comboBox9.FormattingEnabled = true;
-            this.comboBox9.Location = new System.Drawing.Point(80, 202);
-            this.comboBox9.Name = "comboBox9";
-            this.comboBox9.Size = new System.Drawing.Size(123, 21);
-            this.comboBox9.TabIndex = 25;
+            this.cb_EditCliente.FormattingEnabled = true;
+            this.cb_EditCliente.Location = new System.Drawing.Point(80, 202);
+            this.cb_EditCliente.Name = "cb_EditCliente";
+            this.cb_EditCliente.Size = new System.Drawing.Size(123, 21);
+            this.cb_EditCliente.TabIndex = 25;
+            this.cb_EditCliente.SelectedIndexChanged += new System.EventHandler(this.cb_EditCliente_SelectedIndexChanged);
             // 
-            // comboBox10
+            // cb_EditMedico
             // 
-            this.comboBox10.FormattingEnabled = true;
-            this.comboBox10.Location = new System.Drawing.Point(80, 138);
-            this.comboBox10.Name = "comboBox10";
-            this.comboBox10.Size = new System.Drawing.Size(123, 21);
-            this.comboBox10.TabIndex = 24;
+            this.cb_EditMedico.FormattingEnabled = true;
+            this.cb_EditMedico.Location = new System.Drawing.Point(80, 138);
+            this.cb_EditMedico.Name = "cb_EditMedico";
+            this.cb_EditMedico.Size = new System.Drawing.Size(123, 21);
+            this.cb_EditMedico.TabIndex = 24;
             // 
-            // textBox4
+            // txt_EditID
             // 
-            this.textBox4.Enabled = false;
-            this.textBox4.Location = new System.Drawing.Point(80, 74);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(63, 20);
-            this.textBox4.TabIndex = 23;
+            this.txt_EditID.Enabled = false;
+            this.txt_EditID.Location = new System.Drawing.Point(80, 74);
+            this.txt_EditID.Name = "txt_EditID";
+            this.txt_EditID.Size = new System.Drawing.Size(63, 20);
+            this.txt_EditID.TabIndex = 23;
             // 
             // label12
             // 
@@ -650,106 +674,15 @@
             this.Email.TabIndex = 3;
             this.Email.Text = "Serviço Email";
             // 
-            // Faturas
+            // label23
             // 
-            this.Faturas.BackColor = System.Drawing.Color.Silver;
-            this.Faturas.Location = new System.Drawing.Point(4, 22);
-            this.Faturas.Name = "Faturas";
-            this.Faturas.Size = new System.Drawing.Size(861, 368);
-            this.Faturas.TabIndex = 4;
-            this.Faturas.Text = "Faturação";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel2.Controls.Add(this.label19);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(861, 80);
-            this.panel2.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
-            this.panel3.Controls.Add(this.label20);
-            this.panel3.Location = new System.Drawing.Point(0, 185);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(861, 80);
-            this.panel3.TabIndex = 1;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(22, 30);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(222, 24);
-            this.label19.TabIndex = 0;
-            this.label19.Text = "Notificar todos os clientes";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(22, 26);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(355, 24);
-            this.label20.TabIndex = 1;
-            this.label20.Text = "Selecione um cliente que deseja notificar";
-            // 
-            // bt_EmailTodos
-            // 
-            this.bt_EmailTodos.Location = new System.Drawing.Point(731, 159);
-            this.bt_EmailTodos.Name = "bt_EmailTodos";
-            this.bt_EmailTodos.Size = new System.Drawing.Size(122, 20);
-            this.bt_EmailTodos.TabIndex = 2;
-            this.bt_EmailTodos.Text = "Enviar Email";
-            this.bt_EmailTodos.UseVisualStyleBackColor = true;
-            this.bt_EmailTodos.Click += new System.EventHandler(this.bt_EmailTodos_Click);
-            // 
-            // bt_EmailIndividual
-            // 
-            this.bt_EmailIndividual.Location = new System.Drawing.Point(731, 340);
-            this.bt_EmailIndividual.Name = "bt_EmailIndividual";
-            this.bt_EmailIndividual.Size = new System.Drawing.Size(122, 20);
-            this.bt_EmailIndividual.TabIndex = 3;
-            this.bt_EmailIndividual.Text = "Enviar Email";
-            this.bt_EmailIndividual.UseVisualStyleBackColor = true;
-            this.bt_EmailIndividual.Click += new System.EventHandler(this.bt_EmailIndividual_Click);
-            // 
-            // cb_MotivoTodos
-            // 
-            this.cb_MotivoTodos.FormattingEnabled = true;
-            this.cb_MotivoTodos.Location = new System.Drawing.Point(262, 126);
-            this.cb_MotivoTodos.Name = "cb_MotivoTodos";
-            this.cb_MotivoTodos.Size = new System.Drawing.Size(197, 21);
-            this.cb_MotivoTodos.TabIndex = 4;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(43, 126);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(201, 18);
-            this.label21.TabIndex = 5;
-            this.label21.Text = "Selecione o motivo do Email:";
-            // 
-            // cb_EmailCliente
-            // 
-            this.cb_EmailCliente.FormattingEnabled = true;
-            this.cb_EmailCliente.Location = new System.Drawing.Point(262, 284);
-            this.cb_EmailCliente.Name = "cb_EmailCliente";
-            this.cb_EmailCliente.Size = new System.Drawing.Size(196, 21);
-            this.cb_EmailCliente.TabIndex = 6;
-            // 
-            // cb_MotivoCliente
-            // 
-            this.cb_MotivoCliente.FormattingEnabled = true;
-            this.cb_MotivoCliente.Location = new System.Drawing.Point(262, 324);
-            this.cb_MotivoCliente.Name = "cb_MotivoCliente";
-            this.cb_MotivoCliente.Size = new System.Drawing.Size(196, 21);
-            this.cb_MotivoCliente.TabIndex = 7;
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(101, 287);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(143, 18);
+            this.label23.TabIndex = 9;
+            this.label23.Text = "Selecione o Cliente :";
             // 
             // label22
             // 
@@ -761,15 +694,278 @@
             this.label22.TabIndex = 8;
             this.label22.Text = "Selecione o motivo do Email:";
             // 
-            // label23
+            // cb_MotivoCliente
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(101, 287);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(143, 18);
-            this.label23.TabIndex = 9;
-            this.label23.Text = "Selecione o Cliente :";
+            this.cb_MotivoCliente.FormattingEnabled = true;
+            this.cb_MotivoCliente.Location = new System.Drawing.Point(262, 324);
+            this.cb_MotivoCliente.Name = "cb_MotivoCliente";
+            this.cb_MotivoCliente.Size = new System.Drawing.Size(196, 21);
+            this.cb_MotivoCliente.TabIndex = 7;
+            // 
+            // cb_EmailCliente
+            // 
+            this.cb_EmailCliente.FormattingEnabled = true;
+            this.cb_EmailCliente.Location = new System.Drawing.Point(262, 284);
+            this.cb_EmailCliente.Name = "cb_EmailCliente";
+            this.cb_EmailCliente.Size = new System.Drawing.Size(196, 21);
+            this.cb_EmailCliente.TabIndex = 6;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(43, 126);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(201, 18);
+            this.label21.TabIndex = 5;
+            this.label21.Text = "Selecione o motivo do Email:";
+            // 
+            // cb_MotivoTodos
+            // 
+            this.cb_MotivoTodos.FormattingEnabled = true;
+            this.cb_MotivoTodos.Location = new System.Drawing.Point(262, 126);
+            this.cb_MotivoTodos.Name = "cb_MotivoTodos";
+            this.cb_MotivoTodos.Size = new System.Drawing.Size(197, 21);
+            this.cb_MotivoTodos.TabIndex = 4;
+            // 
+            // bt_EmailIndividual
+            // 
+            this.bt_EmailIndividual.Location = new System.Drawing.Point(731, 340);
+            this.bt_EmailIndividual.Name = "bt_EmailIndividual";
+            this.bt_EmailIndividual.Size = new System.Drawing.Size(122, 20);
+            this.bt_EmailIndividual.TabIndex = 3;
+            this.bt_EmailIndividual.Text = "Enviar Email";
+            this.bt_EmailIndividual.UseVisualStyleBackColor = true;
+            this.bt_EmailIndividual.Click += new System.EventHandler(this.bt_EmailIndividual_Click);
+            // 
+            // bt_EmailTodos
+            // 
+            this.bt_EmailTodos.Location = new System.Drawing.Point(731, 159);
+            this.bt_EmailTodos.Name = "bt_EmailTodos";
+            this.bt_EmailTodos.Size = new System.Drawing.Size(122, 20);
+            this.bt_EmailTodos.TabIndex = 2;
+            this.bt_EmailTodos.Text = "Enviar Email";
+            this.bt_EmailTodos.UseVisualStyleBackColor = true;
+            this.bt_EmailTodos.Click += new System.EventHandler(this.bt_EmailTodos_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel3.Controls.Add(this.label20);
+            this.panel3.Location = new System.Drawing.Point(0, 185);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(861, 80);
+            this.panel3.TabIndex = 1;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(22, 26);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(355, 24);
+            this.label20.TabIndex = 1;
+            this.label20.Text = "Selecione um cliente que deseja notificar";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel2.Controls.Add(this.label19);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(861, 80);
+            this.panel2.TabIndex = 0;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(22, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(222, 24);
+            this.label19.TabIndex = 0;
+            this.label19.Text = "Notificar todos os clientes";
+            // 
+            // Faturas
+            // 
+            this.Faturas.BackColor = System.Drawing.Color.Silver;
+            this.Faturas.Controls.Add(this.cb_faturaAnimal);
+            this.Faturas.Controls.Add(this.cb_faturaCliente);
+            this.Faturas.Controls.Add(this.label29);
+            this.Faturas.Controls.Add(this.label28);
+            this.Faturas.Controls.Add(this.txt_faturaDinheiroEntregue);
+            this.Faturas.Controls.Add(this.label27);
+            this.Faturas.Controls.Add(this.bt_removeFatura);
+            this.Faturas.Controls.Add(this.bt_faturaPrint);
+            this.Faturas.Controls.Add(this.bt_addFatura);
+            this.Faturas.Controls.Add(this.cb_faturaServiço);
+            this.Faturas.Controls.Add(this.txt_faturaTotal);
+            this.Faturas.Controls.Add(this.txt_faturaQuantidade);
+            this.Faturas.Controls.Add(this.label26);
+            this.Faturas.Controls.Add(this.label25);
+            this.Faturas.Controls.Add(this.label24);
+            this.Faturas.Controls.Add(this.dataGridFaturas);
+            this.Faturas.Location = new System.Drawing.Point(4, 22);
+            this.Faturas.Name = "Faturas";
+            this.Faturas.Size = new System.Drawing.Size(861, 368);
+            this.Faturas.TabIndex = 4;
+            this.Faturas.Text = "Faturação";
+            // 
+            // cb_faturaAnimal
+            // 
+            this.cb_faturaAnimal.FormattingEnabled = true;
+            this.cb_faturaAnimal.Location = new System.Drawing.Point(292, 326);
+            this.cb_faturaAnimal.Name = "cb_faturaAnimal";
+            this.cb_faturaAnimal.Size = new System.Drawing.Size(157, 21);
+            this.cb_faturaAnimal.TabIndex = 15;
+            // 
+            // cb_faturaCliente
+            // 
+            this.cb_faturaCliente.FormattingEnabled = true;
+            this.cb_faturaCliente.Location = new System.Drawing.Point(292, 273);
+            this.cb_faturaCliente.Name = "cb_faturaCliente";
+            this.cb_faturaCliente.Size = new System.Drawing.Size(157, 21);
+            this.cb_faturaCliente.TabIndex = 14;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(228, 327);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(56, 18);
+            this.label29.TabIndex = 13;
+            this.label29.Text = "Animal:";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(220, 273);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(57, 18);
+            this.label28.TabIndex = 12;
+            this.label28.Text = "Cliente:";
+            // 
+            // txt_faturaDinheiroEntregue
+            // 
+            this.txt_faturaDinheiroEntregue.Location = new System.Drawing.Point(80, 325);
+            this.txt_faturaDinheiroEntregue.Name = "txt_faturaDinheiroEntregue";
+            this.txt_faturaDinheiroEntregue.Size = new System.Drawing.Size(103, 20);
+            this.txt_faturaDinheiroEntregue.TabIndex = 11;
+            // 
+            // label27
+            // 
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.Location = new System.Drawing.Point(4, 308);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(72, 39);
+            this.label27.TabIndex = 10;
+            this.label27.Text = "Dinheiro Entregue:";
+            // 
+            // bt_removeFatura
+            // 
+            this.bt_removeFatura.Location = new System.Drawing.Point(627, 295);
+            this.bt_removeFatura.Name = "bt_removeFatura";
+            this.bt_removeFatura.Size = new System.Drawing.Size(99, 47);
+            this.bt_removeFatura.TabIndex = 9;
+            this.bt_removeFatura.Text = "Remover Serviço";
+            this.bt_removeFatura.UseVisualStyleBackColor = true;
+            // 
+            // bt_faturaPrint
+            // 
+            this.bt_faturaPrint.Location = new System.Drawing.Point(732, 295);
+            this.bt_faturaPrint.Name = "bt_faturaPrint";
+            this.bt_faturaPrint.Size = new System.Drawing.Size(99, 47);
+            this.bt_faturaPrint.TabIndex = 8;
+            this.bt_faturaPrint.Text = "Imprimir";
+            this.bt_faturaPrint.UseVisualStyleBackColor = true;
+            // 
+            // bt_addFatura
+            // 
+            this.bt_addFatura.Location = new System.Drawing.Point(522, 295);
+            this.bt_addFatura.Name = "bt_addFatura";
+            this.bt_addFatura.Size = new System.Drawing.Size(99, 47);
+            this.bt_addFatura.TabIndex = 7;
+            this.bt_addFatura.Text = "Adicionar Serviço";
+            this.bt_addFatura.UseVisualStyleBackColor = true;
+            // 
+            // cb_faturaServiço
+            // 
+            this.cb_faturaServiço.FormattingEnabled = true;
+            this.cb_faturaServiço.Location = new System.Drawing.Point(80, 223);
+            this.cb_faturaServiço.Name = "cb_faturaServiço";
+            this.cb_faturaServiço.Size = new System.Drawing.Size(212, 21);
+            this.cb_faturaServiço.TabIndex = 6;
+            // 
+            // txt_faturaTotal
+            // 
+            this.txt_faturaTotal.Enabled = false;
+            this.txt_faturaTotal.Location = new System.Drawing.Point(80, 274);
+            this.txt_faturaTotal.Name = "txt_faturaTotal";
+            this.txt_faturaTotal.Size = new System.Drawing.Size(103, 20);
+            this.txt_faturaTotal.TabIndex = 5;
+            // 
+            // txt_faturaQuantidade
+            // 
+            this.txt_faturaQuantidade.Location = new System.Drawing.Point(410, 224);
+            this.txt_faturaQuantidade.Name = "txt_faturaQuantidade";
+            this.txt_faturaQuantidade.Size = new System.Drawing.Size(56, 20);
+            this.txt_faturaQuantidade.TabIndex = 4;
+            this.txt_faturaQuantidade.Text = "1";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(31, 274);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(45, 18);
+            this.label26.TabIndex = 3;
+            this.label26.Text = "Total:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(317, 225);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(87, 18);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Quantidade:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(14, 225);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(62, 18);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "Serviço:";
+            // 
+            // dataGridFaturas
+            // 
+            this.dataGridFaturas.AllowUserToResizeColumns = false;
+            this.dataGridFaturas.AllowUserToResizeRows = false;
+            this.dataGridFaturas.AutoGenerateColumns = false;
+            this.dataGridFaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridFaturas.DataSource = this.faturaBindingSource;
+            this.dataGridFaturas.Location = new System.Drawing.Point(17, 11);
+            this.dataGridFaturas.Name = "dataGridFaturas";
+            this.dataGridFaturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataGridFaturas.Size = new System.Drawing.Size(731, 180);
+            this.dataGridFaturas.TabIndex = 0;
+            // 
+            // bt_PesquisarConsulta
+            // 
+            this.bt_PesquisarConsulta.Location = new System.Drawing.Point(451, 43);
+            this.bt_PesquisarConsulta.Name = "bt_PesquisarConsulta";
+            this.bt_PesquisarConsulta.Size = new System.Drawing.Size(141, 26);
+            this.bt_PesquisarConsulta.TabIndex = 9;
+            this.bt_PesquisarConsulta.Text = "Pesquisar";
+            this.bt_PesquisarConsulta.UseVisualStyleBackColor = true;
+            this.bt_PesquisarConsulta.Click += new System.EventHandler(this.bt_PesquisarConsulta_Click);
             // 
             // PainelConsulta
             // 
@@ -796,10 +992,14 @@
             this.EditConsulta.PerformLayout();
             this.Email.ResumeLayout(false);
             this.Email.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.Faturas.ResumeLayout(false);
+            this.Faturas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridFaturas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.faturaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -838,15 +1038,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_EditNotas;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox6;
+        private System.Windows.Forms.ComboBox cb_EditHora;
         private System.Windows.Forms.DateTimePicker dtp_EditDia;
-        private System.Windows.Forms.ComboBox comboBox7;
-        private System.Windows.Forms.ComboBox comboBox8;
-        private System.Windows.Forms.ComboBox comboBox9;
-        private System.Windows.Forms.ComboBox comboBox10;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.ComboBox cb_EditTratamento;
+        private System.Windows.Forms.ComboBox cb_EditAnimal;
+        private System.Windows.Forms.ComboBox cb_EditCliente;
+        private System.Windows.Forms.ComboBox cb_EditMedico;
+        private System.Windows.Forms.TextBox txt_EditID;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
@@ -871,5 +1071,28 @@
         private System.Windows.Forms.ComboBox cb_EmailCliente;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cb_MotivoTodos;
+        private System.Windows.Forms.DataGridView dataGridFaturas;
+        private System.Windows.Forms.BindingSource faturaBindingSource;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button bt_removeFatura;
+        private System.Windows.Forms.Button bt_faturaPrint;
+        private System.Windows.Forms.Button bt_addFatura;
+        private System.Windows.Forms.ComboBox cb_faturaServiço;
+        private System.Windows.Forms.TextBox txt_faturaTotal;
+        private System.Windows.Forms.TextBox txt_faturaQuantidade;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txt_faturaDinheiroEntregue;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn serviçoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn preçoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantidadeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ComboBox cb_faturaAnimal;
+        private System.Windows.Forms.ComboBox cb_faturaCliente;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Button bt_PesquisarConsulta;
     }
 }

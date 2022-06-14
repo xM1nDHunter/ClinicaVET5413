@@ -33,6 +33,7 @@ namespace ClinicaVET5413.Forms
             f.Show();
 
         }
+        
         /// <summary>
         /// Timer para que o relógio da app esteja sempre atualizado
         /// </summary>
@@ -42,7 +43,7 @@ namespace ClinicaVET5413.Forms
         {
             DateTime time = new DateTime();
             time = DateTime.Now;
-            lbl_horas.Text = time.ToString("hh:mm:ss");
+            lbl_horas.Text = time.ToString("HH:mm:ss");
         }
         #region Botões Load Forms
         private void bt_Animal_Click(object sender, EventArgs e)

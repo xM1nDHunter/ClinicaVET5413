@@ -137,13 +137,32 @@ namespace ClinicaVET5413.Forms
             dataGridCliente.Refresh();
             dataGridCliente.AutoGenerateColumns = true;
             dataGridCliente.Columns.Clear();
-            var clientePesquisa = txt_pesquisa.Text;
-            var cliente = from Cliente in dc.Clientes
-                         where SqlMethods.Like(Cliente.Nome, "%" + clientePesquisa + "%")
-                         select Cliente;
-            dataGridCliente.DataSource = cliente.ToList();
-
-
+            //pesquisarCliente
+            if(rb_pesquisarCliente.Checked)
+            {
+                var clientePesquisa = txt_pesquisa.Text;
+                var cliente = from Cliente in dc.Clientes
+                             where SqlMethods.Like(Cliente.Nome, "%" + clientePesquisa + "%")
+                             select Cliente;
+                dataGridCliente.DataSource = cliente.ToList();
+            }
+            //pesquisarNif
+            if(rb_pesquisaNif.Checked)
+            {
+                var clientePesquisa = txt_pesquisa.Text;
+                var cliente = from Cliente in dc.Clientes
+                              where SqlMethods.Like(Cliente.NIF, "%" + clientePesquisa + "%")
+                              select Cliente;
+                dataGridCliente.DataSource = cliente.ToList();
+            }
+            else //faz pesquisa por default do nome do cliente
+            {
+                var clientePesquisa = txt_pesquisa.Text;
+                var cliente = from Cliente in dc.Clientes
+                              where SqlMethods.Like(Cliente.Nome, "%" + clientePesquisa + "%")
+                              select Cliente;
+                dataGridCliente.DataSource = cliente.ToList();
+            }
             dataGridCliente.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             if (txt_pesquisa.Text == "")
             {
@@ -293,7 +312,6 @@ namespace ClinicaVET5413.Forms
             }
             return valida;
         }
-        #endregion
-
+        #endregion        
     }
 }

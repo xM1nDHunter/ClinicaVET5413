@@ -34,6 +34,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.listaClientes = new System.Windows.Forms.TabPage();
+            this.rb_pesquisaNif = new System.Windows.Forms.RadioButton();
+            this.rb_pesquisarCliente = new System.Windows.Forms.RadioButton();
             this.bt_ApagarCliente = new System.Windows.Forms.Button();
             this.bt_EditarAnimal = new System.Windows.Forms.Button();
             this.bt_AdicionarCliente = new System.Windows.Forms.Button();
@@ -135,6 +137,8 @@
             // listaClientes
             // 
             this.listaClientes.BackColor = System.Drawing.Color.Silver;
+            this.listaClientes.Controls.Add(this.rb_pesquisaNif);
+            this.listaClientes.Controls.Add(this.rb_pesquisarCliente);
             this.listaClientes.Controls.Add(this.bt_ApagarCliente);
             this.listaClientes.Controls.Add(this.bt_EditarAnimal);
             this.listaClientes.Controls.Add(this.bt_AdicionarCliente);
@@ -147,6 +151,29 @@
             this.listaClientes.Size = new System.Drawing.Size(861, 368);
             this.listaClientes.TabIndex = 0;
             this.listaClientes.Text = "Lista da Clientes";
+            // 
+            // rb_pesquisaNif
+            // 
+            this.rb_pesquisaNif.AutoSize = true;
+            this.rb_pesquisaNif.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_pesquisaNif.Location = new System.Drawing.Point(206, 16);
+            this.rb_pesquisaNif.Name = "rb_pesquisaNif";
+            this.rb_pesquisaNif.Size = new System.Drawing.Size(49, 22);
+            this.rb_pesquisaNif.TabIndex = 7;
+            this.rb_pesquisaNif.Text = "NIF";
+            this.rb_pesquisaNif.UseVisualStyleBackColor = true;
+            // 
+            // rb_pesquisarCliente
+            // 
+            this.rb_pesquisarCliente.AutoSize = true;
+            this.rb_pesquisarCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rb_pesquisarCliente.Location = new System.Drawing.Point(129, 16);
+            this.rb_pesquisarCliente.Name = "rb_pesquisarCliente";
+            this.rb_pesquisarCliente.Size = new System.Drawing.Size(71, 22);
+            this.rb_pesquisarCliente.TabIndex = 6;
+            this.rb_pesquisarCliente.TabStop = true;
+            this.rb_pesquisarCliente.Text = "Cliente";
+            this.rb_pesquisarCliente.UseVisualStyleBackColor = true;
             // 
             // bt_ApagarCliente
             // 
@@ -194,9 +221,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(24, 18);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 18);
+            this.label2.Size = new System.Drawing.Size(99, 18);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Pesquisa Cliente:";
+            this.label2.Text = "Pesquisa por:";
             // 
             // txt_pesquisa
             // 
@@ -546,5 +573,7 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.RadioButton rb_pesquisaNif;
+        private System.Windows.Forms.RadioButton rb_pesquisarCliente;
     }
 }
