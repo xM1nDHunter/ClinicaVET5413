@@ -28,6 +28,7 @@ namespace ClinicaVET5413.Forms
             PainelMenu.BackColor = CorTema.ChangeColorBrightness(color, +0.3);
             cor = CorTema.ChangeColorBrightness(color, +0.3);
             lbl_dia.Text = DateTime.Now.ToString("D");
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();

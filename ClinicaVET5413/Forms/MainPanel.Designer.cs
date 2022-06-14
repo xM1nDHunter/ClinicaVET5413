@@ -295,6 +295,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.Image = global::ClinicaVET5413.Properties.Resources.teste1;
             this.pictureBox2.Location = new System.Drawing.Point(379, 137);
             this.pictureBox2.Name = "pictureBox2";
