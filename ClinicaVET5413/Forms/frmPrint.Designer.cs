@@ -51,7 +51,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPrint";
             this.Text = "Impressão";
-            this.Load += new System.EventHandler(this.frmPrint_Load);
+            //this.Load += new System.EventHandler(this.frmPrint_Load);
             this.ResumeLayout(false);
 
         }

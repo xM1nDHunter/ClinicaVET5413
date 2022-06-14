@@ -395,26 +395,27 @@
             // cb_AddAnimal
             // 
             this.cb_AddAnimal.FormattingEnabled = true;
-            this.cb_AddAnimal.Location = new System.Drawing.Point(71, 276);
+            this.cb_AddAnimal.Location = new System.Drawing.Point(71, 202);
             this.cb_AddAnimal.Name = "cb_AddAnimal";
-            this.cb_AddAnimal.Size = new System.Drawing.Size(123, 26);
+            this.cb_AddAnimal.Size = new System.Drawing.Size(146, 26);
             this.cb_AddAnimal.TabIndex = 10;
+            this.cb_AddAnimal.SelectedIndexChanged += new System.EventHandler(this.cb_AddAnimal_SelectedIndexChanged);
             // 
             // cb_AddCliente
             // 
             this.cb_AddCliente.FormattingEnabled = true;
-            this.cb_AddCliente.Location = new System.Drawing.Point(71, 200);
+            this.cb_AddCliente.Location = new System.Drawing.Point(71, 135);
             this.cb_AddCliente.Name = "cb_AddCliente";
-            this.cb_AddCliente.Size = new System.Drawing.Size(123, 26);
+            this.cb_AddCliente.Size = new System.Drawing.Size(146, 26);
             this.cb_AddCliente.TabIndex = 9;
             this.cb_AddCliente.SelectedIndexChanged += new System.EventHandler(this.cb_AddCliente_SelectedIndexChanged);
             // 
             // cb_AddMedico
             // 
             this.cb_AddMedico.FormattingEnabled = true;
-            this.cb_AddMedico.Location = new System.Drawing.Point(71, 136);
+            this.cb_AddMedico.Location = new System.Drawing.Point(71, 267);
             this.cb_AddMedico.Name = "cb_AddMedico";
-            this.cb_AddMedico.Size = new System.Drawing.Size(123, 26);
+            this.cb_AddMedico.Size = new System.Drawing.Size(146, 26);
             this.cb_AddMedico.TabIndex = 8;
             // 
             // txt_AddID
@@ -459,7 +460,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(68, 255);
+            this.label6.Location = new System.Drawing.Point(68, 181);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 18);
             this.label6.TabIndex = 3;
@@ -469,7 +470,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(68, 179);
+            this.label5.Location = new System.Drawing.Point(68, 114);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(57, 18);
             this.label5.TabIndex = 2;
@@ -479,7 +480,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(68, 108);
+            this.label4.Location = new System.Drawing.Point(68, 239);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 18);
             this.label4.TabIndex = 1;
@@ -575,15 +576,16 @@
             // cb_EditAnimal
             // 
             this.cb_EditAnimal.FormattingEnabled = true;
-            this.cb_EditAnimal.Location = new System.Drawing.Point(80, 278);
+            this.cb_EditAnimal.Location = new System.Drawing.Point(80, 214);
             this.cb_EditAnimal.Name = "cb_EditAnimal";
             this.cb_EditAnimal.Size = new System.Drawing.Size(123, 21);
             this.cb_EditAnimal.TabIndex = 26;
+            this.cb_EditAnimal.SelectedIndexChanged += new System.EventHandler(this.cb_EditAnimal_SelectedIndexChanged);
             // 
             // cb_EditCliente
             // 
             this.cb_EditCliente.FormattingEnabled = true;
-            this.cb_EditCliente.Location = new System.Drawing.Point(80, 202);
+            this.cb_EditCliente.Location = new System.Drawing.Point(80, 138);
             this.cb_EditCliente.Name = "cb_EditCliente";
             this.cb_EditCliente.Size = new System.Drawing.Size(123, 21);
             this.cb_EditCliente.TabIndex = 25;
@@ -592,7 +594,7 @@
             // cb_EditMedico
             // 
             this.cb_EditMedico.FormattingEnabled = true;
-            this.cb_EditMedico.Location = new System.Drawing.Point(80, 138);
+            this.cb_EditMedico.Location = new System.Drawing.Point(80, 288);
             this.cb_EditMedico.Name = "cb_EditMedico";
             this.cb_EditMedico.Size = new System.Drawing.Size(123, 21);
             this.cb_EditMedico.TabIndex = 24;
@@ -639,7 +641,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(77, 257);
+            this.label15.Location = new System.Drawing.Point(77, 193);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(56, 18);
             this.label15.TabIndex = 19;
@@ -649,7 +651,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(77, 181);
+            this.label16.Location = new System.Drawing.Point(77, 117);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(57, 18);
             this.label16.TabIndex = 18;
@@ -659,7 +661,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(77, 110);
+            this.label17.Location = new System.Drawing.Point(77, 260);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(61, 18);
             this.label17.TabIndex = 17;

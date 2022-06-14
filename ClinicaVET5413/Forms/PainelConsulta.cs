@@ -331,12 +331,12 @@ namespace ClinicaVET5413.Forms
         }
         public void CarregarComboBoxes()
         {
-            var listaMedico = dc.Medicos.ToList();
-            foreach (Medico medico in listaMedico)
-            {
-                cb_AddMedico.Items.Add(medico.Nome);
-                cb_EditMedico.Items.Add(medico.Nome);
-            }
+            //var listaMedico = dc.Medicos.ToList();
+            //foreach (Medico medico in listaMedico)
+            //{
+            //    cb_AddMedico.Items.Add(medico.Nome);
+            //    cb_EditMedico.Items.Add(medico.Nome);
+            //}
             var listaCliente = dc.Clientes.ToList();
             foreach (Cliente cliente in listaCliente)
             {
@@ -382,10 +382,10 @@ namespace ClinicaVET5413.Forms
         {
             cb_AddAnimal.Items.Clear();
             var clientePesquisa = cb_AddCliente.Text;
-            var animal = from Animal in dc.Animals
+            var ani = from Animal in dc.Animals
                          where SqlMethods.Like(Animal.Dono, "%" + clientePesquisa + "%")
                          select Animal;
-            foreach (Animal pop in animal)
+            foreach(Animal pop in ani)
             {
                 cb_AddAnimal.Items.Add(pop.Nome);
             }
@@ -410,6 +410,55 @@ namespace ClinicaVET5413.Forms
                 }
             }
         }
+        /// <summary>
+        /// Apos selecionar o cliente e obter a lista de animais do cliente, este metodo vai carregar os médicos com especialidade do tipo do animal selecionado
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void cb_AddAnimal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_AddMedico.Items.Clear();
+            var animalPesquisa = cb_AddAnimal.Text;
+            string getEspecie = "";
+            var listaAni = from Animal in dc.Animals select Animal;
+            foreach(Animal ani in listaAni)
+            {
+                if(ani.Nome == cb_AddAnimal.Text)
+                {
+                    getEspecie = ani.Especie;
+                }
+            }
+            var med = from Medico in dc.Medicos
+                      where SqlMethods.Like(Medico.TipoAnimal, "%" + getEspecie + "%")
+                      select Medico;
+            foreach (Medico pop in med)
+            {
+                cb_AddMedico.Items.Add(pop.Nome);
+            }
+        }
+
+        private void cb_EditAnimal_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_AddMedico.Items.Clear();
+            var animalPesquisa = cb_EditAnimal.Text;
+            string getEspecie = "";
+            var listaAni = from Animal in dc.Animals select Animal;
+            foreach (Animal ani in listaAni)
+            {
+                if (ani.Nome == cb_EditAnimal.Text)
+                {
+                    getEspecie = ani.Especie;
+                }
+            }
+            var med = from Medico in dc.Medicos
+                      where SqlMethods.Like(Medico.TipoAnimal, "%" + getEspecie + "%")
+                      select Medico;
+            foreach (Medico pop in med)
+            {
+                cb_EditMedico.Items.Add(pop.Nome);
+            }
+        }
+
 
         #endregion        
         
@@ -437,6 +486,8 @@ namespace ClinicaVET5413.Forms
             //Obter nome para destinatario
             string nome = "";
             string email = "";
+            string nomeMed = "";
+            string emailMed = "";
             var listaClientes = from Cliente in dc.Clientes select Cliente;
             foreach (var getInfoCliente in listaClientes)
             {
@@ -447,11 +498,21 @@ namespace ClinicaVET5413.Forms
                     email = getInfoCliente.Email;
                 }
             }
+            var listaMeds = from Medico in dc.Medicos select Medico;
+            foreach (var getInfoMed in listaMeds)
+            {
+                if (getInfoMed.ID == consulta.Medico)
+                {
+                    nomeMed = getInfoMed.Nome;
+                    emailMed = getInfoMed.Email;
+                }
+            }
 
 
 
             mail.From = new MailAddress("theberserk007@gmail.com", "Vet Plus");
             mail.To.Add(new MailAddress(email, nome));
+            mail.CC.Add(new MailAddress(emailMed, nomeMed));
             mail.Subject = "Consulta Vet Plus";
             mail.IsBodyHtml = true;
             mail.BodyEncoding = Encoding.UTF8;
@@ -494,6 +555,8 @@ namespace ClinicaVET5413.Forms
             //Obter nome para destinatario
             string nome = "";
             string email = "";
+            string nomeMed = "";
+            string emailMed = "";
             var listaClientes = from Cliente in dc.Clientes select Cliente;
             foreach (var getInfoCliente in listaClientes)
             {
@@ -505,10 +568,19 @@ namespace ClinicaVET5413.Forms
                 }
             }
 
-
+            var listaMeds = from Medico in dc.Medicos select Medico;
+            foreach (var getInfoMed in listaMeds)
+            {
+                if(getInfoMed.ID == consulta.Medico)
+                {
+                    nomeMed = getInfoMed.Nome;
+                    emailMed = getInfoMed.Email;
+                }
+            }
 
             mail.From = new MailAddress("theberserk007@gmail.com", "Vet Plus");
             mail.To.Add(new MailAddress(email, nome));
+            mail.CC.Add(new MailAddress(emailMed,nomeMed));
             mail.Subject = "Alteração da sua Consulta";
             mail.IsBodyHtml = true;
             mail.BodyEncoding = Encoding.UTF8;
@@ -526,7 +598,7 @@ namespace ClinicaVET5413.Forms
             smtp.EnableSsl = true;
 
             mail.Body = $"Obrigado por escolher a Vet Plus Sr.(a){nome}, <br> <br>" +
-                $"A sua consulta foi alterada , o tratamento será {consulta.Tratamento} e marcada para dia : {consulta.DiaConsulta} entre {consulta.HoraConsulta}. Deve comparecer 15 min antes !<br>" +
+                $"A sua consulta foi alterada , o tratamento será {consulta.Tratamento} e foi marcado para dia : {consulta.DiaConsulta} entre {consulta.HoraConsulta}. Deve comparecer 15 min antes !<br>" +
                 $"Obrigado pela sua preferencia! <br> <br> Atenciosamente,<br>VET PLUS";
 
             try
@@ -551,6 +623,8 @@ namespace ClinicaVET5413.Forms
             //Obter nome para destinatario
             string nome = "";
             string email = "";
+            string nomeMed = "";
+            string emailMed = "";
             var listaClientes = from Cliente in dc.Clientes select Cliente;
             foreach (var getInfoCliente in listaClientes)
             {
@@ -561,11 +635,21 @@ namespace ClinicaVET5413.Forms
                     email = getInfoCliente.Email;
                 }
             }
+            var listaMeds = from Medico in dc.Medicos select Medico;
+            foreach (var getInfoMed in listaMeds)
+            {
+                if (getInfoMed.ID == consulta.Medico)
+                {
+                    nomeMed = getInfoMed.Nome;
+                    emailMed = getInfoMed.Email;
+                }
+            }
 
 
 
             mail.From = new MailAddress("theberserk007@gmail.com", "Vet Plus");
             mail.To.Add(new MailAddress(email, nome));
+            mail.CC.Add(new MailAddress(emailMed, nomeMed));
             mail.Subject = "Consulta Vet Plus";
             mail.IsBodyHtml = true;
             mail.BodyEncoding = Encoding.UTF8;

@@ -47,8 +47,8 @@
             this.lbl_horas = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.painelForms = new System.Windows.Forms.Panel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PainelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -110,7 +110,7 @@
             this.bt_infos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_infos.Image = global::ClinicaVET5413.Properties.Resources.miniinfo;
             this.bt_infos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_infos.Location = new System.Drawing.Point(0, 464);
+            this.bt_infos.Location = new System.Drawing.Point(1, 498);
             this.bt_infos.Name = "bt_infos";
             this.bt_infos.Size = new System.Drawing.Size(199, 60);
             this.bt_infos.TabIndex = 5;
@@ -126,7 +126,7 @@
             this.bt_GestaoClinica.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_GestaoClinica.Image = global::ClinicaVET5413.Properties.Resources.minihospital;
             this.bt_GestaoClinica.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_GestaoClinica.Location = new System.Drawing.Point(0, 386);
+            this.bt_GestaoClinica.Location = new System.Drawing.Point(1, 404);
             this.bt_GestaoClinica.Name = "bt_GestaoClinica";
             this.bt_GestaoClinica.Size = new System.Drawing.Size(199, 60);
             this.bt_GestaoClinica.TabIndex = 4;
@@ -142,7 +142,7 @@
             this.bt_cliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_cliente.Image = global::ClinicaVET5413.Properties.Resources.mincliente;
             this.bt_cliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_cliente.Location = new System.Drawing.Point(0, 308);
+            this.bt_cliente.Location = new System.Drawing.Point(1, 122);
             this.bt_cliente.Name = "bt_cliente";
             this.bt_cliente.Size = new System.Drawing.Size(199, 60);
             this.bt_cliente.TabIndex = 3;
@@ -158,7 +158,7 @@
             this.bt_medico.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bt_medico.Image = global::ClinicaVET5413.Properties.Resources.minidoc;
             this.bt_medico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_medico.Location = new System.Drawing.Point(0, 230);
+            this.bt_medico.Location = new System.Drawing.Point(1, 216);
             this.bt_medico.Name = "bt_medico";
             this.bt_medico.Size = new System.Drawing.Size(199, 60);
             this.bt_medico.TabIndex = 1;
@@ -176,7 +176,7 @@
             this.bt_Animal.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.bt_Animal.Image = global::ClinicaVET5413.Properties.Resources.mini;
             this.bt_Animal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_Animal.Location = new System.Drawing.Point(0, 152);
+            this.bt_Animal.Location = new System.Drawing.Point(1, 310);
             this.bt_Animal.Name = "bt_Animal";
             this.bt_Animal.Size = new System.Drawing.Size(199, 60);
             this.bt_Animal.TabIndex = 0;
@@ -287,12 +287,6 @@
             this.painelForms.Size = new System.Drawing.Size(972, 547);
             this.painelForms.TabIndex = 2;
             // 
-            // timer1
-            // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -302,6 +296,12 @@
             this.pictureBox2.Size = new System.Drawing.Size(242, 219);
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainPanel
             // 

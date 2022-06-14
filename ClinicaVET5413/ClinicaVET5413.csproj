@@ -123,12 +123,7 @@
     <Compile Include="Forms\PainelMedico.Designer.cs">
       <DependentUpon>PainelMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Modelos\Animal.cs" />
-    <Compile Include="Modelos\Cliente.cs" />
-    <Compile Include="Modelos\Consulta.cs" />
     <Compile Include="Modelos\CorTema.cs" />
-    <Compile Include="Modelos\Fatura.cs" />
-    <Compile Include="Modelos\Medico.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
