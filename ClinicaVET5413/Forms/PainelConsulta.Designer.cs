@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ListConsultas = new System.Windows.Forms.TabPage();
+            this.bt_PesquisarConsulta = new System.Windows.Forms.Button();
             this.bt_ApagarConsulta = new System.Windows.Forms.Button();
             this.bt_EditarConsulta = new System.Windows.Forms.Button();
             this.bt_AdicionarConsulta = new System.Windows.Forms.Button();
@@ -111,7 +112,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.dataGridFaturas = new System.Windows.Forms.DataGridView();
             this.faturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bt_PesquisarConsulta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -130,7 +130,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(115)))), ((int)(((byte)(80)))));
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -142,6 +142,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pictureBox2.Image = global::ClinicaVET5413.Properties.Resources.hospital1;
             this.pictureBox2.Location = new System.Drawing.Point(0, 1);
             this.pictureBox2.Name = "pictureBox2";
@@ -152,6 +153,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pictureBox1.Image = global::ClinicaVET5413.Properties.Resources.teste1;
             this.pictureBox1.Location = new System.Drawing.Point(739, 0);
             this.pictureBox1.Name = "pictureBox1";
@@ -162,6 +164,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(290, 34);
@@ -186,7 +189,7 @@
             // 
             // ListConsultas
             // 
-            this.ListConsultas.BackColor = System.Drawing.Color.Silver;
+            this.ListConsultas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.ListConsultas.Controls.Add(this.bt_PesquisarConsulta);
             this.ListConsultas.Controls.Add(this.bt_ApagarConsulta);
             this.ListConsultas.Controls.Add(this.bt_EditarConsulta);
@@ -204,8 +207,19 @@
             this.ListConsultas.TabIndex = 0;
             this.ListConsultas.Text = "Lista de Consultas";
             // 
+            // bt_PesquisarConsulta
+            // 
+            this.bt_PesquisarConsulta.Location = new System.Drawing.Point(451, 43);
+            this.bt_PesquisarConsulta.Name = "bt_PesquisarConsulta";
+            this.bt_PesquisarConsulta.Size = new System.Drawing.Size(141, 26);
+            this.bt_PesquisarConsulta.TabIndex = 9;
+            this.bt_PesquisarConsulta.Text = "Pesquisar";
+            this.bt_PesquisarConsulta.UseVisualStyleBackColor = true;
+            this.bt_PesquisarConsulta.Click += new System.EventHandler(this.bt_PesquisarConsulta_Click);
+            // 
             // bt_ApagarConsulta
             // 
+            this.bt_ApagarConsulta.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_ApagarConsulta.Location = new System.Drawing.Point(692, 272);
             this.bt_ApagarConsulta.Name = "bt_ApagarConsulta";
             this.bt_ApagarConsulta.Size = new System.Drawing.Size(141, 24);
@@ -217,6 +231,7 @@
             // 
             // bt_EditarConsulta
             // 
+            this.bt_EditarConsulta.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_EditarConsulta.Location = new System.Drawing.Point(692, 210);
             this.bt_EditarConsulta.Name = "bt_EditarConsulta";
             this.bt_EditarConsulta.Size = new System.Drawing.Size(141, 24);
@@ -227,6 +242,7 @@
             // 
             // bt_AdicionarConsulta
             // 
+            this.bt_AdicionarConsulta.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_AdicionarConsulta.Location = new System.Drawing.Point(692, 147);
             this.bt_AdicionarConsulta.Name = "bt_AdicionarConsulta";
             this.bt_AdicionarConsulta.Size = new System.Drawing.Size(141, 24);
@@ -280,6 +296,10 @@
             // 
             // dataGridConsultas
             // 
+            this.dataGridConsultas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridConsultas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(88)))), ((int)(((byte)(217)))));
             this.dataGridConsultas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridConsultas.Location = new System.Drawing.Point(43, 85);
             this.dataGridConsultas.Name = "dataGridConsultas";
@@ -295,7 +315,7 @@
             // 
             // AddConsulta
             // 
-            this.AddConsulta.BackColor = System.Drawing.Color.Silver;
+            this.AddConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.AddConsulta.Controls.Add(this.bt_AddConsulta);
             this.AddConsulta.Controls.Add(this.txt_AddNotas);
             this.AddConsulta.Controls.Add(this.label10);
@@ -477,7 +497,7 @@
             // 
             // EditConsulta
             // 
-            this.EditConsulta.BackColor = System.Drawing.Color.Silver;
+            this.EditConsulta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.EditConsulta.Controls.Add(this.bt_EditConsulta);
             this.EditConsulta.Controls.Add(this.txt_EditNotas);
             this.EditConsulta.Controls.Add(this.label11);
@@ -657,7 +677,7 @@
             // 
             // Email
             // 
-            this.Email.BackColor = System.Drawing.Color.Silver;
+            this.Email.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(122)))), ((int)(((byte)(163)))), ((int)(((byte)(140)))));
             this.Email.Controls.Add(this.label23);
             this.Email.Controls.Add(this.label22);
             this.Email.Controls.Add(this.cb_MotivoCliente);
@@ -750,7 +770,9 @@
             // 
             // panel3
             // 
-            this.panel3.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(140)))), ((int)(((byte)(132)))));
             this.panel3.Controls.Add(this.label20);
             this.panel3.Location = new System.Drawing.Point(0, 185);
             this.panel3.Name = "panel3";
@@ -769,7 +791,9 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(140)))), ((int)(((byte)(132)))));
             this.panel2.Controls.Add(this.label19);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
@@ -788,7 +812,7 @@
             // 
             // Faturas
             // 
-            this.Faturas.BackColor = System.Drawing.Color.Silver;
+            this.Faturas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(112)))), ((int)(((byte)(140)))), ((int)(((byte)(132)))));
             this.Faturas.Controls.Add(this.cb_faturaAnimal);
             this.Faturas.Controls.Add(this.cb_faturaCliente);
             this.Faturas.Controls.Add(this.label29);
@@ -813,6 +837,7 @@
             // 
             // cb_faturaAnimal
             // 
+            this.cb_faturaAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cb_faturaAnimal.FormattingEnabled = true;
             this.cb_faturaAnimal.Location = new System.Drawing.Point(292, 326);
             this.cb_faturaAnimal.Name = "cb_faturaAnimal";
@@ -821,6 +846,7 @@
             // 
             // cb_faturaCliente
             // 
+            this.cb_faturaCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cb_faturaCliente.FormattingEnabled = true;
             this.cb_faturaCliente.Location = new System.Drawing.Point(292, 273);
             this.cb_faturaCliente.Name = "cb_faturaCliente";
@@ -829,6 +855,7 @@
             // 
             // label29
             // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label29.Location = new System.Drawing.Point(228, 327);
@@ -839,6 +866,7 @@
             // 
             // label28
             // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label28.AutoSize = true;
             this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label28.Location = new System.Drawing.Point(220, 273);
@@ -849,6 +877,7 @@
             // 
             // txt_faturaDinheiroEntregue
             // 
+            this.txt_faturaDinheiroEntregue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_faturaDinheiroEntregue.Location = new System.Drawing.Point(80, 325);
             this.txt_faturaDinheiroEntregue.Name = "txt_faturaDinheiroEntregue";
             this.txt_faturaDinheiroEntregue.Size = new System.Drawing.Size(103, 20);
@@ -856,6 +885,7 @@
             // 
             // label27
             // 
+            this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label27.Location = new System.Drawing.Point(4, 308);
             this.label27.Name = "label27";
@@ -865,6 +895,7 @@
             // 
             // bt_removeFatura
             // 
+            this.bt_removeFatura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_removeFatura.Location = new System.Drawing.Point(627, 295);
             this.bt_removeFatura.Name = "bt_removeFatura";
             this.bt_removeFatura.Size = new System.Drawing.Size(99, 47);
@@ -874,6 +905,7 @@
             // 
             // bt_faturaPrint
             // 
+            this.bt_faturaPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_faturaPrint.Location = new System.Drawing.Point(732, 295);
             this.bt_faturaPrint.Name = "bt_faturaPrint";
             this.bt_faturaPrint.Size = new System.Drawing.Size(99, 47);
@@ -883,6 +915,7 @@
             // 
             // bt_addFatura
             // 
+            this.bt_addFatura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_addFatura.Location = new System.Drawing.Point(522, 295);
             this.bt_addFatura.Name = "bt_addFatura";
             this.bt_addFatura.Size = new System.Drawing.Size(99, 47);
@@ -892,6 +925,7 @@
             // 
             // cb_faturaServiço
             // 
+            this.cb_faturaServiço.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.cb_faturaServiço.FormattingEnabled = true;
             this.cb_faturaServiço.Location = new System.Drawing.Point(80, 223);
             this.cb_faturaServiço.Name = "cb_faturaServiço";
@@ -900,6 +934,7 @@
             // 
             // txt_faturaTotal
             // 
+            this.txt_faturaTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_faturaTotal.Enabled = false;
             this.txt_faturaTotal.Location = new System.Drawing.Point(80, 274);
             this.txt_faturaTotal.Name = "txt_faturaTotal";
@@ -908,6 +943,7 @@
             // 
             // txt_faturaQuantidade
             // 
+            this.txt_faturaQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txt_faturaQuantidade.Location = new System.Drawing.Point(410, 224);
             this.txt_faturaQuantidade.Name = "txt_faturaQuantidade";
             this.txt_faturaQuantidade.Size = new System.Drawing.Size(56, 20);
@@ -916,6 +952,7 @@
             // 
             // label26
             // 
+            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label26.Location = new System.Drawing.Point(31, 274);
@@ -926,6 +963,7 @@
             // 
             // label25
             // 
+            this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label25.Location = new System.Drawing.Point(317, 225);
@@ -936,6 +974,7 @@
             // 
             // label24
             // 
+            this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label24.Location = new System.Drawing.Point(14, 225);
@@ -948,7 +987,10 @@
             // 
             this.dataGridFaturas.AllowUserToResizeColumns = false;
             this.dataGridFaturas.AllowUserToResizeRows = false;
+            this.dataGridFaturas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.dataGridFaturas.AutoGenerateColumns = false;
+            this.dataGridFaturas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(107)))), ((int)(((byte)(217)))));
             this.dataGridFaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridFaturas.DataSource = this.faturaBindingSource;
             this.dataGridFaturas.Location = new System.Drawing.Point(17, 11);
@@ -956,16 +998,6 @@
             this.dataGridFaturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dataGridFaturas.Size = new System.Drawing.Size(731, 180);
             this.dataGridFaturas.TabIndex = 0;
-            // 
-            // bt_PesquisarConsulta
-            // 
-            this.bt_PesquisarConsulta.Location = new System.Drawing.Point(451, 43);
-            this.bt_PesquisarConsulta.Name = "bt_PesquisarConsulta";
-            this.bt_PesquisarConsulta.Size = new System.Drawing.Size(141, 26);
-            this.bt_PesquisarConsulta.TabIndex = 9;
-            this.bt_PesquisarConsulta.Text = "Pesquisar";
-            this.bt_PesquisarConsulta.UseVisualStyleBackColor = true;
-            this.bt_PesquisarConsulta.Click += new System.EventHandler(this.bt_PesquisarConsulta_Click);
             // 
             // PainelConsulta
             // 

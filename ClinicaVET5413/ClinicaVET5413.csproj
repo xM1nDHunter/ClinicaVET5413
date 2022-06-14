@@ -126,6 +126,7 @@
     <Compile Include="Modelos\Animal.cs" />
     <Compile Include="Modelos\Cliente.cs" />
     <Compile Include="Modelos\Consulta.cs" />
+    <Compile Include="Modelos\CorTema.cs" />
     <Compile Include="Modelos\Fatura.cs" />
     <Compile Include="Modelos\Medico.cs" />
     <Compile Include="Program.cs" />

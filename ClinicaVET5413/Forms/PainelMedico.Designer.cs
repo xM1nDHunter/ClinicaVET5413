@@ -41,6 +41,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txt_pesquisa = new System.Windows.Forms.TextBox();
             this.AddMed = new System.Windows.Forms.TabPage();
+            this.bt_addMedic = new System.Windows.Forms.Button();
             this.cb_tipoAnimal = new System.Windows.Forms.ComboBox();
             this.cb_salaObs = new System.Windows.Forms.ComboBox();
             this.txt_AddEmail = new System.Windows.Forms.TextBox();
@@ -56,7 +57,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.EditMed = new System.Windows.Forms.TabPage();
-            this.bt_addMedic = new System.Windows.Forms.Button();
             this.bt_EditMedico = new System.Windows.Forms.Button();
             this.cb_EditTipoAnimal = new System.Windows.Forms.ComboBox();
             this.cb_EditSalaObs = new System.Windows.Forms.ComboBox();
@@ -84,7 +84,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(115)))), ((int)(((byte)(80)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -96,6 +96,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(297, 34);
@@ -106,8 +107,9 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::ClinicaVET5413.Properties.Resources.doctor1;
-            this.pictureBox2.Location = new System.Drawing.Point(728, 0);
+            this.pictureBox2.Location = new System.Drawing.Point(744, 0);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(125, 98);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -138,7 +140,7 @@
             // 
             // ListMed
             // 
-            this.ListMed.BackColor = System.Drawing.Color.Silver;
+            this.ListMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.ListMed.Controls.Add(this.bt_Apagar);
             this.ListMed.Controls.Add(this.bt_Editar);
             this.ListMed.Controls.Add(this.bt_Adicionar);
@@ -154,6 +156,7 @@
             // 
             // bt_Apagar
             // 
+            this.bt_Apagar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_Apagar.Location = new System.Drawing.Point(703, 257);
             this.bt_Apagar.Name = "bt_Apagar";
             this.bt_Apagar.Size = new System.Drawing.Size(118, 24);
@@ -165,6 +168,7 @@
             // 
             // bt_Editar
             // 
+            this.bt_Editar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_Editar.Location = new System.Drawing.Point(703, 195);
             this.bt_Editar.Name = "bt_Editar";
             this.bt_Editar.Size = new System.Drawing.Size(118, 24);
@@ -175,6 +179,7 @@
             // 
             // bt_Adicionar
             // 
+            this.bt_Adicionar.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_Adicionar.Location = new System.Drawing.Point(703, 131);
             this.bt_Adicionar.Name = "bt_Adicionar";
             this.bt_Adicionar.Size = new System.Drawing.Size(118, 24);
@@ -185,7 +190,10 @@
             // 
             // dataGridMedico
             // 
-            this.dataGridMedico.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridMedico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridMedico.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(88)))), ((int)(((byte)(217)))));
             this.dataGridMedico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridMedico.GridColor = System.Drawing.SystemColors.AppWorkspace;
             this.dataGridMedico.Location = new System.Drawing.Point(16, 69);
@@ -213,7 +221,7 @@
             // 
             // AddMed
             // 
-            this.AddMed.BackColor = System.Drawing.Color.Silver;
+            this.AddMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.AddMed.Controls.Add(this.bt_addMedic);
             this.AddMed.Controls.Add(this.cb_tipoAnimal);
             this.AddMed.Controls.Add(this.cb_salaObs);
@@ -235,6 +243,17 @@
             this.AddMed.Size = new System.Drawing.Size(861, 370);
             this.AddMed.TabIndex = 1;
             this.AddMed.Text = "Adicionar Médico";
+            // 
+            // bt_addMedic
+            // 
+            this.bt_addMedic.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_addMedic.Location = new System.Drawing.Point(667, 321);
+            this.bt_addMedic.Name = "bt_addMedic";
+            this.bt_addMedic.Size = new System.Drawing.Size(157, 22);
+            this.bt_addMedic.TabIndex = 14;
+            this.bt_addMedic.Text = "Adicionar Médico";
+            this.bt_addMedic.UseVisualStyleBackColor = true;
+            this.bt_addMedic.Click += new System.EventHandler(this.bt_addMedic_Click);
             // 
             // cb_tipoAnimal
             // 
@@ -360,7 +379,7 @@
             // 
             // EditMed
             // 
-            this.EditMed.BackColor = System.Drawing.Color.Silver;
+            this.EditMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.EditMed.Controls.Add(this.bt_EditMedico);
             this.EditMed.Controls.Add(this.cb_EditTipoAnimal);
             this.EditMed.Controls.Add(this.cb_EditSalaObs);
@@ -382,18 +401,9 @@
             this.EditMed.TabIndex = 2;
             this.EditMed.Text = "Editar Médicos";
             // 
-            // bt_addMedic
-            // 
-            this.bt_addMedic.Location = new System.Drawing.Point(667, 321);
-            this.bt_addMedic.Name = "bt_addMedic";
-            this.bt_addMedic.Size = new System.Drawing.Size(157, 22);
-            this.bt_addMedic.TabIndex = 14;
-            this.bt_addMedic.Text = "Adicionar Médico";
-            this.bt_addMedic.UseVisualStyleBackColor = true;
-            this.bt_addMedic.Click += new System.EventHandler(this.bt_addMedic_Click);
-            // 
             // bt_EditMedico
             // 
+            this.bt_EditMedico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_EditMedico.Location = new System.Drawing.Point(654, 311);
             this.bt_EditMedico.Name = "bt_EditMedico";
             this.bt_EditMedico.Size = new System.Drawing.Size(157, 22);

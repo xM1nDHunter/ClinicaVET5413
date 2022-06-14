@@ -82,7 +82,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(115)))), ((int)(((byte)(80)))));
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.pictureBox2);
             this.panel1.Controls.Add(this.pictureBox1);
@@ -94,7 +94,9 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(115)))), ((int)(((byte)(80)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(305, 35);
             this.label1.Name = "label1";
@@ -104,6 +106,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::ClinicaVET5413.Properties.Resources.clientex;
             this.pictureBox2.Location = new System.Drawing.Point(750, 0);
             this.pictureBox2.Name = "pictureBox2";
@@ -136,7 +139,7 @@
             // 
             // listaClientes
             // 
-            this.listaClientes.BackColor = System.Drawing.Color.Silver;
+            this.listaClientes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.listaClientes.Controls.Add(this.rb_pesquisaNif);
             this.listaClientes.Controls.Add(this.rb_pesquisarCliente);
             this.listaClientes.Controls.Add(this.bt_ApagarCliente);
@@ -177,6 +180,7 @@
             // 
             // bt_ApagarCliente
             // 
+            this.bt_ApagarCliente.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_ApagarCliente.Location = new System.Drawing.Point(701, 262);
             this.bt_ApagarCliente.Name = "bt_ApagarCliente";
             this.bt_ApagarCliente.Size = new System.Drawing.Size(117, 24);
@@ -188,6 +192,7 @@
             // 
             // bt_EditarAnimal
             // 
+            this.bt_EditarAnimal.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_EditarAnimal.Location = new System.Drawing.Point(701, 202);
             this.bt_EditarAnimal.Name = "bt_EditarAnimal";
             this.bt_EditarAnimal.Size = new System.Drawing.Size(117, 24);
@@ -198,6 +203,7 @@
             // 
             // bt_AdicionarCliente
             // 
+            this.bt_AdicionarCliente.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bt_AdicionarCliente.Location = new System.Drawing.Point(701, 139);
             this.bt_AdicionarCliente.Name = "bt_AdicionarCliente";
             this.bt_AdicionarCliente.Size = new System.Drawing.Size(117, 24);
@@ -208,7 +214,10 @@
             // 
             // dataGridCliente
             // 
-            this.dataGridCliente.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(107)))), ((int)(((byte)(217)))));
             this.dataGridCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridCliente.Location = new System.Drawing.Point(28, 66);
             this.dataGridCliente.Name = "dataGridCliente";
@@ -235,7 +244,7 @@
             // 
             // AddCliente
             // 
-            this.AddCliente.BackColor = System.Drawing.Color.Silver;
+            this.AddCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.AddCliente.Controls.Add(this.bt_AddCliente);
             this.AddCliente.Controls.Add(this.dtp_AddNasci);
             this.AddCliente.Controls.Add(this.txt_AddEmail);
@@ -258,6 +267,7 @@
             // 
             // bt_AddCliente
             // 
+            this.bt_AddCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_AddCliente.Location = new System.Drawing.Point(686, 322);
             this.bt_AddCliente.Name = "bt_AddCliente";
             this.bt_AddCliente.Size = new System.Drawing.Size(147, 23);
@@ -371,7 +381,7 @@
             // 
             // EditClient
             // 
-            this.EditClient.BackColor = System.Drawing.Color.Silver;
+            this.EditClient.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.EditClient.Controls.Add(this.bt_EditCliente);
             this.EditClient.Controls.Add(this.dtp_EditNasci);
             this.EditClient.Controls.Add(this.txt_EditEmail);
@@ -393,6 +403,7 @@
             // 
             // bt_EditCliente
             // 
+            this.bt_EditCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bt_EditCliente.Location = new System.Drawing.Point(683, 326);
             this.bt_EditCliente.Name = "bt_EditCliente";
             this.bt_EditCliente.Size = new System.Drawing.Size(149, 21);

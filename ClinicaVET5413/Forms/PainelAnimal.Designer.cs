@@ -43,6 +43,8 @@
             this.bt_adicionar = new System.Windows.Forms.Button();
             this.dataGridAnimal = new System.Windows.Forms.DataGridView();
             this.AdicionarAnimal = new System.Windows.Forms.TabPage();
+            this.cb_AddDono = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.dtpAdicionar = new System.Windows.Forms.DateTimePicker();
             this.cbGeneroAdd = new System.Windows.Forms.ComboBox();
@@ -62,6 +64,8 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.EditarAnimal = new System.Windows.Forms.TabPage();
+            this.cb_EditDono = new System.Windows.Forms.ComboBox();
+            this.label20 = new System.Windows.Forms.Label();
             this.dtpEditar = new System.Windows.Forms.DateTimePicker();
             this.label18 = new System.Windows.Forms.Label();
             this.cb_esterilEdit = new System.Windows.Forms.ComboBox();
@@ -83,10 +87,6 @@
             this.clinicaDB5413DataSet = new ClinicaVET5413.ClinicaDB5413DataSet();
             this.animalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.animalTableAdapter = new ClinicaVET5413.ClinicaDB5413DataSetTableAdapters.AnimalTableAdapter();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cb_AddDono = new System.Windows.Forms.ComboBox();
-            this.cb_EditDono = new System.Windows.Forms.ComboBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -103,7 +103,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(115)))), ((int)(((byte)(80)))));
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -125,6 +125,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::ClinicaVET5413.Properties.Resources.cat123;
             this.pictureBox1.Location = new System.Drawing.Point(761, 0);
             this.pictureBox1.Name = "pictureBox1";
@@ -135,6 +136,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(290, 33);
@@ -148,17 +150,17 @@
             this.tabControl1.Controls.Add(this.ListaAnimal);
             this.tabControl1.Controls.Add(this.AdicionarAnimal);
             this.tabControl1.Controls.Add(this.EditarAnimal);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 98);
             this.tabControl1.Multiline = true;
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(869, 400);
+            this.tabControl1.Size = new System.Drawing.Size(869, 396);
             this.tabControl1.TabIndex = 1;
             // 
             // ListaAnimal
             // 
-            this.ListaAnimal.BackColor = System.Drawing.Color.Silver;
+            this.ListaAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.ListaAnimal.Controls.Add(this.bt_apagar);
             this.ListaAnimal.Controls.Add(this.bt_editar);
             this.ListaAnimal.Controls.Add(this.txtPesquisa);
@@ -168,13 +170,14 @@
             this.ListaAnimal.Location = new System.Drawing.Point(4, 22);
             this.ListaAnimal.Name = "ListaAnimal";
             this.ListaAnimal.Padding = new System.Windows.Forms.Padding(3);
-            this.ListaAnimal.Size = new System.Drawing.Size(861, 374);
+            this.ListaAnimal.Size = new System.Drawing.Size(861, 370);
             this.ListaAnimal.TabIndex = 0;
             this.ListaAnimal.Text = "Lista de Animais";
             // 
             // bt_apagar
             // 
-            this.bt_apagar.Location = new System.Drawing.Point(725, 260);
+            this.bt_apagar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.bt_apagar.Location = new System.Drawing.Point(725, 258);
             this.bt_apagar.Name = "bt_apagar";
             this.bt_apagar.Size = new System.Drawing.Size(99, 26);
             this.bt_apagar.TabIndex = 11;
@@ -185,7 +188,8 @@
             // 
             // bt_editar
             // 
-            this.bt_editar.Location = new System.Drawing.Point(725, 202);
+            this.bt_editar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.bt_editar.Location = new System.Drawing.Point(725, 200);
             this.bt_editar.Name = "bt_editar";
             this.bt_editar.Size = new System.Drawing.Size(99, 26);
             this.bt_editar.TabIndex = 10;
@@ -213,7 +217,8 @@
             // 
             // bt_adicionar
             // 
-            this.bt_adicionar.Location = new System.Drawing.Point(725, 144);
+            this.bt_adicionar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.bt_adicionar.Location = new System.Drawing.Point(725, 142);
             this.bt_adicionar.Name = "bt_adicionar";
             this.bt_adicionar.Size = new System.Drawing.Size(99, 26);
             this.bt_adicionar.TabIndex = 6;
@@ -224,16 +229,19 @@
             // dataGridAnimal
             // 
             this.dataGridAnimal.AllowUserToOrderColumns = true;
-            this.dataGridAnimal.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            this.dataGridAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridAnimal.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(107)))), ((int)(((byte)(217)))));
             this.dataGridAnimal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridAnimal.Location = new System.Drawing.Point(8, 75);
             this.dataGridAnimal.Name = "dataGridAnimal";
-            this.dataGridAnimal.Size = new System.Drawing.Size(668, 299);
+            this.dataGridAnimal.Size = new System.Drawing.Size(668, 295);
             this.dataGridAnimal.TabIndex = 0;
             // 
             // AdicionarAnimal
             // 
-            this.AdicionarAnimal.BackColor = System.Drawing.Color.Silver;
+            this.AdicionarAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.AdicionarAnimal.Controls.Add(this.cb_AddDono);
             this.AdicionarAnimal.Controls.Add(this.label19);
             this.AdicionarAnimal.Controls.Add(this.pictureBox3);
@@ -256,12 +264,31 @@
             this.AdicionarAnimal.Controls.Add(this.label17);
             this.AdicionarAnimal.Location = new System.Drawing.Point(4, 22);
             this.AdicionarAnimal.Name = "AdicionarAnimal";
-            this.AdicionarAnimal.Size = new System.Drawing.Size(861, 374);
+            this.AdicionarAnimal.Size = new System.Drawing.Size(861, 370);
             this.AdicionarAnimal.TabIndex = 3;
             this.AdicionarAnimal.Text = "Adicionar Animal";
             // 
+            // cb_AddDono
+            // 
+            this.cb_AddDono.FormattingEnabled = true;
+            this.cb_AddDono.Location = new System.Drawing.Point(405, 71);
+            this.cb_AddDono.Name = "cb_AddDono";
+            this.cb_AddDono.Size = new System.Drawing.Size(139, 21);
+            this.cb_AddDono.TabIndex = 85;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(402, 42);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(49, 18);
+            this.label19.TabIndex = 84;
+            this.label19.Text = "Dono:";
+            // 
             // pictureBox3
             // 
+            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox3.Image = global::ClinicaVET5413.Properties.Resources._;
             this.pictureBox3.Location = new System.Drawing.Point(569, 63);
             this.pictureBox3.Name = "pictureBox3";
@@ -386,7 +413,8 @@
             // 
             // bt_AddAnimal
             // 
-            this.bt_AddAnimal.Location = new System.Drawing.Point(655, 307);
+            this.bt_AddAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_AddAnimal.Location = new System.Drawing.Point(655, 303);
             this.bt_AddAnimal.Name = "bt_AddAnimal";
             this.bt_AddAnimal.Size = new System.Drawing.Size(160, 29);
             this.bt_AddAnimal.TabIndex = 51;
@@ -426,7 +454,7 @@
             // 
             // EditarAnimal
             // 
-            this.EditarAnimal.BackColor = System.Drawing.Color.Silver;
+            this.EditarAnimal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.EditarAnimal.Controls.Add(this.cb_EditDono);
             this.EditarAnimal.Controls.Add(this.label20);
             this.EditarAnimal.Controls.Add(this.dtpEditar);
@@ -449,9 +477,27 @@
             this.EditarAnimal.Controls.Add(this.pictureBox2);
             this.EditarAnimal.Location = new System.Drawing.Point(4, 22);
             this.EditarAnimal.Name = "EditarAnimal";
-            this.EditarAnimal.Size = new System.Drawing.Size(861, 374);
+            this.EditarAnimal.Size = new System.Drawing.Size(861, 370);
             this.EditarAnimal.TabIndex = 2;
             this.EditarAnimal.Text = "Editar Animal";
+            // 
+            // cb_EditDono
+            // 
+            this.cb_EditDono.FormattingEnabled = true;
+            this.cb_EditDono.Location = new System.Drawing.Point(401, 72);
+            this.cb_EditDono.Name = "cb_EditDono";
+            this.cb_EditDono.Size = new System.Drawing.Size(139, 21);
+            this.cb_EditDono.TabIndex = 87;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(398, 43);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(49, 18);
+            this.label20.TabIndex = 86;
+            this.label20.Text = "Dono:";
             // 
             // dtpEditar
             // 
@@ -568,7 +614,8 @@
             // 
             // bt_editarAnimal
             // 
-            this.bt_editarAnimal.Location = new System.Drawing.Point(655, 307);
+            this.bt_editarAnimal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bt_editarAnimal.Location = new System.Drawing.Point(655, 303);
             this.bt_editarAnimal.Name = "bt_editarAnimal";
             this.bt_editarAnimal.Size = new System.Drawing.Size(160, 29);
             this.bt_editarAnimal.TabIndex = 29;
@@ -608,10 +655,11 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox2.Image = global::ClinicaVET5413.Properties.Resources._;
             this.pictureBox2.Location = new System.Drawing.Point(599, 52);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(225, 199);
+            this.pictureBox2.Size = new System.Drawing.Size(246, 191);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 37;
             this.pictureBox2.TabStop = false;
@@ -629,42 +677,6 @@
             // animalTableAdapter
             // 
             this.animalTableAdapter.ClearBeforeFill = true;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(402, 42);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(49, 18);
-            this.label19.TabIndex = 84;
-            this.label19.Text = "Dono:";
-            // 
-            // cb_AddDono
-            // 
-            this.cb_AddDono.FormattingEnabled = true;
-            this.cb_AddDono.Location = new System.Drawing.Point(405, 71);
-            this.cb_AddDono.Name = "cb_AddDono";
-            this.cb_AddDono.Size = new System.Drawing.Size(139, 21);
-            this.cb_AddDono.TabIndex = 85;
-            // 
-            // cb_EditDono
-            // 
-            this.cb_EditDono.FormattingEnabled = true;
-            this.cb_EditDono.Location = new System.Drawing.Point(401, 72);
-            this.cb_EditDono.Name = "cb_EditDono";
-            this.cb_EditDono.Size = new System.Drawing.Size(139, 21);
-            this.cb_EditDono.TabIndex = 87;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(398, 43);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(49, 18);
-            this.label20.TabIndex = 86;
-            this.label20.Text = "Dono:";
             // 
             // PainelAnimal
             // 

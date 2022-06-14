@@ -26,8 +26,7 @@ namespace ClinicaVET5413.Forms
         private void PainelMedico_Load(object sender, EventArgs e)
         {
             CarregarComboBoxes();
-            CarregarGrid();           
-            
+            CarregarGrid();            
         }
         
         

@@ -24,6 +24,7 @@ namespace ClinicaVET5413.Forms
             {
                 MainPanel frm =new MainPanel();
                 frm.Show();
+                this.Hide();
             }
             else 
             {

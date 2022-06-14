@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClinicaVET5413.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,13 @@ namespace ClinicaVET5413.Forms
 {
     public partial class PainelInformacoes : Form
     {
+        
         public PainelInformacoes()
         {
-            InitializeComponent();            
-        }
+            InitializeComponent();
+            Color cor = new Color();
+            cor = Color.FromArgb(104, 138, 129);
+            BackColor = cor;
+        }        
     }
 }
