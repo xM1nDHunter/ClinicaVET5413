@@ -24,6 +24,8 @@ namespace ClinicaVET5413.Forms
         {
             InitializeComponent();
             random = new Random();
+            sideBarTimer.Stop();
+            
             //Formatação das cores dos paineis
             Color color = SelectThemeColor();
             PainelCabecalho.BackColor = CorTema.ChangeColorBrightness(color, -0.15);
@@ -186,5 +188,32 @@ namespace ClinicaVET5413.Forms
             this.WindowState = FormWindowState.Minimized;
         }
         #endregion
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            sideBarTimer.Start();            
+        }
+        bool sidebarExpand = false;
+        private void sideBarTimer_Tick(object sender, EventArgs e)
+        {
+            if (sidebarExpand)
+            {
+                PainelMenu.Width -= 10;
+                if (PainelMenu.Width == PainelMenu.MinimumSize.Width)
+                {
+                    sidebarExpand = false;
+                    sideBarTimer.Stop();
+                }
+            }
+            else 
+            {
+                PainelMenu.Width += 10;
+                if (PainelMenu.Width == PainelMenu.MaximumSize.Width)
+                {
+                    sidebarExpand = true;
+                    sideBarTimer.Stop();
+                }
+            }
+        }
     }
 }

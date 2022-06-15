@@ -43,6 +43,8 @@ namespace ClinicaVET5413.Forms
             lbl_total.Text = total + " €";
             lbl_Troco.Text = troco + " €";
             lbl_data.Text = DateTime.Now.ToString("D");
+            lbl_nomecliente.Text = Convert.ToString(dataGridView1.Rows[0].Cells[4].Value);//4
+            lbl_nomeanimal.Text = Convert.ToString(dataGridView1.Rows[0].Cells[5].Value);//5
         }
 
 
@@ -123,7 +125,7 @@ namespace ClinicaVET5413.Forms
         {
             Rectangle pagarea = e.PageBounds;
             e.Graphics.DrawImage(memory, (pagarea.Width / 2) - (this.painelPrint.Width / 2), this.painelPrint.Location.Y);
-        }
+        }        
     }
 
 

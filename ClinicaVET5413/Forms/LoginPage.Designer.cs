@@ -85,7 +85,6 @@
             this.txt_user.Name = "txt_user";
             this.txt_user.Size = new System.Drawing.Size(160, 20);
             this.txt_user.TabIndex = 4;
-            this.txt_user.Text = "admin";
             // 
             // txt_password
             // 
@@ -93,7 +92,6 @@
             this.txt_password.Name = "txt_password";
             this.txt_password.Size = new System.Drawing.Size(160, 20);
             this.txt_password.TabIndex = 5;
-            this.txt_password.Text = "Vet.123";
             // 
             // label_direitos
             // 
@@ -120,6 +118,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginPage";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Clinica VET PLUS";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

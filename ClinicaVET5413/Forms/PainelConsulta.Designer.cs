@@ -212,6 +212,7 @@
             this.bt_PesquisarConsulta.TabIndex = 9;
             this.bt_PesquisarConsulta.Text = "Pesquisar";
             this.bt_PesquisarConsulta.UseVisualStyleBackColor = true;
+            this.bt_PesquisarConsulta.Visible = false;
             this.bt_PesquisarConsulta.Click += new System.EventHandler(this.bt_PesquisarConsulta_Click);
             // 
             // bt_ApagarConsulta
@@ -258,6 +259,7 @@
             this.rbMedico.TabStop = true;
             this.rbMedico.Text = "Nome Medico";
             this.rbMedico.UseVisualStyleBackColor = true;
+            this.rbMedico.Visible = false;
             // 
             // rbAnimal
             // 
@@ -269,6 +271,7 @@
             this.rbAnimal.TabStop = true;
             this.rbAnimal.Text = "Nome Animal";
             this.rbAnimal.UseVisualStyleBackColor = true;
+            this.rbAnimal.Visible = false;
             // 
             // rbCliente
             // 
@@ -280,6 +283,7 @@
             this.rbCliente.TabStop = true;
             this.rbCliente.Text = "Nome Cliente";
             this.rbCliente.UseVisualStyleBackColor = true;
+            this.rbCliente.Visible = false;
             // 
             // label2
             // 
@@ -290,6 +294,7 @@
             this.label2.Size = new System.Drawing.Size(99, 18);
             this.label2.TabIndex = 2;
             this.label2.Text = "Pesquisa por:";
+            this.label2.Visible = false;
             // 
             // dataGridConsultas
             // 
@@ -309,6 +314,7 @@
             this.txt_pesquisa.Name = "txt_pesquisa";
             this.txt_pesquisa.Size = new System.Drawing.Size(392, 20);
             this.txt_pesquisa.TabIndex = 0;
+            this.txt_pesquisa.Visible = false;
             // 
             // AddConsulta
             // 

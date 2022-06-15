@@ -410,6 +410,7 @@
             this.bt_EditMedico.TabIndex = 29;
             this.bt_EditMedico.Text = "Confirmar Alterações";
             this.bt_EditMedico.UseVisualStyleBackColor = true;
+            this.bt_EditMedico.Click += new System.EventHandler(this.bt_EditMedico_Click);
             // 
             // cb_EditTipoAnimal
             // 

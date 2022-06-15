@@ -42,6 +42,16 @@ namespace ClinicaVET5413.Forms
             cb_tipoAnimal.Items.Add("Ave");
             cb_tipoAnimal.Items.Add("Reptil");
             cb_tipoAnimal.Items.Add("Canídeos");
+
+            cb_EditSalaObs.Items.Add("1- Felídeos");
+            cb_EditSalaObs.Items.Add("2- Aves");
+            cb_EditSalaObs.Items.Add("3- Reptil");
+            cb_EditSalaObs.Items.Add("4- Canídeos");
+
+            cb_EditTipoAnimal.Items.Add("Felídeos");
+            cb_EditTipoAnimal.Items.Add("Ave");
+            cb_EditTipoAnimal.Items.Add("Reptil");
+            cb_EditTipoAnimal.Items.Add("Canídeos");
         }
 
         /// <summary>
@@ -123,10 +133,40 @@ namespace ClinicaVET5413.Forms
                 {
                     dc.Medicos.InsertOnSubmit(medico);
                     dc.SubmitChanges();
+                    txt_AddMedico.Clear();
+                    cb_tipoAnimal.SelectedItem = null;
+                    txt_AddNif.Clear();
+                    txt_AddTele.Clear();
+                    txt_AddEmail.Clear();
+                    cb_salaObs.SelectedItem = null;
                     DataClassesDataContext reload = new DataClassesDataContext();
                     dataGridMedico.DataSource = reload.Medicos;
                 }
             }
+        }
+        private void bt_EditMedico_Click(object sender, EventArgs e)
+        {
+            if(ValidacoesEdit())
+            {
+                if (DialogEditMedico())
+                {
+                    dataGridMedico.CurrentRow.Cells[1].Value = txt_EditNome.Text;
+                    dataGridMedico.CurrentRow.Cells[2].Value = cb_EditTipoAnimal.Text;
+                    dataGridMedico.CurrentRow.Cells[3].Value = txt_EditNif.Text;
+                    dataGridMedico.CurrentRow.Cells[4].Value = txt_EditTele.Text;
+                    dataGridMedico.CurrentRow.Cells[5].Value = txt_EditEmail.Text;
+                    dataGridMedico.CurrentRow.Cells[6].Value = cb_EditSalaObs.Text;
+                    dc.SubmitChanges();
+                    txt_EditNome.Clear();
+                    txt_EditNif.Clear();
+                    txt_EditNif.Clear();
+                    txt_EditTele.Clear();
+                    txt_EditEmail.Clear();
+                    cb_EditSalaObs.SelectedItem = null;
+                    cb_EditTipoAnimal.SelectedItem = null;
+                }
+            }
+
         }
 
         #endregion
@@ -168,17 +208,28 @@ namespace ClinicaVET5413.Forms
 
             resposta = MessageBox.Show("Vai adicionar um novo médico deseja continuar?", "Adicionar Médico", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes)
-            {
-                txt_AddMedico.Clear();
-                cb_tipoAnimal.SelectedItem = null;
-                txt_AddNif.Clear();
-                txt_AddTele.Clear();
-                txt_AddEmail.Clear();
-                cb_salaObs.SelectedItem = null;
+            {                
                 return true;
             }
             else
                 return false;
+        }
+
+        private bool DialogEditMedico()
+        {
+            DialogResult resposta;
+
+            resposta = MessageBox.Show("As alterações vão ser implementadas, deseja continuar?", "Editar Médico", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (resposta == DialogResult.Yes)
+            {                
+                return true;
+            }
+            else
+            {
+                dataGridMedico.DataSource = dc.Medicos;
+                dataGridMedico.Refresh();
+                return false;
+            }
         }
 
         /// <summary>
@@ -231,6 +282,71 @@ namespace ClinicaVET5413.Forms
                 MessageBox.Show("Insira o email corretamente", "Erro",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_AddEmail.Text = string.Empty;
+                valida = false;
+            }
+            if(string.IsNullOrEmpty(cb_salaObs.Text))
+            {
+                MessageBox.Show("Atribua a sala de observações ao medico!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }
+            return valida;
+        }
+
+        private bool ValidacoesEdit()
+        {
+            bool valida = true;
+            char testEmail = '@';
+
+            if (string.IsNullOrEmpty(txt_EditNome.Text) || txt_EditNome.Text.All(char.IsDigit))
+            {
+                MessageBox.Show("Insira o nome do Médico!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_EditNome.Text = string.Empty;
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cb_EditTipoAnimal.Text))
+            {
+                MessageBox.Show("Insira a especialidade do Médico!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cb_EditTipoAnimal.SelectedItem = null;
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(txt_EditNif.Text) || !System.Text.RegularExpressions.Regex.IsMatch(txt_EditNif.Text, "^[0-9]*$") || txt_EditNif.Text.Length != 9)
+            {
+                MessageBox.Show("Insira o NIF , este deve conter 9 digitos!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_AddNif.Text = string.Empty;
+
+                valida = false;
+            }
+            foreach (Medico testNif in dc.Medicos)
+            {
+                if (testNif.Nome != txt_EditNome.Text)
+                {
+                    if (txt_EditNif.Text == testNif.NIF)
+                    {
+                        MessageBox.Show($"Já existe Médico com o NIF {testNif.NIF}, insira um novo Médico", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                        txt_EditNif.Text = string.Empty;
+
+                        valida = false;
+                    }
+                }
+            }
+            if (string.IsNullOrEmpty(txt_EditTele.Text) || !System.Text.RegularExpressions.Regex.IsMatch(txt_EditTele.Text, "^[0-9]*$") || txt_EditTele.Text.Length != 9)
+            {
+                MessageBox.Show("Insira o número de telemóvel corretamente, verifique se o número telefone está dentro dos paramentros nacionais !", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_EditTele.Text = string.Empty;
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(txt_EditEmail.Text) || !txt_EditEmail.Text.Contains(Convert.ToString(testEmail)))
+            {
+                MessageBox.Show("Insira o email corretamente", "Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_EditEmail.Text = string.Empty;
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cb_EditSalaObs.Text))
+            {
+                MessageBox.Show("Atribua a sala de observações ao medico!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                cb_EditSalaObs.SelectedItem = null;
                 valida = false;
             }
             return valida;

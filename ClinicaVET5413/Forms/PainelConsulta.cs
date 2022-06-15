@@ -534,7 +534,7 @@ namespace ClinicaVET5413.Forms
             smtp.EnableSsl = true;
 
             mail.Body = $"Obrigado por escolher a Vet Plus Sr.(a){nome}, <br> <br>" +
-                $"A sua consulta de {consulta.Tratamento} marcada para dia : {consulta.DiaConsulta} entre {consulta.HoraConsulta} foi cancelada, para mais informações contacte diretamente com a clinica! !<br>" +
+                $"A consulta do seu animal com o motivo de {consulta.Tratamento} marcada para dia : {consulta.DiaConsulta} entre {consulta.HoraConsulta} foi cancelada, para mais informações contacte diretamente com a clinica! !<br>" +
                 $"Obrigado pela sua preferencia! <br> <br> Atenciosamente,<br>VET PLUS";
 
             try
@@ -671,7 +671,7 @@ namespace ClinicaVET5413.Forms
             smtp.EnableSsl = true;
             
             mail.Body = $"Obrigado por escolher a Vet Plus Sr.(a){nome}, <br> <br>" +
-                $"A sua consulta de {consulta.Tratamento} foi confirmada e marcada para dia : {consulta.DiaConsulta} entre {consulta.HoraConsulta}. Deve comparecer 15 min antes !<br>" +
+                $"A consulta do seu animal com o motivo de {consulta.Tratamento} foi confirmada e marcada para dia : {consulta.DiaConsulta} entre {consulta.HoraConsulta}. Deve comparecer 15 min antes !<br>" +
                 $"Obrigado pela sua preferencia! <br> <br> Atenciosamente,<br>VET PLUS";            
             
             try
@@ -1031,7 +1031,10 @@ namespace ClinicaVET5413.Forms
         }
         private void bt_addFatura_Click(object sender, EventArgs e)
         {
-            CriarRow();            
+            if(ValidacoesInsert())
+            {
+                CriarRow();            
+            }
         }
 
         private void bt_removeFatura_Click(object sender, EventArgs e)
@@ -1081,12 +1084,73 @@ namespace ClinicaVET5413.Forms
                 }
             }
 
+            if (ValidacoesPrint())
+            {
+                total = txt_faturaTotal.Text;
+                troco = Convert.ToString(Convert.ToDouble(txt_faturaDinheiroEntregue.Text) - Convert.ToDouble(txt_faturaTotal.Text));
+                frmPrint frmPrint = new frmPrint(dt, email, nome, total, troco);
+                frmPrint.Show();
+            }
+        }
+        private bool ValidacoesPrint()
+        {
+            if(dataGridFaturas.Rows.Count == 0)
+            {
+                MessageBox.Show("Deve adicionar um serviço antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (string.IsNullOrEmpty(txt_faturaTotal.Text))
+            {
+                MessageBox.Show("Deve adicionar um serviço antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txt_faturaTotal.Text = string.Empty;
+                return false;
+            }
+            if (string.IsNullOrEmpty(txt_faturaDinheiroEntregue.Text))
+            {
+                MessageBox.Show("Deve inserir o montante entregue antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            total = txt_faturaTotal.Text;
-            troco = Convert.ToString(Convert.ToDouble(txt_faturaDinheiroEntregue.Text) - Convert.ToDouble(txt_faturaTotal.Text));
+                return false;
+            }
+            double total = Convert.ToDouble(txt_faturaTotal.Text);
+            double entregue = Convert.ToDouble(txt_faturaDinheiroEntregue.Text);
+            double troco = entregue - total;
+            if (troco < 0)
+            {
+                MessageBox.Show("Valor insuficinente para para realizar o pagamento!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+                return true;
+        }
+        private bool ValidacoesInsert()
+        {
+            bool valida = true;            
+            
+            if (string.IsNullOrEmpty(cb_faturaServiço.Text))
+            {
+                MessageBox.Show("Deve adicionar um serviço antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-            frmPrint frmPrint = new frmPrint(dt,email,nome,total,troco);
-            frmPrint.Show();            
+                valida = false;
+            }
+            if(string.IsNullOrEmpty(txt_faturaQuantidade.Text))
+            {
+                MessageBox.Show("Escolher a quantidade primeiro!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cb_faturaCliente.Text))
+            {
+                MessageBox.Show("Deve adicionar um cliente antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }
+            if (string.IsNullOrEmpty(cb_faturaAnimal.Text))
+            {
+                MessageBox.Show("Deve adicionar um animal antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                valida = false;
+            }                       
+            return valida;
         }
 
 

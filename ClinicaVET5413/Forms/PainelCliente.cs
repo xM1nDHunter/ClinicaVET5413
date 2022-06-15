@@ -87,6 +87,10 @@ namespace ClinicaVET5413.Forms
                 {
                     dc.Clientes.InsertOnSubmit(cliente);
                     dc.SubmitChanges();
+                    txt_AddNome.Clear();
+                    txt_AddNif.Clear();
+                    txt_AddTele.Clear();
+                    txt_AddEmail.Clear();
                     DataClassesDataContext reload = new DataClassesDataContext();
                     dataGridCliente.DataSource = reload.Clientes;
                 }
@@ -96,17 +100,22 @@ namespace ClinicaVET5413.Forms
         private void bt_EditCliente_Click(object sender, EventArgs e)
         {
             if (ValidacoesEdit())
-            {
-                dataGridCliente.CurrentRow.Cells[1].Value = txt_EditNome.Text;
-                dataGridCliente.CurrentRow.Cells[2].Value = txt_EditNif.Text;
-                dataGridCliente.CurrentRow.Cells[3].Value = txt_EditTele.Text;
-                dataGridCliente.CurrentRow.Cells[4].Value = txt_EditEmail.Text;                
-                dataGridCliente.CurrentRow.Cells[5].Value = dtp_EditNasci.Text;
+            {                
+                if(DialogEditCliente())
+                {
+                    dataGridCliente.CurrentRow.Cells[1].Value = txt_EditNome.Text;
+                    dataGridCliente.CurrentRow.Cells[2].Value = txt_EditNif.Text;
+                    dataGridCliente.CurrentRow.Cells[3].Value = txt_EditTele.Text;
+                    dataGridCliente.CurrentRow.Cells[4].Value = txt_EditEmail.Text;                
+                    dataGridCliente.CurrentRow.Cells[5].Value = dtp_EditNasci.Text;
+                    dc.SubmitChanges();
+                    txt_EditNome.Clear();
+                    txt_EditNif.Clear();
+                    txt_EditNif.Clear();
+                    txt_EditTele.Clear();
+                    txt_EditEmail.Clear();
+                }       
             }
-            if(DialogEditCliente())
-            {
-                dc.SubmitChanges();
-            }       
             
         }
         #endregion
@@ -183,16 +192,13 @@ namespace ClinicaVET5413.Forms
 
             resposta = MessageBox.Show("As alterações vão ser implementadas, deseja continuar?", "Editar Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes)
-            {
-                txt_EditNome.Clear();
-                txt_EditNif.Clear();
-                txt_EditNif.Clear();
-                txt_EditTele.Clear();
-                txt_EditEmail.Clear();                
+            {                              
                 return true;
             }
             else
             {
+                dataGridCliente.DataSource = dc.Clientes;
+                dataGridCliente.Refresh();
                 return false;
             }
         }
@@ -205,11 +211,7 @@ namespace ClinicaVET5413.Forms
 
             resposta = MessageBox.Show("Vai adicionar um novo cliente deseja continuar?", "Adicionar Cliente", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes )
-            {
-                txt_AddNome.Clear();
-                txt_AddNif.Clear();                
-                txt_AddTele.Clear();
-                txt_AddEmail.Clear();               
+            {                               
                 return true;
             }
             else  

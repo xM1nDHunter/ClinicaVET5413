@@ -229,6 +229,13 @@ namespace ClinicaVET5413
                 {
                     dc.Animals.InsertOnSubmit(animal);
                     dc.SubmitChanges();
+                    txtIdAdd.Clear();
+                    txtNomeAdd.Clear();
+                    txt_pesoAdd.Clear();
+                    cbEspecieAdd.SelectedItem = null;
+                    cbGeneroAdd.SelectedItem = null;
+                    cbRacaAdd.SelectedItem = null;
+                    cb_esterilAdd.SelectedItem = null;
                     //Carrega o DataContext de novo para poder apresentar os novos resultados
                     DataClassesDataContext reload = new DataClassesDataContext();
                     dataGridAnimal.DataSource = reload.Animals;
@@ -273,6 +280,13 @@ namespace ClinicaVET5413
             if(DialogEditAnimal())
             {
                 dc.SubmitChanges();
+                txt_IdEdit.Clear();
+                txt_NomeEdit.Clear();
+                txt_pesoEdit.Clear();
+                cbEspecieEdit.SelectedItem = null;
+                cbGeneroEdit.SelectedItem = null;
+                cbRacaEdit.SelectedItem = null;
+                cb_esterilEdit.SelectedItem = null;
             }
         }
 
@@ -325,14 +339,7 @@ namespace ClinicaVET5413
 
             resposta = MessageBox.Show("Vai adicionar um novo animal deseja continuar?","Adicionar Animal", MessageBoxButtons.YesNo, MessageBoxIcon.Question );
             if (resposta == DialogResult.Yes )
-            {
-                txtIdAdd.Clear();
-                txtNomeAdd.Clear();                
-                txt_pesoAdd.Clear();
-                cbEspecieAdd.SelectedItem = null;
-                cbGeneroAdd.SelectedItem = null;
-                cbRacaAdd.SelectedItem = null;
-                cb_esterilAdd.SelectedItem = null;
+            {                
                 return true;
             }
             else
@@ -344,14 +351,7 @@ namespace ClinicaVET5413
 
             resposta = MessageBox.Show("Vai editar as informações do animal, deseja continuar?", "Adicionar Animal", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta == DialogResult.Yes)
-            {
-                txt_IdEdit.Clear();
-                txt_NomeEdit.Clear();
-                txt_pesoEdit.Clear();
-                cbEspecieEdit.SelectedItem = null;
-                cbGeneroEdit.SelectedItem = null;
-                cbRacaEdit.SelectedItem = null;
-                cb_esterilEdit.SelectedItem = null;
+            {                
                 return true;
             }
             else
