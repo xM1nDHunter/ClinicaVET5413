@@ -248,7 +248,7 @@
             this.lbl_dia.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_dia.AutoSize = true;
             this.lbl_dia.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dia.Location = new System.Drawing.Point(627, 2);
+            this.lbl_dia.Location = new System.Drawing.Point(614, 2);
             this.lbl_dia.Name = "lbl_dia";
             this.lbl_dia.Size = new System.Drawing.Size(30, 18);
             this.lbl_dia.TabIndex = 4;
@@ -259,7 +259,7 @@
             this.lbl_horas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbl_horas.AutoSize = true;
             this.lbl_horas.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_horas.Location = new System.Drawing.Point(627, 22);
+            this.lbl_horas.Location = new System.Drawing.Point(614, 22);
             this.lbl_horas.Name = "lbl_horas";
             this.lbl_horas.Size = new System.Drawing.Size(42, 18);
             this.lbl_horas.TabIndex = 3;
@@ -270,7 +270,7 @@
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(216, 2);
+            this.label1.Location = new System.Drawing.Point(204, 2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(405, 42);
             this.label1.TabIndex = 1;

@@ -262,6 +262,9 @@
     <None Include="Resources\hospital1.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Gmail_icon_%282020%29.svg.png" />
+    <None Include="Resources\Gmail_icon_2020.svg_45x37.png" />
+    <None Include="Resources\download_45x37.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -111,7 +110,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.dataGridFaturas = new System.Windows.Forms.DataGridView();
-            this.faturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -125,7 +123,6 @@
             this.panel2.SuspendLayout();
             this.Faturas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFaturas)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.faturaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -854,6 +851,7 @@
             this.cb_faturaCliente.Name = "cb_faturaCliente";
             this.cb_faturaCliente.Size = new System.Drawing.Size(157, 21);
             this.cb_faturaCliente.TabIndex = 14;
+            this.cb_faturaCliente.SelectedIndexChanged += new System.EventHandler(this.cb_faturaCliente_SelectedIndexChanged);
             // 
             // label29
             // 
@@ -904,6 +902,7 @@
             this.bt_removeFatura.TabIndex = 9;
             this.bt_removeFatura.Text = "Remover Serviço";
             this.bt_removeFatura.UseVisualStyleBackColor = true;
+            this.bt_removeFatura.Click += new System.EventHandler(this.bt_removeFatura_Click);
             // 
             // bt_faturaPrint
             // 
@@ -914,6 +913,7 @@
             this.bt_faturaPrint.TabIndex = 8;
             this.bt_faturaPrint.Text = "Imprimir";
             this.bt_faturaPrint.UseVisualStyleBackColor = true;
+            this.bt_faturaPrint.Click += new System.EventHandler(this.bt_faturaPrint_Click);
             // 
             // bt_addFatura
             // 
@@ -924,6 +924,7 @@
             this.bt_addFatura.TabIndex = 7;
             this.bt_addFatura.Text = "Adicionar Serviço";
             this.bt_addFatura.UseVisualStyleBackColor = true;
+            this.bt_addFatura.Click += new System.EventHandler(this.bt_addFatura_Click);
             // 
             // cb_faturaServiço
             // 
@@ -991,10 +992,8 @@
             this.dataGridFaturas.AllowUserToResizeRows = false;
             this.dataGridFaturas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dataGridFaturas.AutoGenerateColumns = false;
             this.dataGridFaturas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(107)))), ((int)(((byte)(217)))));
             this.dataGridFaturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridFaturas.DataSource = this.faturaBindingSource;
             this.dataGridFaturas.Location = new System.Drawing.Point(17, 11);
             this.dataGridFaturas.Name = "dataGridFaturas";
             this.dataGridFaturas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
@@ -1033,7 +1032,6 @@
             this.Faturas.ResumeLayout(false);
             this.Faturas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridFaturas)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.faturaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1106,7 +1104,6 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cb_MotivoTodos;
         private System.Windows.Forms.DataGridView dataGridFaturas;
-        private System.Windows.Forms.BindingSource faturaBindingSource;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Button bt_removeFatura;
         private System.Windows.Forms.Button bt_faturaPrint;

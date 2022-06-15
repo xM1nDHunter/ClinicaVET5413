@@ -14,27 +14,37 @@ namespace ClinicaVET5413.Forms
 {
     public partial class MainPanel : Form
     {
+        #region Variaveis
         private Button currentButton;
         private Random random;
         private int tempIndex;
         Color cor = new Color();
+        #endregion
         public MainPanel()
         {
             InitializeComponent();
             random = new Random();
+            //Formatação das cores dos paineis
             Color color = SelectThemeColor();
             PainelCabecalho.BackColor = CorTema.ChangeColorBrightness(color, -0.15);
             panel1.BackColor = CorTema.ChangeColorBrightness(color, -0.3);
             PainelMenu.BackColor = CorTema.ChangeColorBrightness(color, +0.3);
             cor = CorTema.ChangeColorBrightness(color, +0.3);
+
+            //obter dia para Label
             lbl_dia.Text = DateTime.Now.ToString("D");
+
+            //Não deixa que o form ocupe todo o ecrã
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
+        /// <summary>
+        /// Dlls para poder mover e reajustar o form
+        /// </summary>        
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.DLL", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
-
+        
         /// <summary>
         /// Metodo que recebe um form , o ajusta e coloca no painelForms
         /// </summary>
@@ -91,8 +101,11 @@ namespace ClinicaVET5413.Forms
         }
         #endregion
 
-        // Metodos
-
+        #region Metodos
+        /// <summary>
+        /// Metodo para escolher cores aleatorias, mas a lista está apenas populadas por 1 cor
+        /// </summary>
+        /// <returns></returns>
         private Color SelectThemeColor()
         {
             int index = random.Next(CorTema.ColorList.Count);
@@ -104,6 +117,11 @@ namespace ClinicaVET5413.Forms
             string color = CorTema.ColorList[index];
             return ColorTranslator.FromHtml(color);
         }
+
+        /// <summary>
+        /// Cria animação de quando um botão selecionado este fica destacada
+        /// </summary>
+        /// <param name="btnSender"></param>
         private void ActivateButton(object btnSender)
         {
             if (btnSender != null)
@@ -120,6 +138,10 @@ namespace ClinicaVET5413.Forms
                 }
             }
         }
+
+        /// <summary>
+        /// Reverte as ações do Metodo ActivateButton
+        /// </summary>
         private void DisableButton()
         {
             foreach (Control previousBtn in PainelMenu.Controls)
@@ -133,12 +155,19 @@ namespace ClinicaVET5413.Forms
             }
         }
 
+        /// <summary>
+        /// Este metedo permite que o form seja movimentado arrastado apartir do cabeçalho
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PainelCabecalho_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+        #endregion
 
+        #region Butões ControlBox
         private void bt_fechar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -156,5 +185,6 @@ namespace ClinicaVET5413.Forms
         {
             this.WindowState = FormWindowState.Minimized;
         }
-    } 
+        #endregion
+    }
 }

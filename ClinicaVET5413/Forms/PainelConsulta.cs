@@ -34,6 +34,8 @@ namespace ClinicaVET5413.Forms
             CarregarColumnsNames();
             CarregarGrid();
             CarregarComboEmail();
+            CarregarComboFatura();
+            CheckDailyMails();
             //CarregarComboFatura();
             //ServiçoFatura();
         }
@@ -314,6 +316,7 @@ namespace ClinicaVET5413.Forms
             getID += 1;
             txt_AddID.Text = getID.ToString();
         }
+
         /// <summary>
         /// Carrega os nomes dos headers
         /// </summary>
@@ -373,6 +376,7 @@ namespace ClinicaVET5413.Forms
             cb_EditHora.Items.Add("16h00-17h00");
             cb_EditHora.Items.Add("17h00-18h00");
         }
+
         /// <summary>
         /// Ao selecionar um cliente na comboBox, os animais deste cliente são carregados para a comboBox dos animais
         /// </summary>
@@ -741,7 +745,7 @@ namespace ClinicaVET5413.Forms
 
         #endregion
 
-#endregion
+        #endregion
 
         //--------------------------------------------------------------------------------------------
         //--------------------------------Serviço de Emails-------------------------------------------
@@ -823,195 +827,270 @@ namespace ClinicaVET5413.Forms
 
         private void bt_EmailIndividual_Click(object sender, EventArgs e)
         {
-            MailMessage mail = new MailMessage();
-            SmtpClient smtp = new SmtpClient();
-
-            //Obter nome para destinatario
-            string nome = "";
-            var listaClientes = from Cliente in dc.Clientes select Cliente;
-            foreach (Cliente getNome in listaClientes)
+            
+        }
+        /// <summary>
+        /// Sempre que o form consulta inicia é verificado se existem consultas para dia seguinte e todos os clientes com marcações para dia seguinte são notificados!
+        /// </summary>
+        private void CheckDailyMails()
+        {
+            if (dataGridConsultas.Columns.Count > 0)
             {
+                MailMessage mail = new MailMessage();
+                SmtpClient smtp = new SmtpClient();
 
-                if (getNome.Email == cb_EmailCliente.Text)
+                //Obter nome para destinatario
+                string nome = "";
+                string email = "";
+                string nconsulta = "";
+                string hora = "";
+                string tratamento = "";
+                var listaClientes = from Cliente in dc.Clientes select Cliente;
+                var listaConsultas = from Consultas in dc.Consultas select Consultas;
+
+                foreach (Consulta con in listaConsultas)
                 {
-                    nome = getNome.Nome;
+                    DateTime comp = Convert.ToDateTime(con.DiaConsulta);
+                    DateTime hoje = DateTime.Now;
+                    int teste = Convert.ToInt32(hoje.Day - comp.Day);
+                    int getID = 0;
+
+                    if (comp.Year == hoje.Year && comp.Month == hoje.Month && teste == -1)
+                    {
+                        getID = con.Cliente;
+                        hora = con.HoraConsulta;
+                        tratamento = con.Tratamento;
+                        nconsulta = Convert.ToString(con.ID);
+                    }
+                    foreach (Cliente cli in listaClientes)
+                    {
+                        if (cli.ID == getID)
+                        {
+                            nome = cli.Nome;
+                            email = cli.Email;
+                        }
+                    }
+                    if (nome != "" && email != "")
+                    {
+                        mail.From = new MailAddress("theberserk007@gmail.com", "Vet Plus");
+                        mail.To.Add(new MailAddress(email, nome));
+                        mail.Subject = "Notificação de Consulta nº" + nconsulta;
+                        mail.IsBodyHtml = true;
+                        mail.BodyEncoding = Encoding.UTF8;
+
+                        smtp.Host = "smtp.gmail.com";
+                        smtp.Port = 587;
+                        smtp.UseDefaultCredentials = false;
+                        smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                        smtp.Credentials = new System.Net.NetworkCredential()
+                        {
+                            UserName = "theberserk007@gmail.com",
+                            Password = "aokuiwdlmakjbzgy"
+
+                        };
+                        smtp.EnableSsl = true;
+                        mail.Body = $"Bom Dia Sr.(a) {nome},<br><br> Vemos por este meio notificar que amanhã no hórario {hora} para o tratamento : {tratamento}.<br><br>" +
+                            $"Obrigado pela sua preferencia,<br><br>VET PLUS.";
+                        try
+                        {
+                            smtp.Send(mail);
+                            MessageBox.Show("O email foi enviado", "Emails", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Não foi enviado o email, \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
                 }
             }
-
-
-
-            mail.From = new MailAddress("theberserk007@gmail.com", "Vet Plus");
-            mail.To.Add(new MailAddress(cb_EmailCliente.Text, nome));
-            mail.Subject = cb_MotivoCliente.Text;
-            mail.IsBodyHtml = true;
-            mail.BodyEncoding = Encoding.UTF8;
-
-            smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.UseDefaultCredentials = false;
-            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
-            smtp.Credentials = new System.Net.NetworkCredential()
-            {
-                UserName = "theberserk007@gmail.com",
-                Password = "aokuiwdlmakjbzgy"
-
-            };
-            smtp.EnableSsl = true;
-            if (cb_MotivoCliente.Text == "Notificação de Consulta")
-            {
-                mail.Body = "Teste";
-            }
-            if (cb_MotivoCliente.Text == "Desmarcação de Consulta")
-            {
-                mail.Body = "Arroz";
-            }
-            try
-            {
-                smtp.Send(mail);
-                MessageBox.Show("O email foi enviado", "Emails", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Não foi enviado o email, \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
+
+
+
         #endregion
 
         //--------------------------------------------------------------------------------------------
         //--------------------------------Serviço de Faturas------------------------------------------
         //--------------------------------------------------------------------------------------------
         #region Serviço faturas Incompleto
-        //#region variaveis 
-        //double preçoServiço = 0;
-        //int Id = 1;
-        //double total = 0;
-        //#endregion
-        //private void CarregarComboFatura()
-        //{
-        //    cb_faturaServiço.Items.Add("Consulta Básica");
-        //    cb_faturaServiço.Items.Add("Consulta Especifica");
-        //    cb_faturaServiço.Items.Add("Vacina Leucemia felina");
-        //    cb_faturaServiço.Items.Add("Vacina Raiva");
-        //    cb_faturaServiço.Items.Add("Vacina para complexo respiratorio");
-        //    cb_faturaServiço.Items.Add("Vacina Leishmanionse");
-        //    cb_faturaServiço.Items.Add("Vacina tosse do canil");
-        //    cb_faturaServiço.Items.Add("Vacina para febre da carraça");
-        //    cb_faturaServiço.Items.Add("Estadia simples");
-        //    cb_faturaServiço.Items.Add("Estadia com vistoria médica");
-        //    cb_faturaServiço.Items.Add("Operação simples");
-        //    cb_faturaServiço.Items.Add("Operação de urgência");
+        #region variaveis 
+        double preçoServiço = 0;        
+        double total = 0;
+        #endregion
+        private void CarregarComboFatura()
+        {
+            cb_faturaServiço.Items.Add("Consulta Básica");
+            cb_faturaServiço.Items.Add("Consulta Especifica");
+            cb_faturaServiço.Items.Add("Vacina Leucemia felina");
+            cb_faturaServiço.Items.Add("Vacina Raiva");
+            cb_faturaServiço.Items.Add("Vacina para complexo respiratorio");
+            cb_faturaServiço.Items.Add("Vacina Leishmanionse");
+            cb_faturaServiço.Items.Add("Vacina tosse do canil");
+            cb_faturaServiço.Items.Add("Vacina para febre da carraça");
+            cb_faturaServiço.Items.Add("Estadia simples");
+            cb_faturaServiço.Items.Add("Estadia com vistoria médica");
+            cb_faturaServiço.Items.Add("Operação simples");
+            cb_faturaServiço.Items.Add("Operação de urgência");
 
-        //    var cliente = from Cliente in dc.Clientes select Cliente;
-        //    foreach (Cliente getNome in cliente)
-        //    {
-        //        cb_faturaCliente.Items.Add(getNome.Nome);
-        //    }
-        //    var animal = from Animal in dc.Animals select Animal;
-        //    foreach (Animal getAnimal in animal)
-        //    {
-        //        cb_faturaAnimal.Items.Add(getAnimal.Nome);
-        //    }
+            
+            var cliente = from Cliente in dc.Clientes select Cliente;
+            foreach (Cliente getNome in cliente)
+            {
+                cb_faturaCliente.Items.Add(getNome.Nome);
+            }
+        }
 
-        //}
-        //private void ServiçoFatura()
-        //{
-        //    faturaBindingSource.DataSource = new List<Fatura>();//Inicializar uma lista vazia
-        //}
-        //private void cb_faturaServiço_SelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    if (cb_faturaServiço.Text == "Consulta Básica")
-        //    {
-        //        preçoServiço = 20;
-        //    }
-        //    if (cb_faturaServiço.Text == "Consulta Especifica")
-        //    {
-        //        preçoServiço = 40;
-        //    }
-        //    if (cb_faturaServiço.Text == "Vacina Leucemia felina")
-        //    {
-        //        preçoServiço = 35;
-        //    }
-        //    if (cb_faturaServiço.Text == "Vacina Raiva")
-        //    {
-        //        preçoServiço = 25;
-        //    }
-        //    if (cb_faturaServiço.Text == "Vacina para complexo respiratorio")
-        //    {
-        //        preçoServiço = 45;
-        //    }
-        //    if (cb_faturaServiço.Text == "Vacina Leishmanionse")
-        //    {
-        //        preçoServiço = 30;
-        //    }
-        //    if (cb_faturaServiço.Text == "Vacina tosse do canil")
-        //    {
-        //        preçoServiço = 50;
-        //    }
-        //    if (cb_faturaServiço.Text == "Vacina para febre da carraça")
-        //    {
-        //        preçoServiço = 15;
-        //    }
-        //    if (cb_faturaServiço.Text == "Estadia simples")
-        //    {
-        //        preçoServiço = 50;
-        //    }
-        //    if (cb_faturaServiço.Text == "Estadia com vistoria médica")
-        //    {
-        //        preçoServiço = 100;
-        //    }
-        //    if (cb_faturaServiço.Text == "Operação simples")
-        //    {
-        //        preçoServiço = 80;
-        //    }
-        //    if (cb_faturaServiço.Text == "Operação de urgência")
-        //    {
-        //        preçoServiço = 150;
-        //    }
+        private void Contas()
+        {
+            if(cb_faturaServiço.Text == "Consulta Básica")
+            {
+                preçoServiço = 25;
+            }
+            if (cb_faturaServiço.Text == "Consulta Especifica")
+            {
+                preçoServiço = 45;
+            }
+            if (cb_faturaServiço.Text == "Vacina Leucemia felina")
+            {
+                preçoServiço = 35;
+            }
+            if (cb_faturaServiço.Text == "Vacina Raiva")
+            {
+                preçoServiço = 15;
+            }
+            if (cb_faturaServiço.Text == "Vacina para complexo respiratorio")
+            {
+                preçoServiço = 29;
+            }
+            if (cb_faturaServiço.Text == "Vacina Leishmanionse")
+            {
+                preçoServiço = 34;
+            }
+            if (cb_faturaServiço.Text == "Vacina tosse do canil")
+            {
+                preçoServiço = 48;
+            }
+            if (cb_faturaServiço.Text == "Vacina para febre da carraça")
+            {
+                preçoServiço = 25;
+            }
+            if (cb_faturaServiço.Text == "Estadia simples")
+            {
+                preçoServiço = 50;
+            }
+            if (cb_faturaServiço.Text == "Estadia com vistoria médica")
+            {
+                preçoServiço = 95;
+            }
+            if (cb_faturaServiço.Text == "Operação simples")
+            {
+                preçoServiço = 65;
+            }
+            if (cb_faturaServiço.Text == "Operação de urgência")
+            {
+                preçoServiço = 150;
+            }
 
-        //}
-        //private void bt_addFatura_Click(object sender, EventArgs e)
-        //{
-        //    if (!string.IsNullOrEmpty(cb_faturaServiço.Text))
-        //    {
-        //        Fatura fatura = new Fatura()
-        //        {
-        //            Id = Id++,
-        //            Serviço = cb_faturaServiço.Text,
-        //            Preço = Convert.ToDouble(preçoServiço),
-        //            Quantidade = Convert.ToInt32(txt_faturaQuantidade.Text),
-        //            //Dono = cb_faturaCliente.Text,
-        //            //Animal = cb_faturaAnimal.Text,                     
-        //        };
-        //        total += fatura.Preço * fatura.Quantidade;
-        //        dataGridFaturas.Columns.Add("colId", "ID");
-        //        dataGridFaturas.Columns.Add("colServiço", "Serviço");
-        //        dataGridFaturas.Columns.Add("colPreco", "Preço");
-        //        dataGridFaturas.Columns.Add("colQuantidade", "Quantidade");
-        //        dataGridFaturas.Columns.Add("colDono", "Dono");
-        //        dataGridFaturas.Columns.Add("colAnimal", "Animal");
-        //        faturaBindingSource.Add(fatura);
-        //        faturaBindingSource.MoveLast();
-        //        dataGridFaturas.Refresh();
-        //        //txt_faturaDinheiroEntregue.Text = string.Empty;
-        //        txt_faturaTotal.Text = string.Format("{0}€", total);
-        //        //txt_faturaQuantidade.Text = "1";
-        //        //cb_faturaAnimal.SelectedItem = null;
-        //        //cb_faturaCliente.SelectedItem = null;
-        //        //cb_faturaServiço.SelectedItem = null;
-        //    }
-        //}
+        }
 
-        //private void bt_removeFatura_Click(object sender, EventArgs e)
-        //{
-        //    Fatura fatura = faturaBindingSource.Current as Fatura;
-        //    if (fatura != null)
-        //    {
-        //        total -= fatura.Preço * fatura.Quantidade;
-        //        txt_faturaTotal.Text = String.Format("{0}€", total);
-        //    }
-        //    faturaBindingSource.RemoveCurrent();
-        //}
-        ///*, cb_faturaCliente.Text, cb_faturaAnimal.Text)*/
+        int Id = 1;
+        //Criar uma DataTable para que os dados da DataGridView sejam guardados sem necessidade de aceder a DB
+        //Uma vez que não é necessario guardar a fatura torna-se mais prático
+        DataTable dt = new DataTable();
+
+        /// <summary>
+        /// Metodo para Criar uma nova linha na DataGridFaturas
+        /// </summary>
+        public void CriarRow()
+        {
+            if(dt.Rows.Count<=0)
+            {
+                Contas();
+                dt.Columns.Add("ID");
+                dt.Columns.Add("Serviço");
+                dt.Columns.Add("Preço");
+                dt.Columns.Add("Quantidade");
+                dt.Columns.Add("Dono");
+                dt.Columns.Add("Animal");
+
+                dt.Rows.Add(Id, cb_faturaServiço.Text, preçoServiço, txt_faturaQuantidade.Text, cb_faturaCliente.Text, cb_faturaAnimal.Text);
+                dataGridFaturas.DataSource = dt;
+                total += preçoServiço;
+                txt_faturaTotal.Text = Convert.ToString(total);
+                Id++;
+            }
+            else 
+            {
+                Contas();
+                dt.Rows.Add(Id, cb_faturaServiço.Text, preçoServiço, txt_faturaQuantidade.Text, cb_faturaCliente.Text, cb_faturaAnimal.Text);
+                dataGridFaturas.DataSource = dt;
+                total += preçoServiço;
+                txt_faturaTotal.Text = Convert.ToString(total);
+                Id++;
+            }
+        }
+        private void bt_addFatura_Click(object sender, EventArgs e)
+        {
+            CriarRow();            
+        }
+
+        private void bt_removeFatura_Click(object sender, EventArgs e)
+        {
+            if(dataGridFaturas.SelectedRows.Count > 0)
+            {
+                total = Convert.ToInt32(txt_faturaTotal.Text);            
+                double menos=0;
+                menos = Convert.ToDouble(dataGridFaturas.CurrentRow.Cells[2].Value);
+                txt_faturaTotal.Text = Convert.ToString(total -= menos); 
+                dataGridFaturas.Rows.RemoveAt(dataGridFaturas.CurrentRow.Index);
+            }
+            else
+            {
+                MessageBox.Show("Deve Selecionar primeiro o serviço a apagar!","Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cb_faturaCliente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cb_faturaAnimal.Items.Clear();
+            var clientePesquisa = cb_faturaCliente.Text;
+            var ani = from Animal in dc.Animals
+                      where SqlMethods.Like(Animal.Dono, "%" + clientePesquisa + "%")
+                      select Animal;
+            foreach (Animal pop in ani)
+            {
+                cb_faturaAnimal.Items.Add(pop.Nome);
+            }
+        }
+
+        private void bt_faturaPrint_Click(object sender, EventArgs e)
+        {
+            string email = "";
+            string nome = "";
+            string total = "";
+            string troco = "";
+            
+            var listaClientes = from Cliente in dc.Clientes select Cliente;
+            foreach (Cliente getNome in listaClientes)
+            {
+
+                if (getNome.Nome == cb_faturaCliente.Text)
+                {
+                    nome = getNome.Nome;
+                    email = getNome.Email;
+                }
+            }
+
+
+            total = txt_faturaTotal.Text;
+            troco = Convert.ToString(Convert.ToDouble(txt_faturaDinheiroEntregue.Text) - Convert.ToDouble(txt_faturaTotal.Text));
+
+            frmPrint frmPrint = new frmPrint(dt,email,nome,total,troco);
+            frmPrint.Show();            
+        }
+
+
+
         #endregion
 
     }
