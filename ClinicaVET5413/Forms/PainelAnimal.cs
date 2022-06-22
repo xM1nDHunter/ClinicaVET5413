@@ -53,6 +53,10 @@ namespace ClinicaVET5413
 
             cbGeneroAdd.Items.Add("Macho");
             cbGeneroAdd.Items.Add("Fêmea");
+            cbEspecieEdit.Items.Add("Felídeos");
+            cbEspecieEdit.Items.Add("Ave");
+            cbEspecieEdit.Items.Add("Reptil");
+            cbEspecieEdit.Items.Add("Canídeos");
 
             cbEspecieEdit.Items.Add("Felídeos");
             cbEspecieEdit.Items.Add("Ave");

@@ -216,5 +216,20 @@ namespace ClinicaVET5413.Forms
                 }
             }
         }
+        private void bt_cliente_Click(object sender, EventArgs e)
+        {
+            LoadForms(new PainelCliente());
+        }
+
+        private void bt_GestaoClinica_Click(object sender, EventArgs e)
+        {
+            LoadForms(new PainelConsulta());
+        }
+
+        private void bt_infos_Click(object sender, EventArgs e)
+        {
+            LoadForms(new PainelInformacoes());
+        }
+        #endregion
     }
 }

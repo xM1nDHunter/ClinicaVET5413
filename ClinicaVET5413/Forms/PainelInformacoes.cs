@@ -20,6 +20,6 @@ namespace ClinicaVET5413.Forms
             Color cor = new Color();
             cor = Color.FromArgb(104, 138, 129);
             BackColor = cor;
-        }        
+        }
     }
 }

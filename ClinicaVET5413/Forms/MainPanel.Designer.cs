@@ -50,6 +50,8 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.sideBarTimer = new System.Windows.Forms.Timer(this.components);
+            this.painelForms = new System.Windows.Forms.Panel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.PainelMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -85,7 +87,7 @@
             this.panel1.Size = new System.Drawing.Size(200, 100);
             this.panel1.TabIndex = 6;
             // 
-            // label2
+            // bt_GestaoClinica
             // 
             this.label2.AutoSize = true;
             this.label2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -310,6 +312,20 @@
             // sideBarTimer
             // 
             this.sideBarTimer.Tick += new System.EventHandler(this.sideBarTimer_Tick);
+            // 
+            // painelForms
+            // 
+            this.painelForms.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.painelForms.Location = new System.Drawing.Point(199, 51);
+            this.painelForms.Name = "painelForms";
+            this.painelForms.Size = new System.Drawing.Size(876, 499);
+            this.painelForms.TabIndex = 2;
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // MainPanel
             // 

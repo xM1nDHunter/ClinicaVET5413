@@ -115,7 +115,7 @@ namespace ClinicaVET5413.Forms
                     txt_EditTele.Clear();
                     txt_EditEmail.Clear();
                 }       
-            }
+    }
             
         }
         #endregion

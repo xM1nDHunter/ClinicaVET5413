@@ -377,7 +377,7 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "ID Médico:";
             // 
-            // EditMed
+            // comboBox2
             // 
             this.EditMed.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(104)))), ((int)(((byte)(138)))), ((int)(((byte)(129)))));
             this.EditMed.Controls.Add(this.bt_EditMedico);
