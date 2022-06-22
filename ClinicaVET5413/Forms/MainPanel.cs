@@ -39,6 +39,7 @@ namespace ClinicaVET5413.Forms
             //Não deixa que o form ocupe todo o ecrã
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
+
         /// <summary>
         /// Dlls para poder mover e reajustar o form
         /// </summary>        

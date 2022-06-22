@@ -53,6 +53,7 @@ namespace ClinicaVET5413
 
             cbGeneroAdd.Items.Add("Macho");
             cbGeneroAdd.Items.Add("Fêmea");
+
             cbEspecieEdit.Items.Add("Felídeos");
             cbEspecieEdit.Items.Add("Ave");
             cbEspecieEdit.Items.Add("Reptil");
@@ -66,7 +67,7 @@ namespace ClinicaVET5413
             
             var cbCliente = from Cliente in dc.Clientes select Cliente;
             foreach (Cliente cliente in cbCliente)
-            {
+            {                
                 cb_AddDono.Items.Add(cliente.Nome);
                 cb_EditDono.Items.Add(cliente.Nome);
             }

@@ -760,8 +760,7 @@
             this.bt_EmailIndividual.Size = new System.Drawing.Size(122, 20);
             this.bt_EmailIndividual.TabIndex = 3;
             this.bt_EmailIndividual.Text = "Enviar Email";
-            this.bt_EmailIndividual.UseVisualStyleBackColor = true;
-            this.bt_EmailIndividual.Click += new System.EventHandler(this.bt_EmailIndividual_Click);
+            this.bt_EmailIndividual.UseVisualStyleBackColor = true;            
             // 
             // bt_EmailTodos
             // 

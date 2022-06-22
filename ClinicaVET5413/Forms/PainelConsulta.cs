@@ -1,14 +1,9 @@
-﻿using ClinicaVET5413.Modelos;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System;
 using System.Data;
 using System.Data.Linq.SqlClient;
-using System.Drawing;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicaVET5413.Forms
@@ -36,15 +31,21 @@ namespace ClinicaVET5413.Forms
             CarregarComboEmail();
             CarregarComboFatura();
             CheckDailyMails();
-            //CarregarComboFatura();
-            //ServiçoFatura();
         }
 
         #region Configuraçõse de Butões
+
+        /// <summary>
+        /// Muda para Tab Adicionar Consulta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bt_AdicionarConsulta_Click(object sender, EventArgs e)
         {
             tabControl1.SelectTab(AddConsulta);
         }
+
+
         private void bt_AddConsulta_Click(object sender, EventArgs e)
         {
             //Pesquisa na base de dados do medicos para ir buscar o ID do medico selecionado
@@ -136,7 +137,7 @@ namespace ClinicaVET5413.Forms
             dataGridConsultas.CurrentRow.Cells[5].Value = dtp_EditDia.Text;
             dataGridConsultas.CurrentRow.Cells[6].Value = cb_EditHora.Text;
             dataGridConsultas.CurrentRow.Cells[7].Value = txt_EditNotas.Text;
-            if(DialogEditConsulta())
+            if (DialogEditConsulta())
             {
                 //Pesquisa na base de dados do medicos para ir buscar o ID do medico selecionado
                 int getIDMedico = 0;
@@ -171,12 +172,12 @@ namespace ClinicaVET5413.Forms
                         getIDAnimal = ani.ID;
                     }
                 }
-                
+
                 Consulta edit = dc.Consultas.Single(consulta => consulta.ID == Convert.ToInt32(txt_EditID.Text));
                 edit.Medico = getIDMedico;
                 edit.Cliente = getIDCliente;
                 edit.Animal = getIDAnimal;
-                edit.Tratamento = cb_EditTratamento.Text;                
+                edit.Tratamento = cb_EditTratamento.Text;
                 edit.DiaConsulta = dtp_EditDia.Text;
                 edit.HoraConsulta = cb_EditHora.Text;
                 edit.Notas = txt_EditNotas.Text;
@@ -205,7 +206,7 @@ namespace ClinicaVET5413.Forms
         {
             //if (rbCliente.Checked)
             //{
-                 
+
             //}
             //if (rbAnimal.Checked)
             //{
@@ -387,9 +388,9 @@ namespace ClinicaVET5413.Forms
             cb_AddAnimal.Items.Clear();
             var clientePesquisa = cb_AddCliente.Text;
             var ani = from Animal in dc.Animals
-                         where SqlMethods.Like(Animal.Dono, "%" + clientePesquisa + "%")
-                         select Animal;
-            foreach(Animal pop in ani)
+                      where SqlMethods.Like(Animal.Dono, "%" + clientePesquisa + "%")
+                      select Animal;
+            foreach (Animal pop in ani)
             {
                 cb_AddAnimal.Items.Add(pop.Nome);
             }
@@ -397,11 +398,11 @@ namespace ClinicaVET5413.Forms
         }
         private void cb_EditCliente_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(cb_EditAnimal.Items == null)
+            if (cb_EditAnimal.Items == null)
             {
-               MessageBox.Show("Por favor confirme o Cliente, antes de prosseguir!", "Confirme o Cliente",MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                MessageBox.Show("Por favor confirme o Cliente, antes de prosseguir!", "Confirme o Cliente", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else 
+            else
             {
                 cb_EditAnimal.Items.Clear();
                 var clientePesquisa = cb_EditCliente.Text;
@@ -425,9 +426,9 @@ namespace ClinicaVET5413.Forms
             var animalPesquisa = cb_AddAnimal.Text;
             string getEspecie = "";
             var listaAni = from Animal in dc.Animals select Animal;
-            foreach(Animal ani in listaAni)
+            foreach (Animal ani in listaAni)
             {
-                if(ani.Nome == cb_AddAnimal.Text)
+                if (ani.Nome == cb_AddAnimal.Text)
                 {
                     getEspecie = ani.Especie;
                 }
@@ -464,17 +465,21 @@ namespace ClinicaVET5413.Forms
         }
 
 
-        #endregion        
-        
-        #region Extras
-        
+        #endregion
 
+        #region Extras
+
+        /// <summary>
+        /// Serviço de Email para enviar emails no ato de apagar uma consulta
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bt_ApagarConsulta_MouseHover(object sender, EventArgs e)
         {
             ToolTip ajuda = new ToolTip();
             ajuda.Show("Selecione uma linha para apagar", bt_ApagarConsulta);
         }
-        
+
         /// <summary>
         /// Recebe informação da nova consulta adicionada e notifica o cliente via e-mail 
         /// </summary>
@@ -548,6 +553,10 @@ namespace ClinicaVET5413.Forms
             }
         }
 
+        /// <summary>
+        /// Serviço de Email para enviar emails no ato de alterar uma consulta
+        /// </summary>
+        /// <param name="consulta"></param>
         private void EmailUpdateService(Consulta consulta)
         {
             Consulta getConsulta = new Consulta();
@@ -575,7 +584,7 @@ namespace ClinicaVET5413.Forms
             var listaMeds = from Medico in dc.Medicos select Medico;
             foreach (var getInfoMed in listaMeds)
             {
-                if(getInfoMed.ID == consulta.Medico)
+                if (getInfoMed.ID == consulta.Medico)
                 {
                     nomeMed = getInfoMed.Nome;
                     emailMed = getInfoMed.Email;
@@ -584,7 +593,7 @@ namespace ClinicaVET5413.Forms
 
             mail.From = new MailAddress("theberserk007@gmail.com", "Vet Plus");
             mail.To.Add(new MailAddress(email, nome));
-            mail.CC.Add(new MailAddress(emailMed,nomeMed));
+            mail.CC.Add(new MailAddress(emailMed, nomeMed));
             mail.Subject = "Alteração da sua Consulta";
             mail.IsBodyHtml = true;
             mail.BodyEncoding = Encoding.UTF8;
@@ -615,7 +624,10 @@ namespace ClinicaVET5413.Forms
                 MessageBox.Show("Não foi enviado o email, pórem a consulta foi marcada no sistema!(Utilize a aba de Email para reenviar o email) \n" + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        /// <summary>
+        /// Serviço de Email para enviar emails no ato de inserir uma consulta
+        /// </summary>
+        /// <param name="consulta"></param>
         private void EmailService(Consulta consulta)
         {
             Consulta getConsulta = new Consulta();
@@ -669,11 +681,11 @@ namespace ClinicaVET5413.Forms
 
             };
             smtp.EnableSsl = true;
-            
+
             mail.Body = $"Obrigado por escolher a Vet Plus Sr.(a){nome}, <br> <br>" +
                 $"A consulta do seu animal com o motivo de {consulta.Tratamento} foi confirmada e marcada para dia : {consulta.DiaConsulta} entre {consulta.HoraConsulta}. Deve comparecer 15 min antes !<br>" +
-                $"Obrigado pela sua preferencia! <br> <br> Atenciosamente,<br>VET PLUS";            
-            
+                $"Obrigado pela sua preferencia! <br> <br> Atenciosamente,<br>VET PLUS";
+
             try
             {
                 smtp.Send(mail);
@@ -691,7 +703,7 @@ namespace ClinicaVET5413.Forms
         {
             bool valida = true;
             var listaconsulta = from Consulta in dc.Consultas select Consulta;
-            foreach(var teste in listaconsulta)
+            foreach (var teste in listaconsulta)
             {
                 int getIDMedico = 0;
                 var allmedic = from Medico in dc.Medicos select Medico;
@@ -751,6 +763,9 @@ namespace ClinicaVET5413.Forms
         //--------------------------------Serviço de Emails-------------------------------------------
         //--------------------------------------------------------------------------------------------
         #region Emails
+        /// <summary>
+        /// Carrega os comboBoxes na tab dos Emails
+        /// </summary>
         private void CarregarComboEmail()
         {
             cb_MotivoTodos.Items.Add("Notificar Férias");
@@ -765,6 +780,12 @@ namespace ClinicaVET5413.Forms
                 cb_EmailCliente.Items.Add(cliente.Email);
             }
         }
+
+        /// <summary>
+        /// Metodo que corre a lista de Clientes e notifica via email
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void bt_EmailTodos_Click(object sender, EventArgs e)
         {
             MailMessage mail = new MailMessage();
@@ -825,10 +846,10 @@ namespace ClinicaVET5413.Forms
             MessageBox.Show("Os emails foram enviados", "Emails", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
-        private void bt_EmailIndividual_Click(object sender, EventArgs e)
-        {
-            
-        }
+        //private void bt_EmailIndividual_Click(object sender, EventArgs e)
+        //{
+
+        //}
         /// <summary>
         /// Sempre que o form consulta inicia é verificado se existem consultas para dia seguinte e todos os clientes com marcações para dia seguinte são notificados!
         /// </summary>
@@ -912,11 +933,15 @@ namespace ClinicaVET5413.Forms
         //--------------------------------------------------------------------------------------------
         //--------------------------------Serviço de Faturas------------------------------------------
         //--------------------------------------------------------------------------------------------
-        #region Serviço faturas Incompleto
+        #region Serviço faturas 
         #region variaveis 
-        double preçoServiço = 0;        
+        double preçoServiço = 0;
         double total = 0;
         #endregion
+
+        /// <summary>
+        /// Carrega as comboBoxes na TabFaturas
+        /// </summary>
         private void CarregarComboFatura()
         {
             cb_faturaServiço.Items.Add("Consulta Básica");
@@ -932,7 +957,7 @@ namespace ClinicaVET5413.Forms
             cb_faturaServiço.Items.Add("Operação simples");
             cb_faturaServiço.Items.Add("Operação de urgência");
 
-            
+
             var cliente = from Cliente in dc.Clientes select Cliente;
             foreach (Cliente getNome in cliente)
             {
@@ -940,9 +965,12 @@ namespace ClinicaVET5413.Forms
             }
         }
 
+        /// <summary>
+        /// Atribui o preço do serviço através da ComboBox Serviço
+        /// </summary>
         private void Contas()
         {
-            if(cb_faturaServiço.Text == "Consulta Básica")
+            if (cb_faturaServiço.Text == "Consulta Básica")
             {
                 preçoServiço = 25;
             }
@@ -1003,7 +1031,7 @@ namespace ClinicaVET5413.Forms
         /// </summary>
         public void CriarRow()
         {
-            if(dt.Rows.Count<=0)
+            if (dt.Rows.Count <= 0)
             {
                 Contas();
                 dt.Columns.Add("ID");
@@ -1019,7 +1047,7 @@ namespace ClinicaVET5413.Forms
                 txt_faturaTotal.Text = Convert.ToString(total);
                 Id++;
             }
-            else 
+            else
             {
                 Contas();
                 dt.Rows.Add(Id, cb_faturaServiço.Text, preçoServiço, txt_faturaQuantidade.Text, cb_faturaCliente.Text, cb_faturaAnimal.Text);
@@ -1029,27 +1057,29 @@ namespace ClinicaVET5413.Forms
                 Id++;
             }
         }
+
+        #region Configurações do Butões
         private void bt_addFatura_Click(object sender, EventArgs e)
         {
-            if(ValidacoesInsert())
+            if (ValidacoesInsert())
             {
-                CriarRow();            
+                CriarRow();
             }
         }
 
         private void bt_removeFatura_Click(object sender, EventArgs e)
         {
-            if(dataGridFaturas.SelectedRows.Count > 0)
+            if (dataGridFaturas.SelectedRows.Count > 0)
             {
-                total = Convert.ToInt32(txt_faturaTotal.Text);            
-                double menos=0;
+                total = Convert.ToInt32(txt_faturaTotal.Text);
+                double menos = 0;
                 menos = Convert.ToDouble(dataGridFaturas.CurrentRow.Cells[2].Value);
-                txt_faturaTotal.Text = Convert.ToString(total -= menos); 
+                txt_faturaTotal.Text = Convert.ToString(total -= menos);
                 dataGridFaturas.Rows.RemoveAt(dataGridFaturas.CurrentRow.Index);
             }
             else
             {
-                MessageBox.Show("Deve Selecionar primeiro o serviço a apagar!","Erro",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Deve Selecionar primeiro o serviço a apagar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1072,7 +1102,7 @@ namespace ClinicaVET5413.Forms
             string nome = "";
             string total = "";
             string troco = "";
-            
+
             var listaClientes = from Cliente in dc.Clientes select Cliente;
             foreach (Cliente getNome in listaClientes)
             {
@@ -1092,9 +1122,12 @@ namespace ClinicaVET5413.Forms
                 frmPrint.Show();
             }
         }
+        #endregion
+
+        #region Validações
         private bool ValidacoesPrint()
         {
-            if(dataGridFaturas.Rows.Count == 0)
+            if (dataGridFaturas.Rows.Count == 0)
             {
                 MessageBox.Show("Deve adicionar um serviço antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -1124,15 +1157,15 @@ namespace ClinicaVET5413.Forms
         }
         private bool ValidacoesInsert()
         {
-            bool valida = true;            
-            
+            bool valida = true;
+
             if (string.IsNullOrEmpty(cb_faturaServiço.Text))
             {
                 MessageBox.Show("Deve adicionar um serviço antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 valida = false;
             }
-            if(string.IsNullOrEmpty(txt_faturaQuantidade.Text))
+            if (string.IsNullOrEmpty(txt_faturaQuantidade.Text))
             {
                 MessageBox.Show("Escolher a quantidade primeiro!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -1149,10 +1182,10 @@ namespace ClinicaVET5413.Forms
                 MessageBox.Show("Deve adicionar um animal antes de continuar!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 valida = false;
-            }                       
+            }
             return valida;
         }
-
+        #endregion
 
 
         #endregion
